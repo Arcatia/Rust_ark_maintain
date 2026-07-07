@@ -60,7 +60,7 @@ const galleryData = {
     "creator": "@수백사",
     "images": [
       {
-        "src": "assets/images/zephyr/zephyr_01.jpg",
+        "src": "assets/images/zephyr/zephyr_01.png",
         "title": "MAIN FILE",
         "caption": "Zephyr 제피르 main file 그래픽 슬롯"
       },
@@ -70,7 +70,7 @@ const galleryData = {
         "caption": "Zephyr 제피르 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/zephyr/zephyr_03.jpg",
+        "src": "assets/images/zephyr/zephyr_03.png",
         "title": "FULL BODY",
         "caption": "Zephyr 제피르 full body 그래픽 슬롯"
       },
