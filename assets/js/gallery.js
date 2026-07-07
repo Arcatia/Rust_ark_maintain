@@ -134,22 +134,22 @@ const galleryData = {
     "creator": "@반엽",
     "images": [
       {
-        "src": "assets/images/arens/arens_01.jpg",
+        "src": "assets/images/arens/arens_01.png",
         "title": "MAIN FILE",
         "caption": "Arens 아렌스 main file 그래픽 슬롯"
       },
       {
-        "src": "assets/images/arens/arens_02.jpg",
+        "src": "assets/images/arens/arens_02.png",
         "title": "FACE DETAIL",
         "caption": "Arens 아렌스 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/arens/arens_03.jpg",
+        "src": "assets/images/arens/arens_03.png",
         "title": "FULL BODY",
         "caption": "Arens 아렌스 full body 그래픽 슬롯"
       },
       {
-        "src": "assets/images/arens/arens_04.jpg",
+        "src": "assets/images/arens/arens_04.png",
         "title": "MOOD FILE",
         "caption": "Arens 아렌스 mood file 그래픽 슬롯"
       }
@@ -215,22 +215,22 @@ const galleryData = {
     "creator": "@햄솔이",
     "images": [
       {
-        "src": "assets/images/harmel/harmel_01.jpg",
+        "src": "assets/images/harmel/harmel_01.png",
         "title": "MAIN FILE",
         "caption": "Harmel 하르멜 main file 그래픽 슬롯"
       },
       {
-        "src": "assets/images/harmel/harmel_02.jpg",
+        "src": "assets/images/harmel/harmel_02.png",
         "title": "FACE DETAIL",
         "caption": "Harmel 하르멜 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/harmel/harmel_03.jpg",
+        "src": "assets/images/harmel/harmel_03.png",
         "title": "FULL BODY",
         "caption": "Harmel 하르멜 full body 그래픽 슬롯"
       },
       {
-        "src": "assets/images/harmel/harmel_04.jpg",
+        "src": "assets/images/harmel/harmel_04.png",
         "title": "MOOD FILE",
         "caption": "Harmel 하르멜 mood file 그래픽 슬롯"
       }
