@@ -166,17 +166,17 @@ const galleryData = {
         "caption": "Kael 카엘 main file 그래픽 슬롯"
       },
       {
-        "src": "assets/images/kael/kael_02.jpg",
+        "src": "assets/images/kael/kael_02.png",
         "title": "FACE DETAIL",
         "caption": "Kael 카엘 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/kael/kael_03.jpg",
+        "src": "assets/images/kael/kael_03.png",
         "title": "FULL BODY",
         "caption": "Kael 카엘 full body 그래픽 슬롯"
       },
       {
-        "src": "assets/images/kael/kael_04.jpg",
+        "src": "assets/images/kael/kael_04.png",
         "title": "MOOD FILE",
         "caption": "Kael 카엘 mood file 그래픽 슬롯"
       }
