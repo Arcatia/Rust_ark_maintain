@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUST ARK | Harmel Character Page</title>
+<style>
+:root{--bg:#050b14;--panel:#081321;--line:#36506b;--soft:rgba(145,180,220,.28);--text:#d9e9f8;--muted:#7f9ab6;--pink:#ff7fb2;--blue:#9fc9ff;--gold:#ffd18a;--amber:#de9e36;--danger:#ff5f99}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 14% 4%,rgba(255,209,138,.16),transparent 32%),radial-gradient(circle at 82% 92%,rgba(255,127,178,.09),transparent 30%),linear-gradient(145deg,#040812,#091321 45%,#050b14);color:var(--text);font-family:"Segoe UI","Pretendard","Apple SD Gothic Neo",system-ui,sans-serif;letter-spacing:.06em}body:before{content:"";position:fixed;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px),radial-gradient(circle at 50% 50%,transparent 0 45%,rgba(0,0,0,.45) 78%);pointer-events:none;z-index:50;opacity:.34}a{color:inherit;text-decoration:none}img{max-width:100%}.page{width:min(1240px,calc(100% - 28px));margin:22px auto;position:relative;border:1px solid var(--line);background:linear-gradient(145deg,rgba(8,19,33,.96),rgba(6,13,24,.98));clip-path:polygon(2.5% 0,97.5% 0,100% 2.5%,100% 97.5%,97.5% 100%,2.5% 100%,0 97.5%,0 2.5%);box-shadow:0 0 46px rgba(0,0,0,.55),inset 0 0 90px rgba(159,201,255,.04);padding:38px 38px 34px 92px;overflow:hidden}.page:before{content:"";position:absolute;inset:15px;border:1px solid rgba(145,180,220,.25);pointer-events:none;clip-path:polygon(2% 0,98% 0,100% 2%,100% 98%,98% 100%,2% 100%,0 98%,0 2%)}.page:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 0 96%,rgba(159,201,255,.05) 97%),repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px);opacity:.26;pointer-events:none}.rail{position:absolute;left:18px;top:64px;bottom:64px;width:48px;border-left:1px solid var(--line);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;color:var(--muted);z-index:2}.rail .icon{height:58px;width:100%;display:grid;place-items:center;border-bottom:1px solid var(--soft);color:var(--gold);font-size:20px}.rail .vertical{writing-mode:vertical-rl;text-orientation:mixed;font-size:23px;letter-spacing:.26em;font-weight:800;color:#6988ad;margin-top:36px}.rail .small{margin-top:auto;margin-bottom:22px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.28em;color:var(--gold)}.header{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;position:relative;z-index:3;padding-bottom:26px;border-bottom:1px solid var(--soft)}.kicker{color:var(--muted);font-size:12px;letter-spacing:.34em;margin-bottom:12px}h1{margin:0;color:var(--gold);font-size:clamp(38px,6vw,70px);letter-spacing:.22em;line-height:1.02;text-shadow:0 0 18px rgba(255,209,138,.28)}.subtitle{margin-top:14px;color:var(--muted);font-size:14px;letter-spacing:.34em;line-height:1.7}.emblem{width:122px;height:122px;border:1px solid var(--soft);border-radius:50%;display:grid;place-items:center;position:relative;color:var(--blue)}.emblem:before{content:"";position:absolute;width:80px;height:80px;border:1px dashed var(--soft);border-radius:50%}.emblem:after{content:"";position:absolute;width:102px;height:102px;border-top:2px solid var(--gold);border-radius:50%;animation:spin 7s linear infinite}.emblem b{font-size:42px;transform:rotate(-12deg)}@keyframes spin{to{transform:rotate(360deg)}}.topnav{position:relative;z-index:3;display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 0}.topnav a{border:1px solid var(--soft);padding:10px 14px;color:var(--blue);background:rgba(159,201,255,.035);font-size:12px;letter-spacing:.22em}.topnav a:hover{border-color:var(--gold);color:var(--gold)}.section{position:relative;z-index:3;margin-top:28px;border:1px solid var(--soft);background:rgba(7,16,28,.56);padding:24px}.section-title{display:flex;align-items:center;gap:12px;margin:0 0 18px;color:var(--blue);font-weight:800;font-size:15px;letter-spacing:.32em}.section-title:before{content:"";width:10px;height:10px;background:var(--gold);box-shadow:0 0 14px rgba(255,209,138,.55)}.hero{position:relative;z-index:3;margin-top:28px;display:grid;grid-template-columns:minmax(360px,.9fr) 1.1fr;gap:22px;align-items:stretch}.hero-image{position:relative;border:1px solid var(--line);background:#030811;padding:12px;min-height:640px}.hero-image:before,.hero-image:after{content:"";position:absolute;width:42px;height:42px;border-color:var(--gold);border-style:solid;pointer-events:none}.hero-image:before{left:-1px;top:-1px;border-width:2px 0 0 2px}.hero-image:after{right:-1px;bottom:-1px;border-width:0 2px 2px 0}.hero-image img{width:100%;height:100%;min-height:616px;object-fit:cover;object-position:center 22%;display:block}.hero-info{border:1px solid var(--soft);background:radial-gradient(circle at 90% 10%,rgba(255,209,138,.13),transparent 35%),rgba(7,16,28,.64);padding:24px;display:flex;flex-direction:column;justify-content:space-between}.profile-code{color:var(--muted);font-size:12px;letter-spacing:.3em}.hero-info h2{margin:12px 0 14px;color:var(--text);font-size:clamp(28px,4vw,48px);letter-spacing:.18em}.role{color:var(--gold);font-size:13px;letter-spacing:.24em;line-height:1.8;margin-bottom:20px}.quote,.callout{border-left:3px solid var(--gold);background:linear-gradient(90deg,rgba(255,209,138,.12),transparent);padding:16px 18px;color:#fff0d1;line-height:1.85;font-size:15px;word-break:keep-all}.data-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:22px 0}.data{border:1px solid var(--soft);background:rgba(159,201,255,.035);padding:13px}.data b{display:block;color:var(--blue);font-size:11px;letter-spacing:.22em;margin-bottom:7px}.data span{color:var(--text);font-size:13px;line-height:1.55;letter-spacing:.04em}.status-block{display:grid;gap:12px}.meter{border:1px solid var(--soft);padding:13px;background:rgba(0,0,0,.16)}.meter-top{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;letter-spacing:.18em;margin-bottom:9px}.track{height:10px;border:1px solid var(--line);background:#030811;overflow:hidden}.track span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--amber),var(--pink));box-shadow:0 0 14px rgba(255,209,138,.35)}.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}.tabs button{border:1px solid var(--soft);background:rgba(159,201,255,.035);color:var(--blue);padding:10px 12px;font:inherit;font-size:12px;letter-spacing:.18em;cursor:pointer}.tabs button.active,.tabs button:hover{border-color:var(--gold);color:var(--gold)}.tab-panel{display:none;color:#c8d8e9;line-height:1.9;font-size:14px;letter-spacing:.035em;word-break:keep-all}.tab-panel.active{display:block}.tab-panel p{margin:0 0 16px}.keyword-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.keyword{border:1px solid var(--soft);padding:7px 10px;color:var(--muted);font-size:11px;letter-spacing:.16em;background:rgba(159,201,255,.03)}.relation-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.relation-card{border:1px solid var(--soft);background:rgba(7,16,28,.72);padding:16px;min-height:184px}.relation-card b{display:block;color:var(--gold);font-size:14px;letter-spacing:.18em;margin-bottom:8px}.relation-card span{display:block;color:var(--blue);font-size:12px;letter-spacing:.16em;line-height:1.5;margin-bottom:10px}.relation-card p{margin:0;color:#c8d8e9;font-size:13px;line-height:1.75;letter-spacing:.035em}.gallery-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px}.gallery-main{border:1px solid var(--line);background:#030811;padding:12px}.gallery-main img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%;display:block}.gallery-caption{margin-top:12px;border:1px solid var(--soft);padding:12px 14px;background:rgba(159,201,255,.035);color:#c8d8e9;line-height:1.7;font-size:13px}.gallery-caption b{display:block;color:var(--gold);letter-spacing:.18em;margin-bottom:5px}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gallery-card{border:1px solid var(--soft);background:rgba(7,16,28,.72);padding:9px;cursor:pointer;transition:.2s ease}.gallery-card img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 20%;display:block}.gallery-card b{display:block;color:var(--gold);font-size:11px;letter-spacing:.16em;margin:8px 0 4px}.gallery-card span{display:block;color:var(--muted);font-size:11px;line-height:1.5}.gallery-card:hover{border-color:var(--gold);transform:translateY(-2px)}.log-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.log-card{border:1px solid var(--soft);padding:16px;background:rgba(0,0,0,.18)}.log-card b{display:block;color:var(--blue);font-size:12px;letter-spacing:.2em;margin-bottom:10px}.log-card p{margin:0;color:#c8d8e9;line-height:1.8;font-size:13.5px}.quick-return{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 16px}.quick-return a{border:1px solid var(--soft);background:rgba(159,201,255,.035);color:var(--blue);padding:11px 14px;font-size:12px;letter-spacing:.18em}.quick-return a:hover{border-color:var(--gold);color:var(--gold)}.directory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.directory-card{border:1px solid var(--soft);background:linear-gradient(145deg,rgba(255,209,138,.055),transparent),rgba(7,16,28,.72);padding:16px;min-height:142px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s ease}.directory-card b{display:block;color:var(--text);font-size:15px;letter-spacing:.13em;line-height:1.45;margin-bottom:8px}.directory-card span{display:block;color:var(--gold);font-size:11px;letter-spacing:.16em;line-height:1.5}.directory-card small{display:block;color:var(--muted);font-size:11px;line-height:1.55;margin-top:12px}.directory-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 0 18px rgba(255,209,138,.12)}.footer{position:relative;z-index:3;margin-top:26px;padding-top:18px;border-top:1px solid var(--soft);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:11px;letter-spacing:.24em}.gold{color:var(--gold)}@media(max-width:1120px){.hero,.gallery-layout{grid-template-columns:1fr}.relation-grid,.gallery-grid,.directory-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:820px){.page{padding:30px 22px 30px 72px}.header{grid-template-columns:1fr}.emblem{width:92px;height:92px}h1{letter-spacing:.12em}.data-grid,.log-grid{grid-template-columns:1fr}.hero-image,.hero-image img{min-height:520px}}@media(max-width:560px){.page{width:100%;margin:0;min-height:100vh;clip-path:none;padding-left:72px}.rail{left:10px}.section{padding:18px}.relation-grid,.gallery-grid,.directory-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<article class="page">
+  <aside class="rail"><div class="icon">⌖</div><div class="icon">▧</div><div class="vertical">SUBJECT FILE</div><div class="small">RUST ARK · HARMEL</div></aside>
+  <header class="header"><div><div class="kicker">ARCHIVE FILE : CHARACTER DOSSIER</div><h1>HARMEL</h1><div class="subtitle">MUTANT QUEEN BEE // WASP LEGION</div></div><div class="emblem"><b>⬢</b></div></header>
+  <nav class="topnav"><a href="../world.html">← WORLD MAIN</a><a href="../gallery.html">GLOBAL GALLERY</a><a href="#profile">PROFILE</a><a href="#record">RECORD</a><a href="#relations">RELATIONS</a><a href="#logs">LOGS</a><a href="#gallery">GALLERY</a><a href="#directory">CHARACTERS</a></nav>
+
+  <section class="hero" id="profile">
+    <div class="hero-image"><img src="../assets/images/harmel/harmel_01.png" alt="Harmel main visual"></div>
+    <div class="hero-info">
+      <div>
+        <div class="profile-code">SUBJECT ID // RA-INSECT-MUTANT-QUEEN-031</div>
+        <h2>하르멜 / Harmel</h2>
+        <div class="role">INSECT / QUEEN BEE · MUTANT MALE QUEEN · WASP LEGION</div>
+        <div class="quote">“부드럽게 말한다고 해서, 내가 양보한다는 뜻은 아닙니다.”</div>
+        <div class="data-grid">
+          <div class="data"><b>SPECIES</b><span>장수말벌+꿀벌 혼종 충인</span></div><div class="data"><b>FACTION</b><span>개인주의 / 말벌 군단</span></div>
+          <div class="data"><b>AGE</b><span>외형 31세</span></div><div class="data"><b>HEIGHT</b><span>195cm</span></div>
+          <div class="data"><b>IDENTITY</b><span>변이 여왕벌 개체 · 남성</span></div><div class="data"><b>STATUS</b><span>ACTIVE · HIVE COMMAND WARNING</span></div>
+        </div>
+      </div>
+      <div class="status-block">
+        <div class="meter"><div class="meter-top"><span>THREAT LEVEL</span><span>91%</span></div><div class="track"><span style="width:91%"></span></div></div>
+        <div class="meter"><div class="meter-top"><span>COMMAND VALUE</span><span>96%</span></div><div class="track"><span style="width:96%"></span></div></div>
+        <div class="meter"><div class="meter-top"><span>AFFECTION RELIABILITY</span><span>38%</span></div><div class="track"><span style="width:38%"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="record">
+    <h2 class="section-title">ARCHIVE RECORD</h2>
+    <div class="tabs"><button class="active" data-tab="overview">OVERVIEW</button><button data-tab="appearance">APPEARANCE</button><button data-tab="personality">PERSONALITY</button><button data-tab="mutation">MUTATION</button></div>
+    <div class="tab-panel active" id="overview"><p>하르멜은 핵폐기물 유출 이후 탄생한 변이 여왕벌 개체다. 장수말벌과 꿀벌의 성질이 뒤섞인 혼종 충인이며, 생물학적으로는 남성이지만 군집 명령 체계에서는 여왕벌의 위치에 놓인다.</p><p>그는 특정 국가나 거대한 충인 연합보다 자신의 군단을 우선한다. 온화한 미소와 나긋한 말투를 유지하지만, 그 부드러움은 상대를 안심시키기 위한 표면에 가깝다.</p><div class="keyword-row"><span class="keyword">변이 여왕벌</span><span class="keyword">남성 개체</span><span class="keyword">말벌 군단</span><span class="keyword">핵폐기물</span><span class="keyword">나긋한 위협</span><span class="keyword">군단 우선</span></div></div>
+    <div class="tab-panel" id="appearance"><p>195cm의 장신. 마른 근육질 체형으로, 움직임은 느긋하지만 선이 길고 압박감이 강하다. 노란 바탕에 검은 브릿지가 들어간 장발과 호박색 눈동자를 지녔다.</p><p>전체적인 인상은 꿀처럼 부드럽고 말벌처럼 날카롭다. 가까이 다가오면 온화한 얼굴보다 먼저 군집의 규율과 독의 위험이 느껴진다.</p></div>
+    <div class="tab-panel" id="personality"><p>다정하고 부드러운 듯 보이나, 판단의 우선순위는 언제나 자신과 말벌 군단의 이익이다. 말투는 나긋하지만 서늘하고, 적의를 드러내기보다 예의 바른 문장 안에 압박을 숨긴다.</p><p>상대가 선을 넘으면 감정적으로 폭발하지 않는다. 대신 침착하게 계산하고, 가장 손실이 적은 방식으로 상대를 제거하거나 고립시킨다.</p></div>
+    <div class="tab-panel" id="mutation"><p>핵폐기물 유출로 인해 기존 충인 계통에서 벗어난 변이 개체다. 장수말벌의 공격성과 꿀벌의 군집성이 뒤섞였으며, 혀 돌기를 독침처럼 변형할 수 있다.</p><p>이 기관은 단순한 신체 무기가 아니라 협박, 처형, 제압에 모두 쓰인다. 하르멜의 가장 위험한 점은 독이 아니라, 독을 사용하기 전까지도 웃고 있다는 사실이다.</p></div>
+  </section>
+
+  <section class="section" id="relations"><h2 class="section-title">RELATION DOSSIER</h2><div class="relation-grid">
+    <article class="relation-card"><b>제피르</b><span>충인 정보망 / 공중 정찰</span><p>제피르의 정찰 정보는 하르멜에게 유용하지만, 하르멜은 정보 제공자를 군단의 일부로 착각하지 않는다.</p></article>
+    <article class="relation-card"><b>아렌스</b><span>침투 전력 / 위험한 도구</span><p>아렌스의 제거 능력은 인정한다. 다만 명령권 밖의 칼은 언제든 손을 벨 수 있다고 판단한다.</p></article>
+    <article class="relation-card"><b>Hale 헤일</b><span>식물 해방군 / 전략적 거래 가능</span><p>헤일의 전략성을 높게 평가한다. 협력은 가능하지만, 서로의 목적이 어긋나는 순간 계산은 즉시 바뀐다.</p></article>
+    <article class="relation-card"><b>설공찬</b><span>인간 지휘관 / 적대 대상</span><p>인간 대항군의 통제력은 거슬리는 변수다. 하르멜은 그를 감정이 아닌 구조적 위협으로 본다.</p></article>
+  </div></section>
+
+  <section class="section" id="logs"><h2 class="section-title">VOICE / FIELD LOGS</h2><div class="log-grid">
+    <article class="log-card"><b>VOICE 01</b><p>“걱정하지 마세요. 저는 무례하게 굴 생각이 없습니다. 필요하다면 아주 정중하게 끝내드릴 뿐입니다.”</p></article>
+    <article class="log-card"><b>VOICE 02</b><p>“군단의 이익과 당신의 안위가 같은 방향이라면, 저는 누구보다 다정한 편입니다.”</p></article>
+    <article class="log-card"><b>ARCHIVE EVALUATION</b><p>겉보기에는 온화한 군주형 충인이지만, 실질적으로는 군집의 생존과 확장을 위해 모든 관계를 계산하는 변이 여왕벌. 호감과 협력은 가능하나, 신뢰는 별개의 문제다.</p></article>
+    <article class="log-card"><b>WARNING</b><p>하르멜과의 대화 중 부드러운 어조에 속아 거리를 좁히지 말 것. 신체 접촉 거리 진입 시 독침 변형 기관의 사정권에 들어갈 수 있다.</p></article>
+  </div></section>
+
+  <section class="section" id="gallery"><h2 class="section-title">PERSONAL GALLERY</h2><div class="gallery-layout">
+    <div class="gallery-main"><img id="mainImage" src="../assets/images/harmel/harmel_01.png" alt="Harmel gallery main"><div class="gallery-caption"><b id="mainTitle">MAIN VISUAL</b><span id="mainCaption">노란 바탕과 검은 브릿지 장발, 호박색 눈동자를 강조한 하르멜 대표 기록.</span></div></div>
+    <div class="gallery-grid">
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_01.png" data-title="MAIN VISUAL" data-caption="노란 바탕과 검은 브릿지 장발, 호박색 눈동자를 강조한 하르멜 대표 기록.">
+        <img src="../assets/images/harmel/harmel_01.png" alt="MAIN VISUAL">
+        <b>MAIN VISUAL</b>
+        <span>노란 바탕과 검은 브릿지 장발, 호박색 눈동자를 강조한 하르멜 대표 기록.</span>
+      </article>
+
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_02.png" data-title="QUEEN FILE" data-caption="변이 여왕벌 개체로서의 지휘성, 군단성, 냉정한 권위를 강조하는 컷.">
+        <img src="../assets/images/harmel/harmel_02.png" alt="QUEEN FILE">
+        <b>QUEEN FILE</b>
+        <span>변이 여왕벌 개체로서의 지휘성, 군단성, 냉정한 권위를 강조하는 컷.</span>
+      </article>
+
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_03.png" data-title="VENOM DETAIL" data-caption="혀 돌기를 독침처럼 변형할 수 있는 특이 기관 기록.">
+        <img src="../assets/images/harmel/harmel_03.png" alt="VENOM DETAIL">
+        <b>VENOM DETAIL</b>
+        <span>혀 돌기를 독침처럼 변형할 수 있는 특이 기관 기록.</span>
+      </article>
+
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_04.png" data-title="LEGION COMMAND" data-caption="말벌 군단의 이해를 우선하는 지휘관적 면모를 담은 작전 파일.">
+        <img src="../assets/images/harmel/harmel_04.png" alt="LEGION COMMAND">
+        <b>LEGION COMMAND</b>
+        <span>말벌 군단의 이해를 우선하는 지휘관적 면모를 담은 작전 파일.</span>
+      </article>
+
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_05.png" data-title="SOFT WARNING" data-caption="나긋하고 다정한 말투 뒤에 숨은 서늘한 계산성을 보여주는 감정 기록.">
+        <img src="../assets/images/harmel/harmel_05.png" alt="SOFT WARNING">
+        <b>SOFT WARNING</b>
+        <span>나긋하고 다정한 말투 뒤에 숨은 서늘한 계산성을 보여주는 감정 기록.</span>
+      </article>
+
+      <article class="gallery-card" data-src="../assets/images/harmel/harmel_06.png" data-title="MUTATION RECORD" data-caption="핵폐기물 유출로 탄생한 변이 개체의 생체 아카이브.">
+        <img src="../assets/images/harmel/harmel_06.png" alt="MUTATION RECORD">
+        <b>MUTATION RECORD</b>
+        <span>핵폐기물 유출로 탄생한 변이 개체의 생체 아카이브.</span>
+      </article></div>
+  </div></section>
+
+  <section class="section" id="directory">
+    <h2 class="section-title">CHARACTER DIRECTORY</h2>
+    <div class="callout">페이지 최하단 디렉토리입니다. 다른 캐릭터 파일로 이동하거나, 월드 메인과 전체 갤러리로 돌아갈 수 있습니다.</div>
+    <div class="quick-return"><a href="../world.html">← WORLD MAIN</a><a href="../gallery.html">GLOBAL GALLERY</a><a href="../world.html#relations">RELATION MAP</a></div>
+    <div class="directory-grid">
+      <a class="directory-card" href="seol_gongchan.html">
+        <b>설공찬</b>
+        <span>HUMAN / COMMANDER</span>
+        <small>인간 대항군 총사령관</small>
+      </a>
+
+      <a class="directory-card" href="hwaryeon.html">
+        <b>화련</b>
+        <span>PLANT / LOTUS</span>
+        <small>포식성 연꽃 식목인</small>
+      </a>
+
+      <a class="directory-card" href="zephyr.html">
+        <b>Zephyr 제피르</b>
+        <span>INSECT / DRAGONFLY</span>
+        <small>공중 정찰기록관</small>
+      </a>
+
+      <a class="directory-card" href="hale.html">
+        <b>Hale 헤일</b>
+        <span>PLANT / HYDRANGEA</span>
+        <small>수국 식물종 전략관</small>
+      </a>
+
+      <a class="directory-card" href="arens.html">
+        <b>Arens 아렌스</b>
+        <span>INSECT / ASSASSIN</span>
+        <small>침투·제거 수석 요원</small>
+      </a>
+
+      <a class="directory-card" href="kael.html">
+        <b>Kael 카엘</b>
+        <span>BEAST / WOLF</span>
+        <small>늑대계 추적자</small>
+      </a>
+
+      <a class="directory-card" href="vulcan.html">
+        <b>Vulcan 발칸</b>
+        <span>BEAST / BULLFIGHT</span>
+        <small>황소계 돌격 전투원</small>
+      </a>
+
+      <a class="directory-card" href="harmel.html">
+        <b>Harmel 하르멜</b>
+        <span>INSECT / QUEEN BEE</span>
+        <small>현재 파일</small>
+      </a></div>
+  </section>
+
+  <footer class="footer"><span><span class="gold">SUBJECT</span> // RA-INSECT-MUTANT-QUEEN-031</span><span>HARMEL // MUTANT QUEEN BEE</span><span>RUST ARK CHARACTER PAGE</span></footer>
+</article>
+
+<script>
+document.querySelectorAll(".tabs button").forEach(button=>{
+  button.addEventListener("click",()=>{
+    document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+    button.classList.add("active");
+    document.getElementById(button.dataset.tab).classList.add("active");
+  });
+});
+const mainImage=document.getElementById("mainImage");
+const mainTitle=document.getElementById("mainTitle");
+const mainCaption=document.getElementById("mainCaption");
+document.querySelectorAll(".gallery-card").forEach(card=>{
+  card.addEventListener("click",()=>{
+    mainImage.src=card.dataset.src;
+    mainTitle.textContent=card.dataset.title;
+    mainCaption.textContent=card.dataset.caption;
+    document.getElementById("gallery").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+</script>
+</body>
+</html>
