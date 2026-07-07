@@ -87,12 +87,12 @@ const galleryData = {
     "creator": "@릴리브",
     "images": [
       {
-        "src": "assets/images/hale/hale_01.jpg",
+        "src": "assets/images/hale/hale_01.png",
         "title": "MAIN FILE",
         "caption": "Hale 헤일 이미지 기록 01"
       },
       {
-        "src": "assets/images/hale/hale_02.jpg",
+        "src": "assets/images/hale/hale_02.png",
         "title": "FIELD PROFILE",
         "caption": "Hale 헤일 이미지 기록 02"
       },
