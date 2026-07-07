@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RUST ARK | Gallery V5 Responsive Icons</title>
+<style>
+:root{
+  --bg:#050b14;
+  --panel:#081321;
+  --line:#36506b;
+  --soft:rgba(145,180,220,.28);
+  --text:#d9e9f8;
+  --muted:#7f9ab6;
+  --pink:#ff7fb2;
+  --blue:#9fc9ff;
+  --accent:#ff7fb2;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,127,178,.12), transparent 32%),
+    radial-gradient(circle at 88% 95%, rgba(159,201,255,.10), transparent 30%),
+    linear-gradient(145deg,#040812,#091321 48%,#050b14);
+  font-family:"Segoe UI","Pretendard","Apple SD Gothic Neo",system-ui,sans-serif;
+  letter-spacing:.06em;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:50;
+  pointer-events:none;
+  opacity:.25;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px),
+    radial-gradient(circle at 50% 50%, transparent 0 45%, rgba(0,0,0,.45) 78%);
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+.page{
+  width:min(1240px, calc(100% - 28px));
+  margin:22px auto;
+  position:relative;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(8,19,33,.96),rgba(6,13,24,.98));
+  clip-path:polygon(2.5% 0,97.5% 0,100% 2.5%,100% 97.5%,97.5% 100%,2.5% 100%,0 97.5%,0 2.5%);
+  box-shadow:0 0 46px rgba(0,0,0,.55), inset 0 0 90px rgba(159,201,255,.04);
+  padding:38px 38px 34px 92px;
+  overflow:hidden;
+}
+.page:before{
+  content:"";
+  position:absolute;
+  inset:15px;
+  border:1px solid rgba(145,180,220,.22);
+  pointer-events:none;
+  clip-path:polygon(2% 0,98% 0,100% 2%,100% 98%,98% 100%,2% 100%,0 98%,0 2%);
+}
+.rail{
+  position:absolute;
+  left:18px;
+  top:64px;
+  bottom:64px;
+  width:48px;
+  border-left:1px solid var(--line);
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  color:var(--muted);
+  z-index:2;
+}
+.rail .icon{
+  height:58px;
+  width:100%;
+  display:grid;
+  place-items:center;
+  border-bottom:1px solid var(--soft);
+  color:var(--accent);
+  font-size:20px;
+}
+.rail .vertical{
+  writing-mode:vertical-rl;
+  text-orientation:mixed;
+  font-size:23px;
+  letter-spacing:.26em;
+  font-weight:800;
+  color:#6988ad;
+  margin-top:36px;
+}
+.rail .small{
+  margin-top:auto;
+  margin-bottom:22px;
+  writing-mode:vertical-rl;
+  font-size:10px;
+  letter-spacing:.28em;
+  color:var(--accent);
+}
+
+.header{
+  position:relative;
+  z-index:3;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:start;
+  padding-bottom:26px;
+  border-bottom:1px solid var(--soft);
+}
+.kicker{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.34em;
+  margin-bottom:12px;
+}
+h1{
+  margin:0;
+  color:var(--accent);
+  font-size:clamp(34px,5.5vw,64px);
+  letter-spacing:.24em;
+  line-height:1.02;
+  text-shadow:0 0 18px var(--accent);
+}
+.subtitle{
+  margin-top:14px;
+  color:var(--muted);
+  font-size:14px;
+  letter-spacing:.28em;
+  line-height:1.7;
+}
+.emblem{
+  width:122px;
+  height:122px;
+  border:1px solid var(--soft);
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.emblem:before{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:80px;
+  border:1px dashed var(--soft);
+  border-radius:50%;
+}
+.emblem:after{
+  content:"";
+  position:absolute;
+  width:102px;
+  height:102px;
+  border-top:2px solid var(--accent);
+  border-radius:50%;
+  animation:spin 7s linear infinite;
+}
+.emblem b{font-size:42px;color:var(--blue)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.topnav{
+  position:relative;
+  z-index:3;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:24px 0 0;
+}
+.topnav a{
+  border:1px solid var(--soft);
+  padding:10px 14px;
+  color:var(--blue);
+  background:rgba(159,201,255,.035);
+  font-size:12px;
+  letter-spacing:.18em;
+}
+.topnav a:hover{border-color:var(--accent);color:var(--accent)}
+
+.section{
+  position:relative;
+  z-index:3;
+  margin-top:28px;
+  border:1px solid var(--soft);
+  background:rgba(7,16,28,.56);
+  padding:24px;
+}
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 18px;
+  color:var(--blue);
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:.3em;
+}
+.section-title:before{
+  content:"";
+  width:10px;
+  height:10px;
+  background:var(--accent);
+  box-shadow:0 0 14px var(--accent);
+}
+
+.character-tabs{
+  display:grid;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:10px;
+  margin-bottom:20px;
+}
+.character-tabs button{
+  border:1px solid var(--soft);
+  background:rgba(159,201,255,.035);
+  color:var(--blue);
+  padding:11px 10px;
+  font-size:12px;
+  letter-spacing:.11em;
+  cursor:pointer;
+  min-width:0;
+}
+.character-tabs button.active,
+.character-tabs button:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+.viewer{
+  display:grid;
+  grid-template-columns:minmax(360px,.95fr) 1.05fr;
+  gap:18px;
+  align-items:start;
+}
+.main-frame{
+  border:1px solid var(--line);
+  background:#030811;
+  padding:12px;
+  position:relative;
+}
+.main-frame:before,
+.main-frame:after{
+  content:"";
+  position:absolute;
+  width:42px;
+  height:42px;
+  border-color:var(--accent);
+  border-style:solid;
+  pointer-events:none;
+}
+.main-frame:before{left:-1px;top:-1px;border-width:2px 0 0 2px}
+.main-frame:after{right:-1px;bottom:-1px;border-width:0 2px 2px 0}
+.main-frame img{
+  width:100%;
+  height:min(68vh,700px);
+  object-fit:cover;
+  object-position:center 20%;
+  display:block;
+}
+
+.icon-grid{
+  display:grid;
+  grid-template-columns:repeat(5, minmax(0,1fr));
+  gap:10px;
+  margin-top:14px;
+}
+.thumb{
+  border:1px solid var(--soft);
+  background:#030811;
+  padding:5px;
+  cursor:pointer;
+  position:relative;
+  aspect-ratio:1/1;
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  min-width:0;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:7px;
+  display:block;
+  opacity:.76;
+}
+.thumb b{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  width:30px;
+  height:30px;
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  background:rgba(3,8,17,.66);
+  display:grid;
+  place-items:center;
+  color:var(--text);
+  font-size:11px;
+  text-shadow:0 1px 4px #000;
+}
+.thumb.active{
+  border-color:var(--accent);
+  box-shadow:0 0 16px var(--accent);
+}
+.thumb.active img,
+.thumb:hover img{opacity:1}
+
+.info-panel{
+  border:1px solid var(--soft);
+  background:radial-gradient(circle at 90% 10%, rgba(255,127,178,.10), transparent 38%), rgba(7,16,28,.70);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  min-height:320px;
+}
+.info-code{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.24em;
+}
+.info-panel h2{
+  margin:10px 0 8px;
+  color:var(--text);
+  font-size:clamp(26px,4vw,44px);
+  letter-spacing:.14em;
+}
+.info-panel .class{
+  color:var(--accent);
+  font-size:13px;
+  letter-spacing:.18em;
+  line-height:1.7;
+  margin-bottom:16px;
+}
+.caption{
+  border-left:3px solid var(--accent);
+  background:linear-gradient(90deg, rgba(255,127,178,.10), transparent);
+  padding:15px 17px;
+  color:#f4d9e5;
+  line-height:1.75;
+  font-size:14px;
+  word-break:keep-all;
+}
+.count{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin-top:20px;
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.18em;
+  border-top:1px solid var(--soft);
+  padding-top:18px;
+}
+
+.archive-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px;
+}
+.archive-card{
+  border:1px solid var(--soft);
+  background:rgba(7,16,28,.72);
+  padding:9px;
+  cursor:pointer;
+  transition:.2s ease;
+  min-width:0;
+}
+.archive-card img{
+  width:100%;
+  aspect-ratio:3/4;
+  object-fit:cover;
+  display:block;
+}
+.archive-card b{
+  display:block;
+  color:var(--accent);
+  font-size:11px;
+  letter-spacing:.12em;
+  margin:8px 0 4px;
+}
+.archive-card span{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.45;
+}
+.archive-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+}
+
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(1,4,10,.86);
+  display:none;
+  place-items:center;
+  z-index:80;
+  padding:22px;
+}
+.modal.active{display:grid}
+.modal-box{
+  width:min(920px,100%);
+  border:1px solid var(--line);
+  background:#030811;
+  padding:12px;
+  position:relative;
+}
+.modal-box img{
+  width:100%;
+  max-height:82vh;
+  object-fit:contain;
+  display:block;
+}
+.close{
+  position:absolute;
+  right:12px;
+  top:12px;
+  border:1px solid var(--soft);
+  background:rgba(7,16,28,.92);
+  color:var(--accent);
+  padding:9px 11px;
+  cursor:pointer;
+  letter-spacing:.16em;
+}
+.footer{
+  position:relative;
+  z-index:3;
+  margin-top:26px;
+  padding-top:18px;
+  border-top:1px solid var(--soft);
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.2em;
+}
+
+@media(max-width:1050px){
+  .viewer{grid-template-columns:1fr}
+  .archive-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+
+@media(max-width:720px){
+  body{background:#050b14}
+  .page{
+    width:100%;
+    margin:0;
+    min-height:100vh;
+    clip-path:none;
+    border-left:0;
+    border-right:0;
+    padding:20px 14px 24px;
+  }
+  .page:before{display:none}
+  .rail{display:none}
+  .header{
+    grid-template-columns:1fr;
+    gap:14px;
+    padding-bottom:18px;
+  }
+  .emblem{display:none}
+  .kicker{font-size:10px;letter-spacing:.22em}
+  h1{font-size:34px;letter-spacing:.11em}
+  .subtitle{font-size:12px;letter-spacing:.12em}
+  .topnav{gap:8px;margin-top:18px}
+  .topnav a{padding:9px 10px;font-size:10px;letter-spacing:.1em}
+  .section{padding:16px;margin-top:18px}
+  .section-title{font-size:13px;letter-spacing:.18em}
+  .character-tabs{grid-template-columns:repeat(2, minmax(0,1fr));gap:8px}
+  .character-tabs button{font-size:11px;letter-spacing:.05em;padding:10px 7px}
+  .viewer{gap:14px}
+  .main-frame{padding:8px}
+  .main-frame img{height:auto;aspect-ratio:3/4;max-height:58vh}
+  .icon-grid{grid-template-columns:repeat(5, minmax(0,1fr));gap:7px;margin-top:10px}
+  .thumb{padding:4px;border-radius:8px}
+  .thumb img{border-radius:5px}
+  .thumb b{width:24px;height:24px;font-size:9px}
+  .info-panel{padding:16px;min-height:0}
+  .info-code{font-size:10px;letter-spacing:.14em}
+  .info-panel h2{font-size:24px;letter-spacing:.08em}
+  .info-panel .class{font-size:11px;letter-spacing:.08em}
+  .caption{font-size:13px;padding:13px 14px}
+  .count{font-size:10px;letter-spacing:.08em;align-items:center}
+  .archive-grid{grid-template-columns:1fr;gap:10px}
+  .archive-card{
+    display:grid;
+    grid-template-columns:72px 1fr;
+    gap:10px;
+    align-items:center;
+  }
+  .archive-card img{aspect-ratio:1/1;border-radius:7px}
+  .archive-card b{margin:0 0 4px;font-size:10px}
+  .archive-card span{font-size:10.5px}
+  .footer{font-size:9px;letter-spacing:.1em}
+}
+
+@media(max-width:390px){
+  .character-tabs{grid-template-columns:1fr}
+  .icon-grid{gap:5px}
+  .thumb b{width:22px;height:22px;font-size:8px}
+}
+</style>
+</head>
+<body>
+<article class="page">
+  <aside class="rail"><div class="icon">⌖</div><div class="icon">▧</div><div class="vertical">GALLERY</div><div class="small">RUST ARK · IMAGE DB</div></aside>
+
+  <header class="header">
+    <div>
+      <div class="kicker">ARCHIVE FILE : GLOBAL IMAGE DATABASE</div>
+      <h1>GLOBAL GALLERY</h1>
+      <div class="subtitle">캐릭터별 10장 구성 샘플 // 반응형 아이콘형</div>
+    </div>
+    <div class="emblem"><b>◆</b></div>
+  </header>
+
+  <nav class="topnav">
+    <a href="world.html">WORLD MAIN</a>
+    <a href="#viewer">VIEWER</a>
+    <a href="#archive">ARCHIVE GRID</a>
+  </nav>
+
+  <section class="section" id="viewer">
+    <h2 class="section-title">CHARACTER SELECT</h2>
+    <div class="character-tabs" id="characterTabs"></div>
+
+    <div class="viewer">
+      <div>
+        <div class="main-frame"><img id="mainImage" src="" alt=""></div>
+        <div class="icon-grid" id="iconGrid"></div>
+      </div>
+
+      <aside class="info-panel">
+        <div>
+          <div class="info-code" id="infoCode">IMAGE FILE</div>
+          <h2 id="charName"></h2>
+          <div class="class" id="charClass"></div>
+          <div class="caption">
+            <b id="imageTitle"></b><br>
+            <span id="imageCaption"></span>
+          </div>
+        </div>
+        <div class="count">
+          <span id="creator"></span>
+          <span id="counter">01 / 10</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="archive">
+    <h2 class="section-title">ARCHIVE GRID</h2>
+    <div class="archive-grid" id="archiveGrid"></div>
+  </section>
+
+  <footer class="footer"><span>RUST ARK // GALLERY V5</span><span>8 CHARACTERS × 10 PNG</span><span>RESPONSIVE ICON GRID</span></footer>
+</article>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" id="closeModal">CLOSE</button>
+    <img id="modalImage" src="" alt="">
+  </div>
+</div>
+
+<script>
+const galleryData = {
+  "seol_gongchan": {
+    "id": "seol_gongchan",
+    "name": "설공찬",
+    "class": "HUMAN / COMMANDER",
+    "creator": "@냠냠티비",
+    "accent": "#d9e9f8",
+    "images": [
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "설공찬 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_02.png",
+        "title": "FACE DETAIL",
+        "caption": "설공찬 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_03.png",
+        "title": "FULL BODY",
+        "caption": "설공찬 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_04.png",
+        "title": "ACTION FILE",
+        "caption": "설공찬 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_05.png",
+        "title": "MOOD FILE",
+        "caption": "설공찬 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_06.png",
+        "title": "ALT COSTUME",
+        "caption": "설공찬 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "설공찬 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_08.png",
+        "title": "RELATION FILE",
+        "caption": "설공찬 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_09.png",
+        "title": "PAST RECORD",
+        "caption": "설공찬 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/seol_gongchan/seol_gongchan_10.png",
+        "title": "SECRET SLOT",
+        "caption": "설공찬 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "hwaryeon": {
+    "id": "hwaryeon",
+    "name": "화련",
+    "class": "PLANT / LOTUS",
+    "creator": "@냠냠티비",
+    "accent": "#ff9cca",
+    "images": [
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "화련 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_02.png",
+        "title": "FACE DETAIL",
+        "caption": "화련 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_03.png",
+        "title": "FULL BODY",
+        "caption": "화련 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_04.png",
+        "title": "ACTION FILE",
+        "caption": "화련 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_05.png",
+        "title": "MOOD FILE",
+        "caption": "화련 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_06.png",
+        "title": "ALT COSTUME",
+        "caption": "화련 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "화련 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_08.png",
+        "title": "RELATION FILE",
+        "caption": "화련 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_09.png",
+        "title": "PAST RECORD",
+        "caption": "화련 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hwaryeon/hwaryeon_10.png",
+        "title": "SECRET SLOT",
+        "caption": "화련 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "zephyr": {
+    "id": "zephyr",
+    "name": "Zephyr 제피르",
+    "class": "INSECT / DRAGONFLY",
+    "creator": "@수백사",
+    "accent": "#6df0d6",
+    "images": [
+      {
+        "src": "assets/images/zephyr/zephyr_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Zephyr 제피르 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Zephyr 제피르 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_03.png",
+        "title": "FULL BODY",
+        "caption": "Zephyr 제피르 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_04.png",
+        "title": "ACTION FILE",
+        "caption": "Zephyr 제피르 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_05.png",
+        "title": "MOOD FILE",
+        "caption": "Zephyr 제피르 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Zephyr 제피르 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Zephyr 제피르 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_08.png",
+        "title": "RELATION FILE",
+        "caption": "Zephyr 제피르 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_09.png",
+        "title": "PAST RECORD",
+        "caption": "Zephyr 제피르 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Zephyr 제피르 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "hale": {
+    "id": "hale",
+    "name": "Hale 헤일",
+    "class": "PLANT / HYDRANGEA",
+    "creator": "@릴리브",
+    "accent": "#b6a6ff",
+    "images": [
+      {
+        "src": "assets/images/hale/hale_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Hale 헤일 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Hale 헤일 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_03.png",
+        "title": "FULL BODY",
+        "caption": "Hale 헤일 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_04.png",
+        "title": "ACTION FILE",
+        "caption": "Hale 헤일 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_05.png",
+        "title": "MOOD FILE",
+        "caption": "Hale 헤일 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Hale 헤일 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Hale 헤일 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_08.png",
+        "title": "RELATION FILE",
+        "caption": "Hale 헤일 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_09.png",
+        "title": "PAST RECORD",
+        "caption": "Hale 헤일 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/hale/hale_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Hale 헤일 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "arens": {
+    "id": "arens",
+    "name": "Arens 아렌스",
+    "class": "INSECT / ASSASSIN",
+    "creator": "@반엽",
+    "accent": "#d5b25f",
+    "images": [
+      {
+        "src": "assets/images/arens/arens_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Arens 아렌스 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Arens 아렌스 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_03.png",
+        "title": "FULL BODY",
+        "caption": "Arens 아렌스 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_04.png",
+        "title": "ACTION FILE",
+        "caption": "Arens 아렌스 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_05.png",
+        "title": "MOOD FILE",
+        "caption": "Arens 아렌스 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Arens 아렌스 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Arens 아렌스 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_08.png",
+        "title": "RELATION FILE",
+        "caption": "Arens 아렌스 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_09.png",
+        "title": "PAST RECORD",
+        "caption": "Arens 아렌스 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/arens/arens_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Arens 아렌스 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "kael": {
+    "id": "kael",
+    "name": "Kael 카엘",
+    "class": "BEAST / WOLF",
+    "creator": "@떯기",
+    "accent": "#9fc9ff",
+    "images": [
+      {
+        "src": "assets/images/kael/kael_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Kael 카엘 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Kael 카엘 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_03.png",
+        "title": "FULL BODY",
+        "caption": "Kael 카엘 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_04.png",
+        "title": "ACTION FILE",
+        "caption": "Kael 카엘 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_05.png",
+        "title": "MOOD FILE",
+        "caption": "Kael 카엘 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Kael 카엘 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Kael 카엘 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_08.png",
+        "title": "RELATION FILE",
+        "caption": "Kael 카엘 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_09.png",
+        "title": "PAST RECORD",
+        "caption": "Kael 카엘 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/kael/kael_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Kael 카엘 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "vulcan": {
+    "id": "vulcan",
+    "name": "Vulcan 발칸",
+    "class": "BEAST / BULLFIGHT",
+    "creator": "@밍묭",
+    "accent": "#ffb86b",
+    "images": [
+      {
+        "src": "assets/images/vulcan/vulcan_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Vulcan 발칸 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Vulcan 발칸 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_03.png",
+        "title": "FULL BODY",
+        "caption": "Vulcan 발칸 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_04.png",
+        "title": "ACTION FILE",
+        "caption": "Vulcan 발칸 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_05.png",
+        "title": "MOOD FILE",
+        "caption": "Vulcan 발칸 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Vulcan 발칸 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Vulcan 발칸 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_08.png",
+        "title": "RELATION FILE",
+        "caption": "Vulcan 발칸 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_09.png",
+        "title": "PAST RECORD",
+        "caption": "Vulcan 발칸 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Vulcan 발칸 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  },
+  "harmel": {
+    "id": "harmel",
+    "name": "Harmel 하르멜",
+    "class": "INSECT / QUEEN BEE",
+    "creator": "@햄솔이",
+    "accent": "#ffd18a",
+    "images": [
+      {
+        "src": "assets/images/harmel/harmel_01.png",
+        "title": "MAIN VISUAL",
+        "caption": "Harmel 하르멜 대표 이미지 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_02.png",
+        "title": "FACE DETAIL",
+        "caption": "Harmel 하르멜 얼굴 클로즈업 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_03.png",
+        "title": "FULL BODY",
+        "caption": "Harmel 하르멜 전신 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_04.png",
+        "title": "ACTION FILE",
+        "caption": "Harmel 하르멜 전투 / 능력 사용 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_05.png",
+        "title": "MOOD FILE",
+        "caption": "Harmel 하르멜 분위기 컷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_06.png",
+        "title": "ALT COSTUME",
+        "caption": "Harmel 하르멜 다른 의상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_07.png",
+        "title": "SYMBOL DETAIL",
+        "caption": "Harmel 하르멜 상징 / 신체 특징 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_08.png",
+        "title": "RELATION FILE",
+        "caption": "Harmel 하르멜 관계샷 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_09.png",
+        "title": "PAST RECORD",
+        "caption": "Harmel 하르멜 과거 / 회상 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      },
+      {
+        "src": "assets/images/harmel/harmel_10.png",
+        "title": "SECRET SLOT",
+        "caption": "Harmel 하르멜 비밀 기록 샘플 슬롯입니다. 실제 PNG로 같은 파일명만 교체하면 됩니다."
+      }
+    ]
+  }
+};
+
+const tabs = document.getElementById("characterTabs");
+const mainImage = document.getElementById("mainImage");
+const charName = document.getElementById("charName");
+const charClass = document.getElementById("charClass");
+const infoCode = document.getElementById("infoCode");
+const imageTitle = document.getElementById("imageTitle");
+const imageCaption = document.getElementById("imageCaption");
+const creator = document.getElementById("creator");
+const counter = document.getElementById("counter");
+const iconGrid = document.getElementById("iconGrid");
+const archiveGrid = document.getElementById("archiveGrid");
+const modal = document.getElementById("modal");
+const modalImage = document.getElementById("modalImage");
+const closeModal = document.getElementById("closeModal");
+
+let currentCharacter = Object.keys(galleryData)[0];
+let currentIndex = 0;
+
+function setAccent(color){
+  document.documentElement.style.setProperty("--accent", color);
+}
+
+function renderTabs(){
+  tabs.innerHTML = Object.entries(galleryData).map(([id, data]) =>
+    `<button type="button" data-id="${id}">${data.name}</button>`
+  ).join("");
+  tabs.querySelectorAll("button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentCharacter = btn.dataset.id;
+      currentIndex = 0;
+      renderAll();
+    });
+  });
+}
+
+function renderMain(){
+  const data = galleryData[currentCharacter];
+  const item = data.images[currentIndex];
+  setAccent(data.accent);
+  mainImage.src = item.src;
+  mainImage.alt = data.name + " " + item.title;
+  charName.textContent = data.name;
+  charClass.textContent = data.class;
+  infoCode.textContent = "IMAGE FILE // " + String(currentIndex + 1).padStart(2, "0");
+  imageTitle.textContent = item.title;
+  imageCaption.textContent = item.caption;
+  creator.textContent = data.creator;
+  counter.textContent = String(currentIndex + 1).padStart(2, "0") + " / " + String(data.images.length).padStart(2, "0");
+  document.querySelectorAll(".character-tabs button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.id === currentCharacter);
+  });
+}
+
+function renderIcons(){
+  const data = galleryData[currentCharacter];
+  iconGrid.innerHTML = data.images.map((item, index) => `
+    <button class="thumb ${index === currentIndex ? "active" : ""}" data-index="${index}">
+      <img src="${item.src}" alt="${item.title}">
+      <b>${String(index + 1).padStart(2, "0")}</b>
+    </button>
+  `).join("");
+  iconGrid.querySelectorAll(".thumb").forEach(btn => {
+    btn.addEventListener("click", () => {
+      currentIndex = Number(btn.dataset.index);
+      renderMain();
+      renderIcons();
+    });
+  });
+}
+
+function renderArchive(){
+  const data = galleryData[currentCharacter];
+  archiveGrid.innerHTML = data.images.map((item, index) => `
+    <article class="archive-card" data-index="${index}">
+      <img src="${item.src}" alt="${item.title}">
+      <div>
+        <b>${String(index + 1).padStart(2, "0")} · ${item.title}</b>
+        <span>${item.caption}</span>
+      </div>
+    </article>
+  `).join("");
+  archiveGrid.querySelectorAll(".archive-card").forEach(card => {
+    card.addEventListener("click", () => {
+      currentIndex = Number(card.dataset.index);
+      renderMain();
+      renderIcons();
+      modalImage.src = galleryData[currentCharacter].images[currentIndex].src;
+      modal.classList.add("active");
+    });
+  });
+}
+
+function renderAll(){
+  renderMain();
+  renderIcons();
+  renderArchive();
+}
+
+mainImage.addEventListener("click", () => {
+  modalImage.src = mainImage.src;
+  modal.classList.add("active");
+});
+closeModal.addEventListener("click", () => modal.classList.remove("active"));
+modal.addEventListener("click", (e) => {
+  if(e.target === modal) modal.classList.remove("active");
+});
+
+renderTabs();
+renderAll();
+</script>
+</body>
+</html>
