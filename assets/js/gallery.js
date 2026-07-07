@@ -161,7 +161,7 @@ const galleryData = {
     "creator": "@떯기",
     "images": [
       {
-        "src": "assets/images/kael/kael_01.jpg",
+        "src": "assets/images/kael/kael_01.png",
         "title": "MAIN FILE",
         "caption": "Kael 카엘 main file 그래픽 슬롯"
       },
