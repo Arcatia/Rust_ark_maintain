@@ -1668,3 +1668,45 @@ body {
     letter-spacing: .12em;
   }
 }
+
+/* Empty slot placeholder styling for Sci-Fi aesthetic */
+.empty-slot-placeholder {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+  background: 
+    repeating-linear-gradient(135deg, rgba(159, 201, 255, .03) 0 10px, transparent 10px 20px),
+    rgba(5, 11, 21, 0.6);
+  border: 1px dashed color-mix(in srgb, var(--accent, var(--line)) 40%, transparent);
+  color: color-mix(in srgb, var(--accent, var(--muted)) 65%, transparent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: .22em;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--accent, var(--blue)) 30%, transparent);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+}
+
+.portrait .empty-slot-placeholder {
+  aspect-ratio: 3 / 4;
+  height: 520px;
+  max-height: min(76vh, 820px);
+}
+@media (max-width: 760px) {
+  .portrait .empty-slot-placeholder {
+    height: 380px;
+  }
+}
+.core-node .empty-slot-placeholder {
+  height: 200px;
+  margin-bottom: 8px;
+}
+.char-card .empty-slot-placeholder {
+  height: 250px;
+  margin-bottom: 12px;
+}
+
