@@ -1,6 +1,3 @@
-// BGM은 트랙으로 추가합니다. 
-// 타이틀, 무드, 그리고 에셋의 소스로 관리하니 받아야 할 항목 : 제목, 누구테마인지, 그리고음악파일 현재는 MP3형태를 지원합니다.
-
 const BGM_TRACKS = [
   { title: 'Signal Boot', mood: 'terminal access', src: 'assets/audio/bgm/rust_ark_01_signal.mp3' },
   { title: 'Aftermath Rain', mood: 'world map', src: 'assets/audio/bgm/rust_ark_02_aftermath.mp3' }
@@ -46,11 +43,6 @@ const WORLD = {
     'RUST ARK : 훼손된 생체 기록이 제한 등급으로 복원되었다.'
   ]
 };
-
-
-// 각 캐릭터의 설정입니다. 받아야 할 사항들 확인하고 정리 필요합니다.
-//고유액센트컬러는 현재 지정되어있습니다. 해당 컬러를변경하여 사용하면 됩니다. 
-//예시로 설공찬의 항목을 펼쳐서 공개합니다. 해당 항목의 값을 변경하여 사용합니다. 
 
 const CHARACTERS = [
   {
@@ -119,10 +111,6 @@ const CHARACTERS = [
     id: 'bael', displayName: 'Bael 바엘', enName: 'BAEL', krName: '바엘', type: 'BEAST / BLACK MAMBA', species: 'BEAST', role: 'BLACK MAMBA', creator: '@깅루나', accent: '#0f8f4f', affiliation: 'Feral Front', danger: 'S', status: 'ACTIVE', affirm: 'BLACKLISTED', clearance: 'S-2 / VENOM NODE', scan: 'NEUROTOXIN SCAN COMPLETE', origin: 'SOUTHERN BLACK ZONE', recordDate: '2089.09.24', archiveId: 'RA-B-11-BAEL', mainImage: 'assets/images/bael/bael_01.png', gallery: galleryPaths('bael', 6), quote: '내가 물기 전에 도망쳤다면, 그건 네 운이 아니라 내 선택이야.', metrics: { threat: 9, stability: 5, affinity: 3, control: 3 }, profileBadges: ['AFFIRM : BLACKLISTED', 'CLEARANCE : S-2 / VENOM NODE', 'SCAN : NEUROTOXIN COMPLETE'], identityFields: [['ID','RA-B-11-BAEL'],['CLASS','BEAST / BLACK MAMBA'],['CREATOR','@깅루나'],['FACTION','Feral Front'],['STATUS','ACTIVE'],['AFFIRM','BLACKLISTED'],['CLEARANCE','S-2 / VENOM NODE'],['ORIGIN','SOUTHERN BLACK ZONE'],['RECORD DATE','2089.09.24']], summary: '블랙맘바 수인. 독성과 속도, 냉정한 추격으로 고위험 등급을 받았다.', profile: ['블랙맘바 기반 수인.', '초고속 접근과 독성 제압에 특화.', '대치 상황에서 심리 압박이 강하다.'], story: '바엘은 크게 움직이지 않는다. 그러나 한 번 움직이면 전장은 결론에 도달한다.', record: ['VENOM : 신경계 반응 급격 저하.', 'SPEED : 시야 추적 실패 가능성 높음.']
   }
 ];
-
-
-// 각 캐릭터별 서로의 관계도식입니다. 관계도식은 현재 감시, 관찰, 적대, 연합, 거래, 보호 로 구분되어있습니다. 각 관게와 노트와 중요도가 필요합니다. 
-// 추가해도 확장되도록 구성해놓았습니다. ㅇ.<
 
 const RELATIONS = [
   { from:'seol-gongchan', to:'hale', type:'WATCH', label:'전술 변수 감시', intensity:4, note:'수국 전략관의 판단력은 인정하지만 인간 질서의 통제 밖에 있는 핵심 변수로 분류한다.' },

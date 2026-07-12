@@ -214,3 +214,38 @@ function render(){const [r,p]=(location.hash||'#world').slice(1).split('/'); $$(
 function musicInit(){tracks.innerHTML=BGM_TRACKS.map((t,i)=>`<option value="${i}">${esc(t.title)}</option>`).join(''); loadTrack(0,false)}
 function loadTrack(i,auto=!audio.paused){state.track=(i+BGM_TRACKS.length)%BGM_TRACKS.length; const t=BGM_TRACKS[state.track]; audio.src=t.src; $('#trackTitle').textContent=t.title; $('#trackMood').textContent=t.mood; tracks.value=state.track; if(auto)audio.play().catch(()=>{})}
 play.onclick=()=>audio.paused?audio.play().catch(()=>{}):audio.pause(); audio.onplay=()=>play.textContent='Ⅱ'; audio.onpause=()=>play.textContent='▶'; $('#next').onclick=()=>loadTrack(state.track+1,true); $('#prev').onclick=()=>loadTrack(state.track-1,true); tracks.onchange=e=>loadTrack(Number(e.target.value),true); vol.oninput=e=>audio.volume=Number(e.target.value); bar.oninput=e=>{if(audio.duration) audio.currentTime=audio.duration*Number(e.target.value)/1000}; audio.ontimeupdate=()=>{if(audio.duration)bar.value=Math.floor(audio.currentTime/audio.duration*1000)}; audio.onended=()=>loadTrack(state.track+1,true); audio.volume=.45; musicInit(); window.onhashchange=render; window.addEventListener('load', render); render();
+
+
+// Collapsible BGM dock for both desktop and mobile.
+(function initMusicCollapse(){
+  const dock = document.getElementById('musicDock');
+  const toggle = document.getElementById('musicCollapse');
+  if (!dock || !toggle) return;
+  const mq = window.matchMedia('(max-width: 650px)');
+
+  const setState = (collapsed) => {
+    dock.classList.toggle('is-collapsed', collapsed);
+    document.body.classList.toggle('player-collapsed', collapsed);
+    document.body.classList.toggle('player-expanded', !collapsed);
+    toggle.setAttribute('aria-expanded', String(!collapsed));
+    toggle.textContent = collapsed ? '▴' : '▾';
+    toggle.setAttribute('aria-label', collapsed ? 'BGM player expand' : 'BGM player collapse');
+  };
+
+  const sync = () => {
+    if (!dock.dataset.touched) {
+      setState(mq.matches);
+    } else {
+      setState(dock.classList.contains('is-collapsed'));
+    }
+  };
+
+  toggle.addEventListener('click', () => {
+    dock.dataset.touched = '1';
+    setState(!dock.classList.contains('is-collapsed'));
+  });
+
+  mq.addEventListener?.('change', sync);
+  window.addEventListener('resize', sync);
+  sync();
+})();
