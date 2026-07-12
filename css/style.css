@@ -921,10 +921,15 @@ body {
 }
 
 /* Balanced scroll patch: restore normal scroll, remove over-aggressive clamp side effects. */
-html,
-body {
+html {
   overflow-x: hidden !important;
   overflow-y: auto !important;
+  overscroll-behavior-y: auto !important;
+  min-height: 100% !important;
+}
+body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
   overscroll-behavior-y: auto !important;
   min-height: 100% !important;
 }
