@@ -9,7 +9,7 @@ const BGM_TRACKS = [
 { title: '06.primal(수인).', mood: 'primal', src: 'assets/audio/bgm/06.primal(수인).mp3' },
 { title: '07.reversion_apex(수인)', mood: 'primal', src: 'assets/audio/bgm/07.reversion_apex(수인).mp3' },
 { title: '08.RECLAMATION_ASPHALT BLOOM(식목인)', mood: 'plant', src: 'assets/audio/bgm/08.RECLAMATION_ASPHALT BLOOM(식목인).mp3' },
-{ title: '09.verdant(식목인)', mood: 'plant', src: 'assets/audio/bgm/09.verdant(식목인).mp3 }
+{ title: '09.verdant(식목인)', mood: 'plant', src: 'assets/audio/bgm/09.verdant(식목인).mp3' }
 ];
 
 // 갤러리는 캐릭터마다 자유롭게 바꿀 수 있습니다.
