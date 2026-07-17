@@ -1,6 +1,15 @@
 const BGM_TRACKS = [
-  { title: 'Signal Boot', mood: 'terminal access', src: 'assets/audio/bgm/rust_ark_01_signal.mp3' },
-  { title: 'Aftermath Rain', mood: 'world map', src: 'assets/audio/bgm/rust_ark_02_aftermath.mp3' }
+{ title: '01.RUST ARK', mood: 'world map', src: 'assets/audio/bgm/01.RUST ARK(세계관).mp3' },
+{ title: '01_1.RUST ARK', mood: 'world map', src: 'assets/audio/bgm/01_1.RUST ARK_2.mp3' },
+{ title: '01_2.RUST ARK', mood: 'world map', src: 'assets/audio/bgm/01_2.RUST ARK_3.mp3' },
+{ title: '02.last-transmission1(인간)', mood: 'human-being', src: 'assets/audio/bgm/02.last-transmission1(인간).mp3' },
+{ title: '03.protocol_survive(인간)', mood: 'human-being', src: 'assets/audio/bgm/03.protocol_survive(인간).mp3' },
+{ title: '04.BLACK SKY_FORMATION(충인)', mood: 'insect-human', src: 'assets/audio/bgm/04.BLACK SKY_FORMATION(충인).mp3' },
+{ title: '05.swarm(충인)', mood: 'insect-human', src: 'assets/audio/bgm/05.swarm(충인).mp3' },
+{ title: '06.primal(수인).', mood: 'primal', src: 'assets/audio/bgm/06.primal(수인).mp3' },
+{ title: '07.reversion_apex(수인)', mood: 'primal', src: 'assets/audio/bgm/07.reversion_apex(수인).mp3' },
+{ title: '08.RECLAMATION_ASPHALT BLOOM(식목인)', mood: 'plant', src: 'assets/audio/bgm/08.RECLAMATION_ASPHALT BLOOM(식목인).mp3' },
+{ title: '09.verdant(식목인)', mood: 'plant', src: 'assets/audio/bgm/09.verdant(식목인).mp3 }
 ];
 
 // 갤러리는 캐릭터마다 자유롭게 바꿀 수 있습니다.
