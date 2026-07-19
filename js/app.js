@@ -215,8 +215,38 @@ function lightboxMedia(item){
 }
 
 function render(){const [r,p]=(location.hash||'#world').slice(1).split('/'); $$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.nav===r||(r==='character'&&a.dataset.nav==='characters'))); if(r==='characters')characters(); else if(r==='gallery')gallery(); else if(r==='character')charPage(p); else world(); requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'auto'}))}
-function musicInit(){tracks.innerHTML=BGM_TRACKS.map((t,i)=>`<option value="${i}">${esc(t.title)}</option>`).join(''); loadTrack(0,false)}
-function loadTrack(i,auto=!audio.paused){state.track=(i+BGM_TRACKS.length)%BGM_TRACKS.length; const t=BGM_TRACKS[state.track]; audio.src=t.src; $('#trackTitle').textContent=t.title; $('#trackMood').textContent=t.mood; tracks.value=state.track; if(auto)audio.play().catch(()=>{})}
+function musicInit(){tracks.innerHTML=BGM_TRACKS.map((t,i)=>`<option value="${i}">${esc(t.title)}</option>`).join(''); loadTrack(0,true)}
+function loadTrack(i,auto=!audio.paused){
+  state.track=(i+BGM_TRACKS.length)%BGM_TRACKS.length;
+  const t=BGM_TRACKS[state.track];
+  audio.src=t.src;
+  $('#trackTitle').textContent=t.title;
+  $('#trackMood').textContent=t.mood;
+  tracks.value=state.track;
+  if(auto){
+    const p = audio.play();
+    if(p !== undefined){
+      p.catch(()=>{
+        const playOnUserInteraction = (e)=>{
+          if(e && e.target && e.target.closest('#musicDock')){
+            document.removeEventListener('click', playOnUserInteraction);
+            document.removeEventListener('touchend', playOnUserInteraction);
+            document.removeEventListener('keydown', playOnUserInteraction);
+            return;
+          }
+          audio.play().then(()=>{
+            document.removeEventListener('click', playOnUserInteraction);
+            document.removeEventListener('touchend', playOnUserInteraction);
+            document.removeEventListener('keydown', playOnUserInteraction);
+          }).catch(()=>{});
+        };
+        document.addEventListener('click', playOnUserInteraction);
+        document.addEventListener('touchend', playOnUserInteraction);
+        document.addEventListener('keydown', playOnUserInteraction);
+      });
+    }
+  }
+}
 play.onclick=()=>audio.paused?audio.play().catch(()=>{}):audio.pause(); audio.onplay=()=>play.textContent='Ⅱ'; audio.onpause=()=>play.textContent='▶'; $('#next').onclick=()=>loadTrack(state.track+1,true); $('#prev').onclick=()=>loadTrack(state.track-1,true); tracks.onchange=e=>loadTrack(Number(e.target.value),true); vol.oninput=e=>audio.volume=Number(e.target.value); bar.oninput=e=>{if(audio.duration) audio.currentTime=audio.duration*Number(e.target.value)/1000}; audio.ontimeupdate=()=>{if(audio.duration)bar.value=Math.floor(audio.currentTime/audio.duration*1000)}; audio.onended=()=>loadTrack(state.track+1,true); audio.volume=.45; musicInit(); window.onhashchange=render; window.addEventListener('load', render); render();
 
 
