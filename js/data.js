@@ -334,14 +334,14 @@ const CHARACTERS = [
     archiveId: 'RA-I-09-HARMEL', 
     mainImage: 'assets/images/harmel/harmel_01.png', 
     gallery: galleryPaths('harmel', 7, 'png'), 
-    quote: '달콤한 건 원래 오래 남지. 독도 마찬가지고.', 
-    metrics: { threat: 9, stability: 6, affinity: 3, control: 3 }, 
+    quote: '"나의 낙원에 온 걸 환영해. 여기서 너는… 가장 달콤한 꿈을 꾸게 될 거야."', 
+    metrics: { threat: 9, stability: 4, affinity: 8, control: 10 }, 
     profileBadges: ['AFFIRM : MUTATION CONFIRMED', 'CLEARANCE : S-1 / HIVE CROWN', 'SCAN : TOXIN COMPLETE'], 
     identityFields: [['ID','RA-INSECT-MUTANT-QUEEN-031'],['CLASS','INSECT / QUEEN BEE'],['CREATOR','@햄솔이'],['FACTION','Hornet Legion'],['STATUS','MUTATED'],['AFFIRM','MUTATION CONFIRMED'],['CLEARANCE','S-1 / HIVE CROWN'],['ORIGIN','NUCLEAR WASTE ZONE'],['RECORD DATE','2089.09.23']], 
-    summary: '장수말벌과 꿀벌의 혼종 변이 여왕벌 개체. 나긋하고 서늘한 말투를 가진다.', 
-    profile: ['핵폐기물 변이로 발생한 혼종 충인.', '말벌 군단과 개인주의 사이에서 독자 노선을 취한다.', '혀 돌기 독침화 기록 존재.'], 
-    story: '하르멜은 군집의 왕관을 쓴 개인주의자다. 벌집의 법칙을 알면서도 그 안에 갇히지 않는다.', 
-    record: ['MUTATION : 고위험 독성 기관 확인.', 'SOCIAL : 군집 지휘 가능성 있음.']
+    summary: '말벌과 꿀벌의 특성을 모두 지닌 변이체 군주. 페로몬과 독침을 이용해 적을 무력화하고 아군을 통제하는 전장의 지배자이며, 군단 전체를 지휘하는 여왕으로서 기능한다. 그는 전술적으로 대상을 고립시킨 후, 심리적 지배와 정신적 속박을 통해 서서히 복속시킨다.', 
+    profile: ['외형 핵심: 황금빛과 검은색이 섞인 긴 머리, 호박색 눈동자, 등 뒤의 날개 문양.','성격 핵심: 계산된 다정함, 이기적인 지배욕, 서늘한 권위.', '행동 특징: 상대의 체향을 맡거나 부드럽게 접촉하며 심리적 거리를 좁힌다.', '능력 또는 역할: 독과 페로몬을 이용한 정신 지배, 군단 통솔.'], 
+    story: '인간에게 패배하고 억압받던 곤충 종족의 일원이었으나, 핵 폐기물 유출로 인해 여왕벌의 힘을 각성한 변이체. 그는 종족의 생존과 번영을 위해 다른 종족을 이용하고 희생시키는 것을 당연하게 여긴다. 현재 자신의 군단을 확장하고 후계를 생산할 대상을 물색하며, 궁극적으로는 인간에게 복수하고 세계의 지배권을 되찾는 것을 목표로 삼고 있다.', 
+    record: ['『Queen\'s Venom』 : 혀끝에 숨겨진 미세 독침을 통해 신경계에 작용하는 독을 주입한다. 초기에는 강렬한 쾌감과 마비를 유발하며, 지속적으로 주입될 시 대상을 정신적으로 예속시켜 하르멜을 자신의 ‘여왕’으로 각인시키는 효과를 가진다. 키스나 신체 접촉을 통해 은밀하게 주입된다.', '『Apidae Dominion』 : 강력한 페로몬을 방출하여 주변의 벌들을 통솔하고, 대상의 감정과 행동에 영향을 미친다. 전투 시에는 날개를 펼쳐 적을 감싸고 움직임을 봉쇄하는 \'봉인교미\' 자세로 상대를 완전히 무력화시키며, 동시에 독을 주입하여 지배를 완성한다.']
   },
   {
     id: 'pavel', 
