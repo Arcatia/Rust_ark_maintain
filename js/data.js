@@ -181,7 +181,7 @@ const CHARACTERS = [
     mainImage: 'assets/images/zephyr/zephyr_01.png', 
     gallery: [imageItem('assets/images/zephyr/zephyr_01.png', 'IMAGE 01'), imageItem('assets/images/zephyr/zephyr_02.jpg', 'IMAGE 02'), imageItem('assets/images/zephyr/zephyr_03.png', 'IMAGE 03')], 
     quote: '"하늘은 거짓말을 하지 않아. 기록도 마찬가지고."', 
-    metrics: { threat: 5, stability: 6, affinity: 4, control: 6 }, 
+    metrics: { threat: 8.5, stability: 9.5, affinity: 6.5, control: 9 }, 
     profileBadges: ['AFFIRM : FIELD VERIFIED', 'CLEARANCE : B-6 / RECON NODE', 'SCAN : AERIAL COMPLETE'], 
     identityFields: [['ID','RA-I-04-ZEPHYR'],['CLASS','INSECT / DRAGONFLY'],['CREATOR','@수백사'],['FACTION','Recon Wing'],['STATUS','ACTIVE'],['AFFIRM','FIELD VERIFIED'],['CLEARANCE','B-6 / RECON NODE'],['ORIGIN','HIGH WIND ROUTE'],['RECORD DATE','2089.09.19']], 
     summary: ' 충인 진영 제1공중정찰대 제1관측반 반장, 제피르. 전장을 비행하며 지형과 적의 움직임을 기록하는 공중정찰기록관이다. 관찰을 멈추지 않으며, 필요한 순간에는 장거리 정밀사격으로 전황을 바꾼다.', 
