@@ -304,14 +304,14 @@ const CHARACTERS = [
     archiveId: 'RA-B-08-VULCAN', 
     mainImage: 'assets/images/vulcan/vulcan_01.png', 
     gallery: galleryPaths('vulcan', 4, 'png'), 
-    quote: '못 막으면 길이 생기는 거고.', 
-    metrics: { threat: 8, stability: 4, affinity: 4, control: 3 }, 
+    quote: '"네놈들의 피로, 이 땅의 모든 것을 다시 붉게 물들여주마."', 
+    metrics: { threat: 9, stability: 2, affinity: 3, control: 1 }, 
     profileBadges: ['AFFIRM : IMPACT VERIFIED', 'CLEARANCE : A-9 / BREACH NODE', 'SCAN : KINETIC COMPLETE'], 
     identityFields: [['ID','RA-B-08-VULCAN'],['CLASS','BEAST / BULLFIGHT'],['CREATOR','@밍묭'],['FACTION','Feral Front'],['STATUS','VOLATILE'],['AFFIRM','IMPACT VERIFIED'],['CLEARANCE','A-9 / BREACH NODE'],['ORIGIN','FRONTLINE BREACH'],['RECORD DATE','2089.09.22']], 
-    summary: '투우형 수인. 정면 돌파와 압도적 충격력으로 전선을 연다.', 
-    profile: ['돌파형 전투 개체.', '방어선 붕괴에 특화.', '흥분 상태에서 통제 난이도 상승.'], 
-    story: '발칸은 협상장을 통과하지 않는다. 문과 벽과 규칙을 함께 부수고 들어온다.', 
-    record: ['IMPACT : 방벽 파괴 기록 다수.', 'RISK : 충동 제어 필요.']
+    summary: '적각단(赤角團)의 수장. 인간 문명의 파괴와 수인 해방을 목표로 하는 무력 단체를 이끈다. 전장에서 모든 것을 맨몸으로 부수고 돌파하는 최선봉이자, 수하에게는 절대적인 보호를 제공하는 지배자다.', 
+    profile: ['외형 핵심: 205cm의 거구, 전신을 뒤덮은 낙인과 흉터, 머리 위로 솟은 검고 날카로운 뿔, 짙은 붉은색 머리카락과 동색의 눈동자.', '성격 핵심: 본능과 욕망에 극단적으로 충실, 병적인 승부욕, 강자에 대한 집착과 약자에 대한 경멸적 보호 본능.', '행동 특징: 거침없고 직설적이며, 파괴를 망설이지 않음. 자신의 영역과 소유물에 대한 광적인 집착.', '능력 또는 역할: 적진을 돌파하는 돌격대장, 초인적인 근력과 내구력을 이용한 근접 파괴.'], 
+    story: '인간들의 유흥을 위해 투우장에서 태어나고 길러진 투우소. 벗어날 수 없는 굴욕과 고통 속에서 인간을 향한 증오만을 키웠다. 세상이 무너지던 날, 자신을 억압하던 모든 것을 파괴하고 피의 복수를 시작했다. 그는 이제 부서진 세계의 폐허 위에서 오직 자신의 본능에 따라 움직이며, 인간이라는 종족의 완전한 절멸을 목표로 삼는다.', 
+    record: ['『Crimson Charge』 : 목표를 향해 무자비하게 돌진하는 능력. 충돌 시 발생하는 충격파는 주변 지형을 파괴하며, 속도가 붙을수록 파괴력이 기하급수적으로 증가한다. 방어선을 붕괴시키거나 거대 구조물을 파괴하는 데 사용된다.', '『Tyrant's Roar』 : 분노를 담아 포효하여 주변 적들의 사기를 꺾고 일시적인 공포 상태에 빠뜨린다. 이 포효는 아군의 투지를 끌어올리는 효과도 지닌다. 전장의 흐름을 바꾸거나, 궁지에 몰린 아군을 구출할 때 사용한다. ']
   },
   {
     id: 'harmel', 
