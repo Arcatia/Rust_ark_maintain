@@ -1,56 +1,56 @@
 
 const galleryData = {
   "seol_gongchan": {
-    "name": "설공찬",
+    "name": "Seol Gongchan 설공찬",
     "class": "HUMAN / COMMANDER",
     "creator": "@냠냠티비",
     "images": [
       {
         "src": "assets/images/seol_gongchan/seol_gongchan_01.jpg",
         "title": "MAIN FILE",
-        "caption": "설공찬 main file 그래픽 슬롯"
+        "caption": "Seol Gongchan 설공찬 main file 그래픽 슬롯"
       },
       {
         "src": "assets/images/seol_gongchan/seol_gongchan_02.jpg",
         "title": "FACE DETAIL",
-        "caption": "설공찬 face detail 그래픽 슬롯"
+        "caption": "Seol Gongchan 설공찬 face detail 그래픽 슬롯"
       },
       {
         "src": "assets/images/seol_gongchan/seol_gongchan_03.jpg",
         "title": "FULL BODY",
-        "caption": "설공찬 full body 그래픽 슬롯"
+        "caption": "Seol Gongchan 설공찬 full body 그래픽 슬롯"
       },
       {
         "src": "assets/images/seol_gongchan/seol_gongchan_04.jpg",
         "title": "MOOD FILE",
-        "caption": "설공찬 mood file 그래픽 슬롯"
+        "caption": "Seol Gongchan 설공찬 mood file 그래픽 슬롯"
       }
     ]
   },
   "hwaryeon": {
-    "name": "화련",
+    "name": "Hwaryeon 화련",
     "class": "PLANT / LOTUS",
     "creator": "@냠냠티비",
     "images": [
       {
         "src": "assets/images/hwaryeon/hwaryeon_01.jpg",
         "title": "MAIN FILE",
-        "caption": "화련 main file 그래픽 슬롯"
+        "caption": "Hwaryeon 화련 main file 그래픽 슬롯"
       },
       {
         "src": "assets/images/hwaryeon/hwaryeon_02.jpg",
         "title": "FACE DETAIL",
-        "caption": "화련 face detail 그래픽 슬롯"
+        "caption": "Hwaryeon 화련 face detail 그래픽 슬롯"
       },
       {
         "src": "assets/images/hwaryeon/hwaryeon_03.jpg",
         "title": "FULL BODY",
-        "caption": "화련 full body 그래픽 슬롯"
+        "caption": "Hwaryeon 화련 full body 그래픽 슬롯"
       },
       {
         "src": "assets/images/hwaryeon/hwaryeon_04.jpg",
         "title": "MOOD FILE",
-        "caption": "화련 mood file 그래픽 슬롯"
+        "caption": "Hwaryeon 화련 mood file 그래픽 슬롯"
       }
     ]
   },
