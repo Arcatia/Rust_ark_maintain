@@ -212,14 +212,14 @@ const CHARACTERS = [
     gallery: [
       ...galleryPaths('hale', 2, 'png'),
       videoItem('assets/videos/hale/hale_01.mp4', 'assets/videos/hale/hale_01_poster.png', 'MOTION ARCHIVE 01')
-    ], quote: '그걸 작전이라고 가져온 거야?', 
-    metrics: { threat: 7, stability: 7, affinity: 4, control: 5 }, 
+    ], quote: '"좋은데요. 실패할 부분이 너무 잘 보여서."', 
+    metrics: { threat: 8, stability: 6, affinity: 4, control: 10 }, 
     profileBadges: ['AFFIRM : VERIFIED', 'CLEARANCE : A-7 / STRATEGY NODE', 'SCAN : COMPLETE'], 
     identityFields: [['ID','RA-P-05-HALE'],['CLASS','PLANT / HYDRANGEA'],['CREATOR','@릴리브'],['FACTION','Plant Liberation Army'],['STATUS','ACTIVE'],['AFFIRM','VERIFIED'],['CLEARANCE','A-7 / STRATEGY NODE'],['ORIGIN','HYDRANGEA FRONT'],['RECORD DATE','2089.09.21']], 
-    summary: '까칠하고 직설적인 수국 식목인 전략관. 감정보다 구조적 해방을 중시한다.', 
-    profile: ['일반 수국 식목인 전략관.', '허술한 계획을 싫어하고 빈정거리는 농담을 자주 사용한다.', '약자와 어린 식물에게 약한 반응을 보인다.'], 
-    story: '헤일은 아름다운 꽃처럼 보이지만, 그의 사고는 지도 위의 칼금에 가깝다.', 
-    record: ['TACTIC : 보급로 분석 및 차단 전문.', 'PERSONALITY : 냉소적이나 보호 반응 확인.']
+    summary: '식물 해방군 소속 전략관. 전면전보다 정보전을 담당하며, 수국 군락을 이용한 감시망을 구축해 적대 세력의 동향을 분석한다. 불필요한 교전을 피하지만, 작전을 방해하는 적은 망설임 없이 제거한다.', 
+    profile: ['외형 핵심: 마른 장신, 흐린 청회색 머리, 탁한 청보라색 눈, 잎맥 문양', '성격 핵심: 까칠함, 현실주의, 냉소적, 직설적', '행동 특징: 빈정거리는 농담, 효율과 구조 중시, 실무형 사고', '능력 또는 역할: 정보 분석, 감시망 구축, 교란 및 전술 지휘'], 
+    story: '인간 통치 시절, 장식용 화초로 취급되며 무력하게 소비되었던 과거를 가졌다. 인간의 지배 질서가 얼마나 허술하고 오만한지에 대한 회의감을 바탕으로, 감정적인 복수 대신 체계적인 해체를 통한 완전한 해방을 추구한다. 그는 인간이 다시는 다른 종족을 지배할 수 없는 세계를 만드는 것을 궁극적인 목표로 삼고 있으며, 이를 위해 어떤 동맹도, 어떤 희생도 감수할 준비가 되어 있다.', 
+    record: ['『Hydrangea Network』 : 도시 곳곳의 수국 군락과 신경망처럼 연결되어 정보를 공유한다. 이를 통해 인간 생존자의 이동 경로, 은신처, 보급로 등을 파악하고 전장의 흐름을 실시간으로 분석한다.', '『Toxic Pollen』 : 치명적인 독성을 지닌 꽃가루를 살포한다. 직접적인 살상보다는 적의 시야를 방해하고 환각과 호흡 교란을 유발하여 전술적 우위를 점하는 교란 능력에 가깝다.']
   },
   {
     id: 'arens', 
@@ -242,13 +242,13 @@ const CHARACTERS = [
     archiveId: 'RA-I-06-ARENS',
     mainImage: 'assets/images/arens/arens_01.png', 
     gallery: galleryPaths('arens', 5, 'png'), 
-    quote: '보이지 않는다는 건, 없는 게 아니라 늦었다는 뜻이지.', 
-    metrics: { threat: 8, stability: 4, affinity: 2, control: 3 }, 
+    quote: '"비명은 짧게 부탁드립니다."', 
+    metrics: { threat: 9, stability: 8, affinity: 1, control: 8 }, 
     profileBadges: ['AFFIRM : REDACTED', 'CLEARANCE : BLACK', 'SCAN : MASKED'], identityFields: [['ID','RA-I-06-ARENS'],['CLASS','INSECT / ASSASSIN'],['CREATOR','@반엽'],['FACTION','Covert Swarm'],['STATUS','CLASSIFIED'],['AFFIRM','REDACTED'],['CLEARANCE','BLACK / COVERT NODE'],['ORIGIN','UNKNOWN'],['RECORD DATE','REDACTED']], 
     summary: '암살자형 충인. 은신과 침투 기록이 대부분 삭제되어 있다.', 
-    profile: ['침투 및 암살 담당.', '직접 교전보다 사전 제거에 특화.', '기록 훼손률이 높다.'], 
-    story: '아렌스의 이름이 기록에 남는 순간, 이미 누군가는 기록에서 지워져 있다.', 
-    record: ['ACCESS : 부분 삭제됨.', 'CAUTION : 근접 감지 실패 사례 다수.']
+    profile: ['외형 핵심: 흑발, 금안, 탄탄하고 민첩한 체형, 숨길 수 있는 거대한 나비 날개, 검은색 특수공작조 전투복', '성격 핵심: 차분하고 과묵함, 임무 최우선, 메마른 감정', '행동 특징: 말보다 행동이 앞섬, 목적을 위해 수단을 가리지 않음. 임무를 위해 기꺼이 스스로를 내던질 수 있다.', '능력 또는 역할: 은신, 잠입, 암살, 결박'], 
+    story: '과거 인간의 "방역 작전"으로 실바나 독나비 군락 전체가 몰살당했을 때, 유일하게 살아남은 생존자. 여동생의 죽음을 눈앞에서 목격한 뒤 깊은 트라우마와 인간에 대한 강한 증오를 갖게 되었다. 현재는 충인 진영의 칼날이 되어, 자신에게서 모든 것을 앗아간 적들을 박멸하는 데 삶을 바치고 있다.', 
+    record: ['『Shadow Camouflage』 : 주변 그림자에 스며들어 자신의 모습을 완벽하게 감춘다. 소리와 냄새까지 차단하여 적의 감각을 기만, 은밀한 침투 및 탈출에 사용되는 핵심 생존 기술이다.', '『Cocoon Thread & Venom Sting』 : 손끝에서 가늘고 강인한 나비고치의 실을 방출해 대상을 결박하거나 함정을 설치한다. 맹독침은 단일 대상을 즉시 무력화시키는 치명적인 공격 수단이다.']
   },
   {
     id: 'kael', 
