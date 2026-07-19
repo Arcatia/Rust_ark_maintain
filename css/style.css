@@ -1715,3 +1715,31 @@ body {
   margin-bottom: 12px;
 }
 
+/* Relation Selector, Mini Nav, & Gallery Filter responsive 2-row grid */
+.relation-selector > div,
+.mini-nav,
+.gallery-filter > div {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
+  gap: 8px;
+}
+.relation-selector button,
+.mini-nav a,
+.gallery-filter button {
+  width: 100% !important;
+  text-align: center !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 10px 4px !important;
+  font-size: 10px !important;
+  letter-spacing: 0.05em !important;
+}
+@media (min-width: 1051px) {
+  .relation-selector > div,
+  .mini-nav,
+  .gallery-filter > div {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+}
+
