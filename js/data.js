@@ -180,14 +180,17 @@ const CHARACTERS = [
     archiveId: 'RA-I-04-ZEPHYR', 
     mainImage: 'assets/images/zephyr/zephyr_01.png', 
     gallery: [imageItem('assets/images/zephyr/zephyr_01.png', 'IMAGE 01'), imageItem('assets/images/zephyr/zephyr_02.jpg', 'IMAGE 02'), imageItem('assets/images/zephyr/zephyr_03.png', 'IMAGE 03')], 
-    quote: '빠른 자는 진실이 되기 전의 흔적을 본다.', 
+    quote: '"하늘은 거짓말을 하지 않아. 기록도 마찬가지고."', 
     metrics: { threat: 5, stability: 6, affinity: 4, control: 6 }, 
     profileBadges: ['AFFIRM : FIELD VERIFIED', 'CLEARANCE : B-6 / RECON NODE', 'SCAN : AERIAL COMPLETE'], 
     identityFields: [['ID','RA-I-04-ZEPHYR'],['CLASS','INSECT / DRAGONFLY'],['CREATOR','@수백사'],['FACTION','Recon Wing'],['STATUS','ACTIVE'],['AFFIRM','FIELD VERIFIED'],['CLEARANCE','B-6 / RECON NODE'],['ORIGIN','HIGH WIND ROUTE'],['RECORD DATE','2089.09.19']], 
-    summary: '왕잠자리 충인 정찰기록병. 빠른 기동성과 관측 기록을 보유한다.', 
-    profile: ['정찰 및 기록 담당.', '기동성, 시야, 현장 판단력이 우수하다.', '정보를 전장보다 빠르게 운반한다.'], 
-    story: '제피르의 기록은 늘 한 박자 앞서 도착한다. 그래서 그의 보고서는 예언처럼 읽힌다.', 
-    record: ['RECON : 고고도 관측 우수.', 'ARCHIVE : 현장 기록 신뢰도 높음.']
+    summary: ' 충인 진영 제1공중정찰대 제1관측반 반장, 제피르. 전장을 비행하며 지형과 적의 움직임을 기록하는 공중정찰기록관이다. 관찰을 멈추지 않으며, 필요한 순간에는 장거리 정밀사격으로 전황을 바꾼다.', 
+    profile: ['192cm, 청록빛이 감도는 흑발, 청록+금빛 눈동자, 투명한 청록빛 왕잠자리 날개 네 장.', ' 침착한 관찰자, 능청스럽지만 신중한 현실주의자, 책임감이 강한 베테랑.', '항상 주변을 관찰하며 기록을 갱신한다. 높은 곳을 선호하고, 위험을 먼저 발견하며, 전투 후에도 현장을 재확인한다.
+','공중 정찰·정보 분석·장거리 정밀사격에 특화된 충인 진영 공중정찰기록관.'], 
+    story: '수많은 전장을 날며 누구보다 많은 죽음을 기록했다. 동료를 허위 보고와 무리한 작전으로 잃은 이후, 그는 기록에는 단 한 줄의 거짓도 남기지 않겠다고 맹세했다. 지금도 전장을 비행하며 세상의 변화를 기록하고, 살아남을 가치가 있는 진실을 찾는다.', 
+    record: ['Sky Survey :  상공에서 넓은 시야를 확보해 지형, 적의 이동, 은폐물과 이상 현상을 실시간으로 분석한다. 발견한 정보는 즉시 기록·공유되며, 매복과 기습을 사전에 감지하는 데 특화되어 있다.
+', 'Dead Record : 관측을 마친 목표는 지정사수소총(DMR)으로 정밀 저격한다. 바람과 거리, 탄도를 계산해 단 한 발로 목표를 제압하는 제피르의 대표 전투 방식.
+']
   },
   {
     id: 'hale', 
