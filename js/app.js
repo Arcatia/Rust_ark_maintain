@@ -1,6 +1,7 @@
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 const state={filter:'ALL',galleryFilter:'ALL',tab:'PROFILE',activeImage:null,worldRelation:'seol-gongchan',track:0,lastRouteKey:''};
 const view=$('#view'), audio=$('#bgm'), tracks=$('#tracks'), play=$('#play'), bar=$('#bar'), vol=$('#vol');
+const updateBarBg=el=>{const min=el.min||0,max=el.max||100,val=el.value,percent=(val-min)/(max-min)*100; el.style.background=`linear-gradient(to right,var(--accent) 0%,var(--accent) ${percent}%,rgba(126,159,196,.12) ${percent}%,rgba(126,159,196,.12) 100%)`};
 const esc=(v='')=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');
 const char=id=>CHARACTERS.find(c=>c.id===id)||CHARACTERS[0];
 const renderMainImage=(src,alt='',className='')=>{
@@ -215,7 +216,7 @@ function lightboxMedia(item){
 }
 
 function render(){const [r,p]=(location.hash||'#world').slice(1).split('/'); $$('nav a').forEach(a=>a.classList.toggle('active',a.dataset.nav===r||(r==='character'&&a.dataset.nav==='characters'))); if(r==='characters')characters(); else if(r==='gallery')gallery(); else if(r==='character')charPage(p); else world(); requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'auto'}))}
-function musicInit(){tracks.innerHTML=BGM_TRACKS.map((t,i)=>`<option value="${i}">${esc(t.title)}</option>`).join(''); loadTrack(0,true)}
+function musicInit(){tracks.innerHTML=BGM_TRACKS.map((t,i)=>`<option value="${i}">${esc(t.title)}</option>`).join(''); loadTrack(0,true); updateBarBg(vol); updateBarBg(bar);}
 function loadTrack(i,auto=!audio.paused){
   state.track=(i+BGM_TRACKS.length)%BGM_TRACKS.length;
   const t=BGM_TRACKS[state.track];
@@ -223,6 +224,8 @@ function loadTrack(i,auto=!audio.paused){
   $('#trackTitle').textContent=t.title;
   $('#trackMood').textContent=t.mood;
   tracks.value=state.track;
+  bar.value=0;
+  updateBarBg(bar);
   if(auto){
     const p = audio.play();
     if(p !== undefined){
@@ -247,7 +250,7 @@ function loadTrack(i,auto=!audio.paused){
     }
   }
 }
-play.onclick=()=>audio.paused?audio.play().catch(()=>{}):audio.pause(); audio.onplay=()=>play.textContent='Ⅱ'; audio.onpause=()=>play.textContent='▶'; $('#next').onclick=()=>loadTrack(state.track+1,true); $('#prev').onclick=()=>loadTrack(state.track-1,true); tracks.onchange=e=>loadTrack(Number(e.target.value),true); vol.oninput=e=>audio.volume=Number(e.target.value); bar.oninput=e=>{if(audio.duration) audio.currentTime=audio.duration*Number(e.target.value)/1000}; audio.ontimeupdate=()=>{if(audio.duration)bar.value=Math.floor(audio.currentTime/audio.duration*1000)}; audio.onended=()=>loadTrack(state.track+1,true); audio.volume=.45; musicInit(); window.onhashchange=render; window.addEventListener('load', render); render();
+play.onclick=()=>audio.paused?audio.play().catch(()=>{}):audio.pause(); audio.onplay=()=>play.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="20" height="20" fill="currentColor"><path d="M520-200v-560h240v560H520Zm-320 0v-560h240v560H200Zm400-80h80v-400h-80v400Zm-320 0h80v-400h-80v400Zm0-400v400-400Zm320 0v400-400Z"/></svg>`; audio.onpause=()=>play.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="20" height="20" fill="currentColor"><path d="M320-200v-560l440 280-440 280Zm80-280Zm0 134 210-134-210-134v268Z"/></svg>`; $('#next').onclick=()=>loadTrack(state.track+1,true); $('#prev').onclick=()=>loadTrack(state.track-1,true); tracks.onchange=e=>loadTrack(Number(e.target.value),true); vol.oninput=e=>{audio.volume=Number(e.target.value); updateBarBg(vol);}; bar.oninput=e=>{if(audio.duration) { audio.currentTime=audio.duration*Number(e.target.value)/1000; updateBarBg(bar); }}; audio.ontimeupdate=()=>{if(audio.duration) { bar.value=Math.floor(audio.currentTime/audio.duration*1000); updateBarBg(bar); }}; audio.onended=()=>loadTrack(state.track+1,true); audio.volume=.45; musicInit(); window.onhashchange=render; window.addEventListener('load', render); render();
 
 
 // Collapsible BGM dock for both desktop and mobile.
