@@ -251,11 +251,37 @@ const CHARACTERS = [
     record: ['ACCESS : 부분 삭제됨.', 'CAUTION : 근접 감지 실패 사례 다수.']
   },
   {
-    id: 'kael', displayName: 'Kael 카엘', enName: 'KAEL', krName: '카엘', type: 'BEAST / WOLF', species: 'BEAST', role: 'WOLF', creator: '@떯기', accent: '#6f8398', affiliation: 'Feral Front', danger: 'A', status: 'ACTIVE', affirm: 'CONFIRMED', clearance: 'A-5 / PACK NODE', scan: 'TRACKING COMPLETE', origin: 'NORTHERN RUINS', recordDate: '2089.09.17', archiveId: 'RA-B-07-KAEL', mainImage: 'assets/images/kael/kael_01.png', gallery: [
+    id: 'kael', 
+    displayName: 'Kael 카엘', 
+    enName: 'KAEL', 
+    krName: '카엘', 
+    type: 'BEAST / WOLF', 
+    species: 'BEAST', 
+    role: 'WOLF', 
+    creator: '@떯기', 
+    accent: '#6f8398', 
+    affiliation: 'Feral Front', 
+    danger: 'A', 
+    status: 'ACTIVE', 
+    affirm: 'CONFIRMED', 
+    clearance: 'A-5 / PACK NODE', 
+    scan: 'TRACKING COMPLETE', 
+    origin: 'NORTHERN RUINS', 
+    recordDate: '2089.09.17', 
+    archiveId: 'RA-B-07-KAEL', 
+    mainImage: 'assets/images/kael/kael_01.png', 
+    gallery: [
       ...galleryPaths('kael', 6, 'png'),
       imageItem('assets/images/kael/kael_07.jpg', 'IMAGE 07'),
       imageItem('assets/images/kael/kael_08.png', 'IMAGE 08')
-    ], quote: '무리는 약자를 버리지 않는다. 버리는 건 인간의 방식이지.', metrics: { threat: 7, stability: 5, affinity: 5, control: 6 }, profileBadges: ['AFFIRM : CONFIRMED', 'CLEARANCE : A-5 / PACK NODE', 'SCAN : TRACKING COMPLETE'], identityFields: [['ID','RA-B-07-KAEL'],['CLASS','BEAST / WOLF'],['CREATOR','@떯기'],['FACTION','Feral Front'],['STATUS','ACTIVE'],['AFFIRM','CONFIRMED'],['CLEARANCE','A-5 / PACK NODE'],['ORIGIN','NORTHERN RUINS'],['RECORD DATE','2089.09.17']], summary: '늑대 수인. 무리 의식과 전장 추적 능력이 강한 전선형 개체.', profile: ['늑대 기반 수인.', '영역 추적 및 전장 대응 우수.', '집단 보호 본능 강함.'], story: '카엘에게 전쟁은 영토의 문제가 아니다. 살아남은 무리를 어디까지 데려갈 수 있는가의 문제다.', record: ['TRACKING : 야간 추적 성공률 높음.', 'BOND : 소속 개체 보호 우선.']
+    ], quote: '"나의 송곳니와 발톱은 오직 부족을 위협하는 자에게만 향한다."', 
+    metrics: { threat: 8, stability: 6, affinity: 4, control: 9 }, 
+    profileBadges: ['AFFIRM : CONFIRMED', 'CLEARANCE : A-5 / PACK NODE', 'SCAN : TRACKING COMPLETE'], 
+    identityFields: [['ID','RA-B-07-KAEL'],['CLASS','BEAST / WOLF'],['CREATOR','@떯기'],['FACTION','Feral Front'],['STATUS','ACTIVE'],['AFFIRM','CONFIRMED'],['CLEARANCE','A-5 / PACK NODE'],['ORIGIN','NORTHERN RUINS'],['RECORD DATE','2089.09.17']], 
+    summary: '늑대 수인. 무리 의식과 전장 추적 능력이 강한 전선형 개체.', 
+    profile: ['외형 핵심: 긴 잿빛 장발, 투명한 벽안, 192cm의 장신, 회색 계열의 제복.', '성격 핵심: 진중하고 책임감이 강하며, 대의를 우선시하는 지도자. 겉은 차가워 보이나 속은 다정하다.', '행동 특징: 매사 신중하게 판단하며 행동. 감정을 잘 드러내지 않으나, 분노나 슬픔이 극에 달하면 미세하게 표정이나 목소리가 흔들린다.', '능력 또는 역할: 늑대 수인 족장, 근접 육탄전 특화, 부분적 신체 변형.'], 
+    story: '10년 전, 족장으로 부임한 직후 겪은 대규모 전쟁에서 부족의 3분의 1을 잃었다. 이 사건은 그의 가장 큰 트라우마로 남아, 다시는 동족을 잃지 않겠다는 강한 책임감과 신념을 형성했다. 그는 대의와 무리의 생존을 위해서라면 인간과의 일시적 협약도 감수하며, 모든 결정을 개인의 감정보다 집단의 이익에 초점을 맞춰 내린다. 그의 진중함과 냉정함은 과거의 상실에서 비롯된, 무리를 지키기 위한 방어기제이다.', 
+    record: ['『Primal Instinct』 : 달의 주기나 극심한 감정 변화에 반응하여 늑대의 본능이 깨어난다. 전투 시 청각, 후각 등 오감이 극도로 예민해져 적의 기척을 감지하고 움직임을 예측하는 데 사용된다. 평상시에는 억제되어 있으나, 통제력을 상실할 경우 이성을 잃고 야성에 지배당할 위험이 있다.', '『Partial Polymorph』 : 전투 상황이나 필요에 따라 신체 일부를 늑대의 형태로 변형 및 강화한다. 손톱을 날카로운 발톱으로 바꾸어 근접전을 펼치거나, 다리 근력을 강화하여 폭발적인 기동성을 확보하는 등 상황에 맞춰 유연하게 신체 능력을 운용한다. 완전한 늑대 형태로 변하는 것은 극히 드물며, 이는 모든 힘을 개방했음을 의미한다.']
   },
   {
     id: 'vulcan', 
@@ -339,7 +365,7 @@ const CHARACTERS = [
     mainImage: 'assets/images/parvel/parvel_01.png', 
     gallery: galleryPaths('parvel', 11, 'png'), 
     quote: '고통을 지우면, 진실도 같이 흐려지지.', 
-    metrics: { threat: 7, stability: 5, affinity: 5, control: 4 }, 
+    metrics: { threat: 6, stability: 9, affinity: 3, control: 10 }, 
     profileBadges: ['AFFIRM : CAUTION VERIFIED', 'CLEARANCE : A-6 / SEDATION NODE', 'SCAN : NARCOTIC COMPLETE'], 
     identityFields: [['ID','RA-P-10-PAVEL'],['CLASS','PLANT / OPIUM POPPY'],['CREATOR','@깅루나'],['FACTION','Plant Liberation Army'],['STATUS','ACTIVE'],['AFFIRM','CAUTION VERIFIED'],['CLEARANCE','A-6 / SEDATION NODE'],['ORIGIN','RED FIELD SECTOR'],['RECORD DATE','2089.09.20']], 
     summary: '양귀비 식목인. 진통, 환각, 중독성 능력으로 기록된다.', 
@@ -369,13 +395,13 @@ const CHARACTERS = [
     mainImage: 'assets/images/bael/bael_01.png', 
     gallery: galleryPaths('bael', 11, 'png'), 
     quote: '내가 물기 전에 도망쳤다면, 그건 네 운이 아니라 내 선택이야.', 
-    metrics: { threat: 9, stability: 5, affinity: 3, control: 3 }, 
+    metrics: { threat: 10, stability: 7, affinity: 2, control: 6 }, 
     profileBadges: ['AFFIRM : BLACKLISTED', 'CLEARANCE : S-2 / VENOM NODE', 'SCAN : NEUROTOXIN COMPLETE'], 
     identityFields: [['ID','RA-B-11-BAEL'],['CLASS','BEAST / BLACK MAMBA'],['CREATOR','@깅루나'],['FACTION','Feral Front'],['STATUS','ACTIVE'],['AFFIRM','BLACKLISTED'],['CLEARANCE','S-2 / VENOM NODE'],['ORIGIN','SOUTHERN BLACK ZONE'],['RECORD DATE','2089.09.24']], 
     summary: '블랙맘바 수인. 독성과 속도, 냉정한 추격으로 고위험 등급을 받았다.', 
     profile: ['블랙맘바 기반 수인.', '초고속 접근과 독성 제압에 특화.', '대치 상황에서 심리 압박이 강하다.'], 
     story: '바엘은 크게 움직이지 않는다. 그러나 한 번 움직이면 전장은 결론에 도달한다.',
-    record: ['VENOM : 신경계 반응 급격 저하.', 'SPEED : 시야 추적 실패 가능성 높음.']
+    record: ['TACTIC : 고속 돌입 및 근접 섬멸 특화.', 'PERSONALITY : 침묵형 포식자. 위협 확인 즉시 제거.']
   }
 ];
 
