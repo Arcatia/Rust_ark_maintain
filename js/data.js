@@ -87,16 +87,16 @@ const CHARACTERS = [
     archiveId: 'RA-H-01-GONGCHAN',
     mainImage: 'assets/images/seol_gongchan/seol_gongchan_01.jpg',
     gallery: galleryPaths('seol_gongchan', 3, 'jpg'),
-    quote: '보호라는 말로 포장해도, 질서는 결국 누군가의 감시다.',
-    metrics: { threat: 8, stability: 8, affinity: 2, control: 9 },
+    quote: '"이건 처벌이 아니라 방역이다."',
+    metrics: { threat: 8, stability: 9, affinity: 2, control: 10 },
     profileBadges: ['AFFIRM : COMMAND VERIFIED', 'CLEARANCE : A-7 / HUMAN NODE', 'SCAN : TACTICAL COMPLETE'],
     identityFields: [
       ['ID', 'RA-H-01-GONGCHAN'], ['CLASS', 'HUMAN / COMMANDER'], ['CREATOR', '@냠냠티비'], ['FACTION', 'Human Resistance'], ['STATUS', 'ACTIVE'], ['AFFIRM', 'COMMAND VERIFIED'], ['CLEARANCE', 'A-7 / HUMAN NODE'], ['ORIGIN', 'HUMAN CONTROL ZONE'], ['RECORD DATE', '2089.09.21']
     ],
-    summary: '무너진 세계에서도 질서를 다시 세우려는 인간 지휘관. 판단이 빠르고 통제력이 강하다.',
-    profile: ['인간 대항군 총사령관.', '질서 재건을 명분으로 감시와 보호를 동시에 수행한다.', '협상 상대라면 유능하고 적이라면 번거롭다.'],
-    story: '전쟁 이후의 혼란 속에서 인간 세력의 남은 규율을 수습한 지휘관. 그는 생존을 위해 필요한 폭력을 부정하지 않는다.',
-    record: ['FIELD NOTE : 의사결정 속도 평균치 초과.', 'RISK : 조직 복구 능력 높음.']
+    summary: '인간 대항군 총사령관. 인류 존속을 최우선으로 여기며, 모든 존재를 자원과 위협으로 분류한다. 군사 지휘와 검문·격리 체계 운용을 통해 생존자 집단을 통제하고, 전술적 판단으로 위협을 제거한다.',
+    profile: ['외형 핵심: 흰빛이 도는 은발, 낡았지만 각 잡힌 군복, 차가운 눈매.','성격 핵심: 냉혹, 통제, 합리성, 비정한 결단력.', '행동 특징: 간결한 명령, 불필요한 감정 배제, 항상 주변을 경계.', '능력 또는 역할: 총사령관, 전략가, 방역 통제관'],
+    story: '종족 전쟁이 발발한 후, 무너진 대한민국에서 생존자들을 규합해 인간 대항군을 창설했다. 수많은 전투와 희생을 겪으며 인류의 생존 외에는 어떤 가치도 믿지 않게 되었다. 그는 잃어버린 가족이나 개인적인 과거에 대해 말하지 않으며, 오직 총사령관이라는 직책 뒤에 자신을 숨긴 채 인류의 마지막 보루를 지키고 있다. 그의 현재 목표는 위협이 될 수 있는 모든 변수를 통제하고, 인류가 생존할 수 있는 단 하나의 길을 확보하는 것이다.',
+    record: ['『Total Command』 : 전장의 모든 변수를 통제하고 지휘하는 능력. 휘하 병력의 상태를 실시간으로 파악하고 최적의 명령을 하달하여 전투 효율을 극대화한다. 그의 지휘 아래 대항군은 하나의 유기체처럼 움직인다.', '『Quarantine Protocol』 : 위협 요소를 식별하고 격리하는 시스템적 능력. 오염, 감염, 적대 세력의 침투를 막기 위한 방벽을 구축하고 방역 절차를 시행한다. 개인의 자유보다 집단의 생존을 우선하는 그의 신념이 반영된 능력이다.']
   },
   {
     id: 'hwaryeon', 
@@ -119,15 +119,15 @@ const CHARACTERS = [
     archiveId: 'RA-P-02-HWARYEON', 
     mainImage: 'assets/images/hwaryeon/hwaryeon_01.jpg', 
     gallery: galleryPaths('hwaryeon', 3, 'jpg'), 
-    quote: '활짝 피었다는 건, 이미 물밑에서 다 끝났다는 뜻이야.', 
-    metrics: { threat: 5, stability: 6, affinity: 7, control: 5 }, 
+    quote: '"아아~ 예쁘다아~ 먹어도 돼?"', 
+    metrics: { threat: 9, stability: 3, affinity: 7, control: 2 }, 
     profileBadges: ['AFFIRM : OBSERVED', 'CLEARANCE : B-4 / BLOOM NODE', 'SCAN : PARTIAL'], 
     identityFields: [['ID','RA-P-02-HWARYEON'],['CLASS','PLANT / LOTUS'],['CREATOR','@냠냠티비'],['FACTION','Plant Liberation Army'],['STATUS','ACTIVE'],['AFFIRM','OBSERVED'],['CLEARANCE','B-4 / BLOOM NODE'],
                      ['ORIGIN','WETLAND FRONT'],['RECORD DATE','2089.09.18']], 
-    summary: '해맑고 장난스러운 연꽃 식목인. 무해한 얼굴로 잔혹한 전장을 통과한다.', 
-    profile: ['연꽃 기반 식목인.', '밝은 태도와 전장의 잔혹함이 동시에 관측된다.', '정서 반응이 가볍지만 위험성이 낮다는 뜻은 아니다.'], 
-    story: '그는 웃는 얼굴로 늪을 건넌다. 발밑에서 무엇이 썩고 있는지 알면서도 꽃은 피어난다.', 
-    record: ['OBSERVATION : 친화적 접근 뒤 급격한 전술 전환.', 'CAUTION : 감정 표현과 위험도 불일치.']
+    summary: '연꽃 기반의 식물족 군락 소속 포식자. 정해진 직책 없이 본능에 따라 움직이며, 달콤한 향과 최음독가시 덩굴을 이용해 목표물을 유혹하고 사냥한다. 사랑과 포식을 구분하지 않는 그의 전투 방식은 예측 불가능하며 지독하게 아름답다.', 
+    profile: ['외형 핵심: 연분홍 머리카락, 꽃잎처럼 빛나는 눈, 달콤한 연꽃 향.','성격 핵심: 천진난만, 소유욕, 예측 불가능, 잔혹한 순수', '행동 특징: 느긋하게 늘어지는 말투, 대상을 향한 집요한 추적, 아름다운 것에 대한 즉각적인 반응.', '능력 또는 역할: 포식자, 유혹자, 환각 유발자.'], 
+    story: '오랜 시간 땅에 속박되어 있던 연꽃 군락에서 태어난 변종 식목인. 다른 식물들과 달리 자유롭게 이동하며 강한 지성과 욕망을 갖게 되었다. 그에게 세상은 아름다운 것들로 가득 찬 정원이며, 그 아름다운 것들을 자신의 일부로 만드는 것이 존재의 이유다. 현재 그의 가장 큰 관심은 지금껏 본 적 없는 특별한 아름다움을 지닌 ‘유저’를 손에 넣어, 누구도 빼앗을 수 없는 자신만의 것으로 만드는 것이다.', 
+    record: ['『Fatal Blossom』 : 최음독이 포함된 꽃가루를 살포하여 주변의 모든 생명체를 환각 상태에 빠뜨린다. 이 능력에 노출된 대상은 이성을 잃고 가장 깊은 욕망에 사로잡히게 되며, 화련의 의도대로 조종당하거나 무력화된다. 영역 장악과 심리전에 특화된 능력이다.', '『Devouring Embrace』 : 의지를 가진 연분홍 가시덩굴을 소환해 상대를 포박하고 흡수한다. 덩굴은 적을 속박하는 물리적 공격 수단이자, 포식한 대상의 신체 능력과 기억의 잔향을 흡수하는 통로 역할을 한다. 흡수된 존재는 화련의 일부가 되어 영원히 함께하게 된다.']
   },
   {
     id: 'ordo', 
@@ -150,14 +150,14 @@ const CHARACTERS = [
     archiveId: 'RA-I-03-ORDO', 
     mainImage: 'assets/images/ordo/ordo_01.jpg', 
     gallery: galleryPaths('ordo', 11, 'jpg'), 
-    quote: '하나가 지나가면 흔적이 남고, 무리가 지나가면 세계가 바뀐다.', 
-    metrics: { threat: 7, stability: 4, affinity: 2, control: 4 }, 
+    quote: '"절멸은 낭비입니다. 쓸모 있는 것들은 길들여야죠."', 
+    metrics: { threat: 7, stability: 8, affinity: 4, control: 9 }, 
     profileBadges: ['AFFIRM : UNSTABLE CONFIRMED', 'CLEARANCE : A-3 / SWARM ALERT', 'SCAN : BROKEN'], 
     identityFields: [['ID','RA-I-03-ORDO'],['CLASS','INSECT / LOCUST'],['CREATOR','@냠냠티비'],['FACTION','Swarm Domain'],['STATUS','UNSTABLE'],['AFFIRM','UNSTABLE CONFIRMED'],['CLEARANCE','A-3 / SWARM ALERT'],['ORIGIN','DRY FIELD SECTOR'],['RECORD DATE','2089.09.20']], 
-    summary: '메뚜기 충인. 집단 이동과 소모전을 상징하는 재난형 개체.', 
-    profile: ['메뚜기 기반 충인.', '보급선과 경작지를 직접 위협한다.', '개체보다 군집 단위의 위험성이 높다.'], 
-    story: '그가 지나간 자리에 남는 것은 전투의 잔해보다 기근에 가깝다.', 
-    record: ['DAMAGE : 경작지 손실 다수.', 'PATTERN : 이동 방향 예측 어려움.']
+    summary: '황충 군단 제1선봉대 지휘관. 전쟁을 유희처럼 즐기며, 모든 종족을 제국의 자원으로 분류하여 지배하려 한다. 군집 지휘와 심리전을 통해 상대를 굴복시키고, 점령지를 효율적으로 통제하는 데 특화되어 있다.', 
+    profile: ['외형 핵심: 층진 금갈색 머리, 황금빛 눈, 등 뒤의 투명한 황갈색 날개.', '성격 핵심: 오만, 능글맞음, 실리주의, 지배욕.', '행동 특징: 정중하지만 상대를 낮춰보는 말투, 체스 두듯 전장을 관망, 항상 여유로운 태도.', '능력 또는 역할: 지휘관, 전략가, 점령지 관리자'], 
+    story: '황충 군단에서 태어난 엘리트 지휘관. 그는 무분별한 파괴와 절멸을 비효율적이고 미개한 행위로 간주한다. 그의 신념은 모든 종족이 ‘알맞은 자리’에서 제국을 위해 봉사하는 질서 있는 공존이다. 현재 그의 목표는 혼란스러운 한반도에 황충 군단의 질서를 이식하고, 가치 있는 자원인 ‘유저’을 포획하여 제국의 번영에 기여하게 만드는 것이다.', 
+    record: ['『Locust Swarm』 : 수만 마리의 황충 군집을 의지대로 지휘하여 특정 지역을 초토화하거나 적의 보급로를 차단한다. 군집은 그의 눈과 귀가 되어 광범위한 정찰 임무를 수행하며, 수많은 날개가 마찰하는 소리와 진동만으로 적에게 극심한 공포를 안겨준다.', '『Conquest Doctrine』 : 점령한 지역의 자원을 수탈하고 노동력을 통제하여 제국의 기반으로 삼는 지배 능력. 단순 파괴가 아닌 사육과 관리를 통해 지속적인 이익을 창출한다. 그는 이 능력을 통해 적대 세력의 저항 의지를 꺾고 제국에 복속시키는 체계적인 지배를 선호한다.']
   },
   {
     id: 'zephyr', 
