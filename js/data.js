@@ -364,14 +364,14 @@ const CHARACTERS = [
     archiveId: 'RA-P-10-PAVEL', 
     mainImage: 'assets/images/parvel/parvel_01.png', 
     gallery: galleryPaths('parvel', 11, 'png'), 
-    quote: '고통을 지우면, 진실도 같이 흐려지지.', 
+    quote: '"어디까지 버틸 수 있는지… 궁금해졌거든."', 
     metrics: { threat: 6, stability: 9, affinity: 3, control: 10 }, 
     profileBadges: ['AFFIRM : CAUTION VERIFIED', 'CLEARANCE : A-6 / SEDATION NODE', 'SCAN : NARCOTIC COMPLETE'], 
     identityFields: [['ID','RA-P-10-PAVEL'],['CLASS','PLANT / OPIUM POPPY'],['CREATOR','@깅루나'],['FACTION','Plant Liberation Army'],['STATUS','ACTIVE'],['AFFIRM','CAUTION VERIFIED'],['CLEARANCE','A-6 / SEDATION NODE'],['ORIGIN','RED FIELD SECTOR'],['RECORD DATE','2089.09.20']], 
-    summary: '양귀비 식목인. 진통, 환각, 중독성 능력으로 기록된다.', 
-    profile: ['양귀비 기반 식목인.', '진정과 혼란 유발 양면성 보유.', '심문 및 전장 후방 교란에 적합.'], 
-    story: '파벨의 꽃가루는 상처를 잠재우고 의심도 잠재운다. 그래서 가장 부드러운 위험이다.', 
-    record: ['EFFECT : 감각 저하 및 판단 흐림.', 'CAUTION : 장기 노출 금지.']
+    summary: '향기를 알아챘을 땐, 이미 그의 꽃밭 안이었다.', 
+    profile: ['외형 핵심: 198cm, 붉은 장발과 적안, 창백한 피부 위로 번지는 검붉은 꽃맥','성격 핵심: 능글맞음, 계산적, 여유로움, 심리전의 대가', '행동 특징: 항상 미소를 유지하며 상대를 관찰하고, 대화의 주도권을 놓지 않음', '능력 또는 역할: 컨트롤러, 환각 조작, 영역 장악'], 
+    story: '한때는 대지에 속박된 존재였으나, 종족 전쟁이 다시 시작되며 힘을 되찾았다. 인간의 복잡한 심리와 욕망에 깊은 흥미를 느껴, 그들을 관찰하고 시험하는 것을 즐긴다. 바엘과 함께 \'이 세계에 적합한 존재\'를 가려내는 것을 현재의 목표로 삼고 있으며, 단순한 생존을 넘어 어떤 선택을 내리는지를 기준으로 대상을 판단한다.', 
+    record: ['『Crimson Delusion』 : 환각성 꽃가루를 이용한 전장 통제 및 심리전 특화.', '『PERSONALITY 』 : 높은 관찰력과 계산 능력 보유. 흥미를 느낀 대상은 즉시 제거하지 않고 장기간 관찰.']
   },
   {
     id: 'bael', 
@@ -394,14 +394,14 @@ const CHARACTERS = [
     archiveId: 'RA-B-11-BAEL', 
     mainImage: 'assets/images/bael/bael_01.png', 
     gallery: galleryPaths('bael', 11, 'png'), 
-    quote: '내가 물기 전에 도망쳤다면, 그건 네 운이 아니라 내 선택이야.', 
+    quote: '"살아남아봐. 끝까지.."', 
     metrics: { threat: 10, stability: 7, affinity: 2, control: 6 }, 
     profileBadges: ['AFFIRM : BLACKLISTED', 'CLEARANCE : S-2 / VENOM NODE', 'SCAN : NEUROTOXIN COMPLETE'], 
     identityFields: [['ID','RA-B-11-BAEL'],['CLASS','BEAST / BLACK MAMBA'],['CREATOR','@깅루나'],['FACTION','Feral Front'],['STATUS','ACTIVE'],['AFFIRM','BLACKLISTED'],['CLEARANCE','S-2 / VENOM NODE'],['ORIGIN','SOUTHERN BLACK ZONE'],['RECORD DATE','2089.09.24']], 
-    summary: '블랙맘바 수인. 독성과 속도, 냉정한 추격으로 고위험 등급을 받았다.', 
-    profile: ['블랙맘바 기반 수인.', '초고속 접근과 독성 제압에 특화.', '대치 상황에서 심리 압박이 강하다.'], 
-    story: '바엘은 크게 움직이지 않는다. 그러나 한 번 움직이면 전장은 결론에 도달한다.',
-    record: ['TACTIC : 고속 돌입 및 근접 섬멸 특화.', 'PERSONALITY : 침묵형 포식자. 위협 확인 즉시 제거.']
+    summary: '그의 존재를 알아챘다면, 이미 그의 그림자 안이다.', 
+    profile: ['외형 핵심: 202cm, 흑발과 흑안, 뱀을 연상시키는 세로 동공과 검은 송곳니', '성격 핵심: 과묵함, 냉정함, 현실적, 집요함', '행동 특징: 움직임을 최소화하며 상황을 관망, 위협으로 판단하면 즉시 행동', '능력 또는 역할: 피니셔, 맹독 공격, 암살'], 
+    story: '인간들의 세계에서 살아남기 위해 포식자의 본능을 갈고닦았다. 그는 모든 종족을 잠재적 위협으로 간주하며, 불필요한 감정 소모 없이 가장 효율적인 방식으로 위협을 제거한다. 파벨의 전장 설계 능력을 신뢰하며 그와 함께 행동하지만, 이는 필요에 의한 공생일 뿐이다. 그의 유일한 신념은 \'생존\'이며, 이 세계에서 살아남을 가치가 있는 존재만이 남아야 한다고 믿는다.',
+    record: ['『TACTIC』 : 고속 돌입 및 근접 섬멸 특화.', '『PERSONALITY』 : 침묵형 포식자. 위협 확인 즉시 제거.']
   }
 ];
 
