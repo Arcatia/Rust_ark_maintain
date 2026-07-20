@@ -41,7 +41,10 @@
   ];
 
   function dataCandidates() {
-    return [
+    const candidates = [];
+
+    // window에 노출된 데이터
+    candidates.push(
       window.CHARACTERS,
       window.RUST_ARK_CHARACTERS,
       window.characters,
@@ -53,7 +56,18 @@
       window.APP_DATA && window.APP_DATA.characters,
       window.RUSTARK_DATA,
       window.DATA
-    ];
+    );
+
+    // 기존 data.js가 const CHARACTERS = [...] 처럼 선언된 경우.
+    // const/let 전역은 window.CHARACTERS로는 안 잡히지만, 다음 스크립트에서 식별자로는 접근 가능하다.
+    try { if (typeof CHARACTERS !== 'undefined') candidates.push(CHARACTERS); } catch (error) {}
+    try { if (typeof RUST_ARK_CHARACTERS !== 'undefined') candidates.push(RUST_ARK_CHARACTERS); } catch (error) {}
+    try { if (typeof RUSTARK_CHARACTERS !== 'undefined') candidates.push(RUSTARK_CHARACTERS); } catch (error) {}
+    try { if (typeof DATA !== 'undefined') candidates.push(DATA, DATA && DATA.characters, DATA && DATA.CHARACTERS); } catch (error) {}
+    try { if (typeof RUSTARK_DATA !== 'undefined') candidates.push(RUSTARK_DATA, RUSTARK_DATA && RUSTARK_DATA.characters); } catch (error) {}
+    try { if (typeof APP_DATA !== 'undefined') candidates.push(APP_DATA, APP_DATA && APP_DATA.characters); } catch (error) {}
+
+    return candidates;
   }
 
   function getCharactersFromDataJs() {
@@ -94,7 +108,11 @@
 
   function findRawCharacter(id) {
     const list = getCharactersFromDataJs();
-    return list.find(item => normalizeId(pick(item, ['id', 'slug', 'key', 'code'], '')) === id) || list[0];
+    const found = list.find(item => normalizeId(pick(item, ['id', 'slug', 'key', 'code'], '')) === id);
+    if (found) return found;
+
+    console.warn(`[RUST ARK INTRO] entry=${id} 캐릭터를 data.js에서 찾지 못해 hale 또는 첫 번째 캐릭터를 사용합니다.`);
+    return list.find(item => normalizeId(pick(item, ['id', 'slug', 'key', 'code'], '')) === 'hale') || list[0];
   }
 
   function fallbackDisplayName(id, raw) {
