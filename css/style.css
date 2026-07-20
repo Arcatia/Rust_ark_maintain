@@ -803,6 +803,18 @@ body {
 .view.route-character .status-strip { animation-delay: .10s; }
 .view.route-character blockquote { animation-delay: .14s; }
 
+/* Mini-nav spacing patch for character detail page */
+.mini-nav {
+  margin-bottom: 28px !important;
+}
+
+/* Fix rotor icon distortion issue */
+.rotor {
+  flex-shrink: 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  box-sizing: border-box !important;
+}
+
 .view.route-gallery .gallery-card {
   animation: cardGridRestore .62s cubic-bezier(.2,.8,.2,1) both;
 }
