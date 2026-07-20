@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>RUST ARK // ENTRY INTRO</title>
+  <link rel="stylesheet" href="css/intro.css" />
+</head>
+<body>
+  <main class="ra-intro" aria-label="RUST ARK character entry intro">
+    <div class="ra-scan" aria-hidden="true"></div>
+    <div class="ra-noise" aria-hidden="true"></div>
+
+    <div class="ra-particles" aria-hidden="true">
+      <i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i>
+    </div>
+
+    <section class="ra-terminal" aria-label="Access terminal">
+      <p class="ra-kicker">RUST ARK / ACCESS TERMINAL</p>
+
+      <div class="ra-loading">
+        <span data-intro-loading>LOADING BIO ARCHIVE</span>
+        <i></i>
+      </div>
+
+      <div class="ra-log">
+        <p data-intro-log-1>VERIFYING IMAGE FILE : 01</p>
+        <p data-intro-log-2>SCANNING SIGNATURE</p>
+        <p data-intro-log-3>RESTORING DOSSIER</p>
+        <p data-intro-log-4>OPENING WORLD ACCESS GATE</p>
+      </div>
+
+      <h1 class="ra-granted">ACCESS GRANTED</h1>
+    </section>
+
+    <section class="ra-board" aria-label="Character intro board">
+      <div class="ra-portrait-board">
+        <div class="ra-portrait-card">
+          <div class="ra-portrait" data-intro-image></div>
+          <div class="ra-veins" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="ra-board-info">
+        <small data-intro-eyebrow>CHARACTER FILE / WORLD ENTRY</small>
+        <h2 data-intro-name>HALE</h2>
+
+        <div class="ra-code">
+          <p><b>SPECIES</b><span data-intro-species>PLANT / HYDRANGEA</span></p>
+          <p><b>ROLE</b><span data-intro-role>STRATEGIST</span></p>
+          <p><b>STATUS</b><span data-intro-status>VERIFIED</span></p>
+          <p><b>THREAT</b><span data-intro-threat>TACTICAL VARIABLE</span></p>
+        </div>
+
+        <p class="ra-desc" data-intro-desc>
+          수국계 식목인 전략관. 감정적 복수보다 구조적 해방을 우선하며,
+          폐허의 보급로와 전선 흐름을 기록한다.
+        </p>
+
+        <div class="ra-stats">
+          <div class="ra-stat" data-stat="tactic" style="--w:88%"><span>TACTIC</span><i></i><b data-intro-stat-1>88</b></div>
+          <div class="ra-stat" data-stat="affinity" style="--w:71%"><span>AFFINITY</span><i></i><b data-intro-stat-2>71</b></div>
+          <div class="ra-stat" data-stat="control" style="--w:62%"><span>CONTROL</span><i></i><b data-intro-stat-3>62</b></div>
+        </div>
+
+        <p class="ra-quote" data-intro-quote>
+          “허술한 계획은 전쟁보다 먼저 사람을 죽인다.”
+        </p>
+      </div>
+    </section>
+
+    <div class="ra-exit" aria-hidden="true">
+      <span>CONNECTING TO WORLD...</span>
+    </div>
+
+    <button class="ra-skip" type="button" data-intro-skip>SKIP</button>
+  </main>
+
+  <!-- 실제 프로젝트에 js/data.js가 이미 있다면 intro.js보다 먼저 로드 -->
+  <!-- <script src="js/data.js"></script> -->
+  <script src="js/intro.js"></script>
+</body>
+</html>
