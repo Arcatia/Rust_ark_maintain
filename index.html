@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>RUST ARK // ENTRY INTRO</title>
+  <link rel="stylesheet" href="css/intro.css" />
+</head>
+<body>
+  <main class="ra-intro" aria-label="RUST ARK character entry intro">
+    <div class="ra-scan" aria-hidden="true"></div>
+    <div class="ra-noise" aria-hidden="true"></div>
+
+    <div class="ra-particles" aria-hidden="true">
+      <i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i>
+    </div>
+
+    <section class="ra-terminal" aria-label="Access terminal">
+      <p class="ra-kicker">RUST ARK / ACCESS TERMINAL</p>
+      <div class="ra-loading">
+        <span data-intro-loading>LOADING BIO ARCHIVE</span>
+        <i></i>
+      </div>
+      <div class="ra-log">
+        <p data-intro-log-1>VERIFYING IMAGE FILE : 01</p>
+        <p data-intro-log-2>SCANNING SIGNATURE</p>
+        <p data-intro-log-3>RESTORING DOSSIER</p>
+        <p data-intro-log-4>OPENING WORLD ACCESS GATE</p>
+      </div>
+      <h1 class="ra-granted">ACCESS GRANTED</h1>
+    </section>
+
+    <section class="ra-board" aria-label="Character intro board">
+      <div class="ra-portrait-board">
+        <div class="ra-portrait-card">
+          <div class="ra-portrait" data-intro-image></div>
+          <div class="ra-veins" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="ra-board-info">
+        <small data-intro-eyebrow>CHARACTER FILE / WORLD ENTRY</small>
+        <h2 data-intro-name>UNKNOWN</h2>
+
+        <div class="ra-code">
+          <p><b>SPECIES</b><span data-intro-species>UNKNOWN</span></p>
+          <p><b>ROLE</b><span data-intro-role>UNKNOWN</span></p>
+          <p><b>STATUS</b><span data-intro-status>VERIFIED</span></p>
+          <p><b>THREAT</b><span data-intro-threat>TACTICAL VARIABLE</span></p>
+        </div>
+
+        <p class="ra-desc" data-intro-desc>data.js에서 캐릭터 데이터를 불러오는 중.</p>
+
+        <div class="ra-stats">
+          <div class="ra-stat" data-stat="tactic" style="--w:70%"><span>TACTIC</span><i></i><b data-intro-stat-1>70</b></div>
+          <div class="ra-stat" data-stat="affinity" style="--w:60%"><span>AFFINITY</span><i></i><b data-intro-stat-2>60</b></div>
+          <div class="ra-stat" data-stat="control" style="--w:65%"><span>CONTROL</span><i></i><b data-intro-stat-3>65</b></div>
+        </div>
+
+        <p class="ra-quote" data-intro-quote>“WORLD ARCHIVE READY.”</p>
+      </div>
+    </section>
+
+    <div class="ra-exit" aria-hidden="true"><span>CONNECTING TO WORLD...</span></div>
+    <button class="ra-skip" type="button" data-intro-skip>SKIP</button>
+  </main>
+
+  <!-- 실프로젝트에서는 기존 js/data.js를 그대로 두고, intro.js보다 먼저 로드하면 됨 -->
+  <script src="js/data.js"></script>
+  <script src="js/intro.js"></script>
+</body>
+</html>
