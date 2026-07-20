@@ -3,74 +3,64 @@
 
   const INTRO_DURATION = 11250;
   const WORLD_TARGET = 'world.html#world';
-  const IMAGE_INDEX = '01';
+  const DEFAULT_ENTRY = 'hale';
+  const FALLBACK_IMAGE_SUFFIX = '_01.png';
 
-  const FALLBACK_ACCENTS = {
-    'seol-gongchan': '#aeb7c2',
-    'hwaryeon': '#ff4da6',
-    'ordo': '#9aa33a',
-    'zephyr': '#0084a8',
-    'hale': '#9b8cff',
-    'arens': '#4b1d8f',
-    'kael': '#7e99b8',
-    'vulcan': '#c9361f',
-    'harmel': '#e6a51a',
-    'pavel': '#9b174d',
-    'bael': '#0f8f4f'
+  const ALIASES = {
+    seol: 'seol-gongchan',
+    gongchan: 'seol-gongchan',
+    seol_gongchan: 'seol-gongchan',
+    hwaryun: 'hwaryeon',
+    hwar: 'hwaryeon',
+    parvel: 'pavel',
+    pavel: 'pavel'
   };
 
-  const SAMPLE_DATA = [
-    {
-      id: 'hale',
-      name: '헤일',
-      displayName: 'HALE',
-      species: 'PLANT / HYDRANGEA',
-      role: 'STRATEGIST',
-      accent: '#9b8cff',
-      threat: 'TACTICAL VARIABLE',
-      summary: '수국계 식목인 전략관. 감정적 복수보다 구조적 해방을 우선하며, 폐허의 보급로와 전선 흐름을 기록한다.',
-      quote: '“허술한 계획은 전쟁보다 먼저 사람을 죽인다.”'
-    }
+  const FALLBACK_CHARACTERS = [
+    { id: 'seol-gongchan', enName: 'SEOL GONGCHAN', krName: '설공찬', type: 'HUMAN / COMMANDER', species: 'HUMAN', role: 'COMMANDER', accent: '#b8c2d3', danger: 'A+', status: 'ACTIVE', affirm: 'COMMAND VERIFIED', clearance: 'A-7 / HUMAN NODE', scan: 'TACTICAL SCAN COMPLETE', archiveId: 'RA-H-01-GONGCHAN', mainImage: 'assets/images/seol_gongchan/seol_gongchan_01.jpg', summary: '인간 대항군 총사령관.', quote: '"이건 처벌이 아니라 방역이다."', metrics: { threat: 8, stability: 9, affinity: 2, control: 10 } },
+    { id: 'hwaryeon', enName: 'HWARYEON', krName: '화련', type: 'PLANT / LOTUS', species: 'PLANT', role: 'LOTUS', accent: '#e68aa6', danger: 'B+', status: 'ACTIVE', affirm: 'OBSERVED', clearance: 'B-4 / BLOOM NODE', scan: 'EMOTIONAL SCAN PARTIAL', archiveId: 'RA-P-02-HWARYEON', mainImage: 'assets/images/hwaryeon/hwaryeon_01.jpg', summary: '연꽃 기반의 식물족 군락 소속 포식자.', quote: '"아아~ 예쁘다아~ 먹어도 돼?"', metrics: { threat: 9, stability: 3, affinity: 7, control: 2 } },
+    { id: 'ordo', enName: 'ORDO', krName: '오르도', type: 'INSECT / LOCUST', species: 'INSECT', role: 'LOCUST', accent: '#7f8f22', danger: 'A', status: 'UNSTABLE', affirm: 'UNSTABLE CONFIRMED', clearance: 'A-3 / SWARM ALERT', scan: 'PATTERN BROKEN', archiveId: 'RA-I-03-ORDO', mainImage: 'assets/images/ordo/ordo_01.jpg', summary: '황충 군단 제1선봉대 지휘관.', quote: '"절멸은 낭비입니다. 쓸모 있는 것들은 길들여야죠."', metrics: { threat: 7, stability: 8, affinity: 4, control: 9 } },
+    { id: 'zephyr', enName: 'ZEPHYR', krName: '제피르', type: 'INSECT / DRAGONFLY', species: 'INSECT', role: 'DRAGONFLY', accent: '#0084a8', danger: 'B+', status: 'ACTIVE', affirm: 'FIELD VERIFIED', clearance: 'B-6 / RECON NODE', scan: 'AERIAL SCAN COMPLETE', archiveId: 'RA-I-04-ZEPHYR', mainImage: 'assets/images/zephyr/zephyr_01.png', summary: '충인 진영 제1공중정찰대 제1관측반 반장.', quote: '"하늘은 거짓말을 하지 않아. 기록도 마찬가지고."', metrics: { threat: 8.5, stability: 9.5, affinity: 6.5, control: 9 } },
+    { id: 'hale', enName: 'HALE', krName: '헤일', type: 'PLANT / HYDRANGEA', species: 'PLANT', role: 'HYDRANGEA', accent: '#9b8cff', danger: 'A', status: 'ACTIVE', affirm: 'VERIFIED', clearance: 'A-7 / STRATEGY NODE', scan: 'BIO SIGNAL COMPLETE', archiveId: 'RA-P-05-HALE', mainImage: 'assets/images/hale/hale_01.png', summary: '식물 해방군 소속 전략관.', quote: '"좋은데요. 실패할 부분이 너무 잘 보여서."', metrics: { threat: 8, stability: 6, affinity: 4, control: 10 } },
+    { id: 'arens', enName: 'ARENS', krName: '아렌스', type: 'INSECT / ASSASSIN', species: 'INSECT', role: 'ASSASSIN', accent: '#d37c1f', danger: 'A+', status: 'CLASSIFIED', affirm: 'REDACTED', clearance: 'BLACK / COVERT NODE', scan: 'SIGNATURE MASKED', archiveId: 'RA-I-06-ARENS', mainImage: 'assets/images/arens/arens_01.png', summary: '암살자형 충인.', quote: '"비명은 짧게 부탁드립니다."', metrics: { threat: 9, stability: 8, affinity: 1, control: 8 } },
+    { id: 'kael', enName: 'KAEL', krName: '카엘', type: 'BEAST / WOLF', species: 'BEAST', role: 'WOLF', accent: '#6f8398', danger: 'A', status: 'ACTIVE', affirm: 'CONFIRMED', clearance: 'A-5 / PACK NODE', scan: 'TRACKING COMPLETE', archiveId: 'RA-B-07-KAEL', mainImage: 'assets/images/kael/kael_01.png', summary: '잿빛발톱 부족의 현 족장.', quote: '"나의 송곳니와 발톱은 오직 부족을 위협하는 자에게만 향한다."', metrics: { threat: 8, stability: 6, affinity: 4, control: 9 } },
+    { id: 'vulcan', enName: 'VULCAN', krName: '발칸', type: 'BEAST / BULLFIGHT', species: 'BEAST', role: 'BULLFIGHT', accent: '#c9361f', danger: 'A+', status: 'VOLATILE', affirm: 'IMPACT VERIFIED', clearance: 'A-9 / BREACH NODE', scan: 'KINETIC SCAN COMPLETE', archiveId: 'RA-B-08-VULCAN', mainImage: 'assets/images/vulcan/vulcan_01.png', summary: '적각단의 수장.', quote: '"네놈들의 피로, 이 땅의 모든 것을 다시 붉게 물들여주마."', metrics: { threat: 9, stability: 2, affinity: 3, control: 1 } },
+    { id: 'harmel', enName: 'HARMEL', krName: '하르멜', type: 'INSECT / QUEEN BEE', species: 'INSECT', role: 'QUEEN BEE', accent: '#d99a1e', danger: 'S', status: 'MUTATED', affirm: 'MUTATION CONFIRMED', clearance: 'S-1 / HIVE CROWN', scan: 'TOXIN SCAN COMPLETE', archiveId: 'RA-I-09-HARMEL', mainImage: 'assets/images/harmel/harmel_01.png', summary: '말벌과 꿀벌의 특성을 모두 지닌 변이체 군주.', quote: '"나의 낙원에 온 걸 환영해. 여기서 너는… 가장 달콤한 꿈을 꾸게 될 거야."', metrics: { threat: 9, stability: 4, affinity: 8, control: 10 } },
+    { id: 'pavel', enName: 'PAVEL', krName: '파벨', type: 'PLANT / OPIUM POPPY', species: 'PLANT', role: 'OPIUM POPPY', accent: '#9b174d', danger: 'A', status: 'ACTIVE', affirm: 'CAUTION VERIFIED', clearance: 'A-6 / SEDATION NODE', scan: 'NARCOTIC SCAN COMPLETE', archiveId: 'RA-P-10-PAVEL', mainImage: 'assets/images/parvel/parvel_01.png', summary: '향기를 알아챘을 땐, 이미 그의 꽃밭 안이었다.', quote: '"어디까지 버틸 수 있는지… 궁금해졌거든."', metrics: { threat: 6, stability: 9, affinity: 3, control: 10 } },
+    { id: 'bael', enName: 'BAEL', krName: '바엘', type: 'BEAST / BLACK MAMBA', species: 'BEAST', role: 'BLACK MAMBA', accent: '#0f8f4f', danger: 'S', status: 'ACTIVE', affirm: 'BLACKLISTED', clearance: 'S-2 / VENOM NODE', scan: 'NEUROTOXIN SCAN COMPLETE', archiveId: 'RA-B-11-BAEL', mainImage: 'assets/images/bael/bael_01.png', summary: '그의 존재를 알아챘다면, 이미 그의 그림자 안이다.', quote: '"살아남아봐. 끝까지.."', metrics: { threat: 10, stability: 7, affinity: 2, control: 6 } }
   ];
 
-  function dataCandidates() {
-    const candidates = [];
+  const DATA_KEYS = ['CHARACTERS', 'RUST_ARK_CHARACTERS', 'RUSTARK_CHARACTERS'];
 
-    // window에 노출된 데이터
-    candidates.push(
+  function getGlobalArray(name) {
+    try {
+      return Function(`try { return (typeof ${name} !== "undefined" && Array.isArray(${name})) ? ${name} : null; } catch (_) { return null; }`)();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function getCharactersFromData() {
+    for (const key of DATA_KEYS) {
+      const value = getGlobalArray(key);
+      if (value && value.length) return value;
+    }
+
+    const windowCandidates = [
       window.CHARACTERS,
       window.RUST_ARK_CHARACTERS,
-      window.characters,
       window.RUSTARK_CHARACTERS,
       window.RUSTARK_DATA && window.RUSTARK_DATA.characters,
       window.RUSTARK && window.RUSTARK.characters,
-      window.RUST_ARK && window.RUST_ARK.characters,
       window.DATA && window.DATA.characters,
-      window.APP_DATA && window.APP_DATA.characters,
-      window.RUSTARK_DATA,
-      window.DATA
-    );
+      window.APP_DATA && window.APP_DATA.characters
+    ];
 
-    // 기존 data.js가 const CHARACTERS = [...] 처럼 선언된 경우.
-    // const/let 전역은 window.CHARACTERS로는 안 잡히지만, 다음 스크립트에서 식별자로는 접근 가능하다.
-    try { if (typeof CHARACTERS !== 'undefined') candidates.push(CHARACTERS); } catch (error) {}
-    try { if (typeof RUST_ARK_CHARACTERS !== 'undefined') candidates.push(RUST_ARK_CHARACTERS); } catch (error) {}
-    try { if (typeof RUSTARK_CHARACTERS !== 'undefined') candidates.push(RUSTARK_CHARACTERS); } catch (error) {}
-    try { if (typeof DATA !== 'undefined') candidates.push(DATA, DATA && DATA.characters, DATA && DATA.CHARACTERS); } catch (error) {}
-    try { if (typeof RUSTARK_DATA !== 'undefined') candidates.push(RUSTARK_DATA, RUSTARK_DATA && RUSTARK_DATA.characters); } catch (error) {}
-    try { if (typeof APP_DATA !== 'undefined') candidates.push(APP_DATA, APP_DATA && APP_DATA.characters); } catch (error) {}
-     console.warn(CHARACTERS);
-    return candidates;
-  }
-
-  function getCharactersFromDataJs() {
-    for (const candidate of dataCandidates()) {
-      if (Array.isArray(candidate) && candidate.length) return candidate;
-      if (candidate && Array.isArray(candidate.CHARACTERS)) return candidate.CHARACTERS;
-      if (candidate && Array.isArray(candidate.characters)) return candidate.characters;
+    for (const value of windowCandidates) {
+      if (Array.isArray(value) && value.length) return value;
     }
-    console.warn('[RUST ARK INTRO] data.js 캐릭터 배열을 찾지 못해 SAMPLE_DATA를 사용합니다.');
-    return SAMPLE_DATA;
+
+    return FALLBACK_CHARACTERS;
   }
 
   function normalizeId(value) {
@@ -78,235 +68,185 @@
     return ALIASES[id] || id;
   }
 
-  function pick(obj, paths, fallback = '') {
-    for (const path of paths) {
-      const value = path.split('.').reduce((acc, key) => {
-        if (acc && Object.prototype.hasOwnProperty.call(acc, key)) return acc[key];
-        return undefined;
-      }, obj);
+  function pick(obj, keys, fallback = '') {
+    for (const key of keys) {
+      const value = key.split('.').reduce((acc, part) => (acc && acc[part] !== undefined ? acc[part] : undefined), obj);
       if (value !== undefined && value !== null && String(value).trim() !== '') return value;
     }
     return fallback;
   }
 
-  function firstArrayText(value) {
-    if (Array.isArray(value)) {
-      const found = value.find(item => typeof item === 'string' && item.trim());
-      if (found) return found;
-      const obj = value.find(item => item && typeof item === 'object');
-      if (obj) return pick(obj, ['text', 'desc', 'description', 'summary', 'content', 'body'], '');
-    }
-    return '';
+  function findFallback(id) {
+    return FALLBACK_CHARACTERS.find(character => character.id === id) || FALLBACK_CHARACTERS.find(character => character.id === DEFAULT_ENTRY) || FALLBACK_CHARACTERS[0];
   }
 
-  function findRawCharacter(id) {
-    const list = getCharactersFromDataJs();
-    const found = list.find(item => normalizeId(pick(item, ['id', 'slug', 'key', 'code'], '')) === id);
-    if (found) return found;
-
-    console.warn(`[RUST ARK INTRO] entry=${id} 캐릭터를 data.js에서 찾지 못해 hale 또는 첫 번째 캐릭터를 사용합니다.`);
-    return list.find(item => normalizeId(pick(item, ['id', 'slug', 'key', 'code'], '')) === 'hale') || list[0];
+  function getFirstGalleryImage(raw) {
+    if (!Array.isArray(raw.gallery)) return '';
+    const item = raw.gallery.find(entry => entry && entry.type !== 'video' && (entry.src || entry.thumb));
+    return item ? (item.src || item.thumb || '') : '';
   }
 
-  function fallbackDisplayName(id, raw) {
-    const name = pick(raw, ['displayName', 'display_name', 'enName', 'englishName', 'nameEn', 'title.en', 'name'], id);
-    return String(name).toUpperCase();
-  }
-
-  function getSpecies(raw) {
-    const species = pick(raw, [
-      'species', 'race', 'type', 'category', 'profile.species', 'profile.race', 'meta.species'
-    ], 'UNKNOWN');
-    const subtype = pick(raw, ['subtype', 'speciesDetail', 'kind', 'profile.subtype'], '');
-    if (subtype && !String(species).includes(String(subtype))) return `${species} / ${subtype}`;
-    return String(species);
-  }
-
-  function getRole(raw) {
-    return String(pick(raw, [
-      'role', 'position', 'class', 'job', 'title', 'profile.role', 'profile.position', 'meta.role'
-    ], 'UNKNOWN'));
-  }
-
-  function getAccent(raw, id) {
-    return String(pick(raw, [
-      'accent', 'theme', 'themeColor', 'color', 'mainColor', 'main_color', 'cssColor',
-      'colors.accent', 'colors.main', 'profile.accent', 'profile.color', 'meta.accent'
-    ], FALLBACK_ACCENTS[id] || '#39ff88'));
-  }
-
-  function getDescription(raw) {
-    const direct = pick(raw, [
-      'intro', 'desc', 'description', 'summary', 'short', 'bio',
-      'profile.summary', 'profile.desc', 'profile.description',
-      'story.summary', 'story.intro', 'identity', 'identityField'
-    ], '');
-    if (direct) return String(direct);
-
-    const fromFeatures = firstArrayText(raw.features || raw.traits || raw.keywords || raw.records);
-    if (fromFeatures) return String(fromFeatures);
-
-    return 'data.js에 소개문을 추가하면 이 영역에 자동 출력됩니다.';
-  }
-
-  function getQuote(raw) {
-    return String(pick(raw, [
-      'quote', 'line', 'tagline', 'catchphrase', 'profile.quote', 'dialogue.sample', 'sampleLine'
-    ], '“WORLD ARCHIVE READY.”'));
-  }
-
-  function getThreat(raw) {
-    return String(pick(raw, [
-      'threat', 'risk', 'danger', 'dangerLevel', 'profile.threat', 'meta.threat'
-    ], 'TACTICAL VARIABLE'));
-  }
-
-  function getStatus(raw) {
-    return String(pick(raw, ['status', 'state', 'profile.status', 'meta.status'], 'VERIFIED')).toUpperCase();
-  }
-
-  function getImage(id, raw) {
-    // 요청사항: 사진은 각 캐릭터 01번으로 고정.
-    // data.js의 image/mainImage/gallery가 있어도 인트로에서는 이 규칙을 우선한다.
-    return `assets/images/${id}/${id}_${IMAGE_INDEX}.png`;
+  function fallbackImageFromId(id) {
+    const safeId = id === 'seol-gongchan' ? 'seol_gongchan' : id;
+    return `assets/images/${safeId}/${safeId}${FALLBACK_IMAGE_SUFFIX}`;
   }
 
   function normalizeCharacter(raw) {
-    const id = normalizeId(pick(raw, ['id', 'slug', 'key', 'code'], 'hale'));
+    const id = normalizeId(pick(raw, ['id', 'slug', 'key', 'code'], DEFAULT_ENTRY));
+    const fallback = findFallback(id);
+    const metrics = raw.metrics || fallback.metrics || {};
+
     return {
       id,
-      name: fallbackDisplayName(id, raw),
-      krName: String(pick(raw, ['name', 'krName', 'koName', 'koreanName', 'title.ko'], id)),
-      species: getSpecies(raw),
-      role: getRole(raw),
-      accent: getAccent(raw, id),
-      threat: getThreat(raw),
-      status: getStatus(raw),
-      desc: getDescription(raw),
-      quote: getQuote(raw),
-      image: getImage(id, raw),
-      target: WORLD_TARGET,
-      raw
+      displayName: pick(raw, ['enName', 'displayName', 'display_name', 'nameEn', 'englishName', 'name'], fallback.enName || fallback.displayName || fallback.name || id),
+      krName: pick(raw, ['krName', 'koName', 'koreanName', 'name'], fallback.krName || ''),
+      type: pick(raw, ['type', 'class', 'identityFields.1.1'], fallback.type || ''),
+      species: pick(raw, ['species', 'race'], fallback.species || ''),
+      role: pick(raw, ['role', 'job', 'position'], fallback.role || ''),
+      accent: pick(raw, ['accent', 'theme', 'themeColor', 'color', 'mainColor', 'colors.accent', 'colors.main'], fallback.accent || '#39ff88'),
+      danger: pick(raw, ['danger', 'threat', 'risk'], fallback.danger || 'VERIFIED'),
+      status: pick(raw, ['status'], fallback.status || 'ACTIVE'),
+      affirm: pick(raw, ['affirm'], fallback.affirm || 'VERIFIED'),
+      clearance: pick(raw, ['clearance'], fallback.clearance || ''),
+      scan: pick(raw, ['scan'], fallback.scan || 'SCAN COMPLETE'),
+      archiveId: pick(raw, ['archiveId', 'archiveID', 'idCode'], fallback.archiveId || id.toUpperCase()),
+      affiliation: pick(raw, ['affiliation', 'faction'], fallback.affiliation || ''),
+      summary: pick(raw, ['summary', 'intro', 'desc', 'description'], fallback.summary || ''),
+      quote: pick(raw, ['quote', 'line', 'tagline'], fallback.quote || ''),
+      image: pick(raw, ['mainImage', 'introImage', 'image', 'portrait'], getFirstGalleryImage(raw) || fallback.mainImage || fallbackImageFromId(id)),
+      metrics: {
+        threat: Number(metrics.threat ?? fallback.metrics?.threat ?? 5),
+        stability: Number(metrics.stability ?? fallback.metrics?.stability ?? 5),
+        affinity: Number(metrics.affinity ?? fallback.metrics?.affinity ?? 5),
+        control: Number(metrics.control ?? fallback.metrics?.control ?? 5)
+      }
     };
   }
 
-  function selectedId() {
+  function buildCharacterMap() {
+    const map = new Map();
+
+    FALLBACK_CHARACTERS.forEach(raw => {
+      const character = normalizeCharacter(raw);
+      map.set(character.id, character);
+    });
+
+    getCharactersFromData().forEach(raw => {
+      const character = normalizeCharacter(raw);
+      map.set(character.id, { ...(map.get(character.id) || {}), ...character });
+    });
+
+    return map;
+  }
+
+  function getEntryId() {
     const params = new URLSearchParams(window.location.search);
-    const hash = window.location.hash.replace('#', '');
-    return normalizeId(params.get('entry') || params.get('id') || hash || 'hale');
+    const fromQuery = params.get('entry') || params.get('id') || params.get('character');
+    const hash = window.location.hash.replace(/^#/, '');
+    return normalizeId(fromQuery || hash || DEFAULT_ENTRY);
   }
 
-  function selectCharacter() {
-    const requested = selectedId();
-    const raw = findRawCharacter(requested);
-    return normalizeCharacter(raw || SAMPLE_DATA[0]);
-  }
+  function hexToRgb(color) {
+    const value = String(color || '').trim();
+    if (/^rgb/i.test(value)) {
+      const matched = value.match(/\d+(?:\.\d+)?/g);
+      if (matched && matched.length >= 3) return matched.slice(0, 3).map(Number);
+    }
 
-  function hexToRgb(hex) {
-    const clean = String(hex || '').replace('#', '').trim();
+    const clean = value.replace('#', '');
     if (clean.length === 3) {
-      return [
-        parseInt(clean[0] + clean[0], 16),
-        parseInt(clean[1] + clean[1], 16),
-        parseInt(clean[2] + clean[2], 16)
-      ];
+      return clean.split('').map(char => parseInt(char + char, 16));
     }
     if (clean.length >= 6) {
-      return [
-        parseInt(clean.slice(0, 2), 16),
-        parseInt(clean.slice(2, 4), 16),
-        parseInt(clean.slice(4, 6), 16)
-      ];
+      return [parseInt(clean.slice(0, 2), 16), parseInt(clean.slice(2, 4), 16), parseInt(clean.slice(4, 6), 16)];
     }
     return [57, 255, 136];
   }
 
-  function mixHex(hex, amount = 0.58) {
-    const [r, g, b] = hexToRgb(hex);
+  function mixColor(color, amount = 0.55) {
+    const [r, g, b] = hexToRgb(color);
     const mix = value => Math.round(value + (255 - value) * amount);
     return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
   }
 
-  function setText(selector, value) {
-    const node = document.querySelector(selector);
-    if (node) node.textContent = value;
+  function cssUrl(value) {
+    return `url("${String(value).replace(/"/g, '%22')}")`;
   }
 
-  function setStat(selector, percent) {
+  function setText(selector, value) {
+    document.querySelectorAll(selector).forEach(node => {
+      node.textContent = value == null ? '' : String(value);
+    });
+  }
+
+  function setStat(selector, value) {
     const node = document.querySelector(selector);
     if (!node) return;
-    const value = Math.max(1, Math.min(100, Number(percent) || 50));
-    node.style.setProperty('--w', `${value}%`);
+
+    const percent = Math.max(0, Math.min(100, Math.round(Number(value || 0) * 10)));
+    node.style.setProperty('--w', `${percent}%`);
+
     const label = node.querySelector('b');
     if (label) label.textContent = String(value);
   }
 
-  function readStats(character) {
-    const raw = character.raw || {};
-    const tactic = pick(raw, ['stats.tactic', 'stat.tactic', 'tactic', 'ability.tactic'], '');
-    const affinity = pick(raw, ['stats.affinity', 'stat.affinity', 'affinity', 'relationScore'], '');
-    const control = pick(raw, ['stats.control', 'stat.control', 'control', 'ability.control'], '');
+  function applyRootVars(character) {
+    const main = character.accent || '#39ff88';
+    const sub = mixColor(main, 0.58);
+    const accentText = mixColor(main, 0.72);
+    const image = cssUrl(character.image);
+    const targets = [document.documentElement, document.querySelector('.ra-intro')].filter(Boolean);
 
-    if (tactic || affinity || control) {
-      return {
-        tactic: Number(tactic) || 70,
-        affinity: Number(affinity) || 60,
-        control: Number(control) || 65
-      };
-    }
-
-    const source = `${character.id}:${character.role}:${character.species}`;
-    let seed = 0;
-    for (const char of source) seed += char.charCodeAt(0);
-    return {
-      tactic: Math.min(96, 58 + (seed % 35)),
-      affinity: Math.min(88, 42 + ((seed * 7) % 41)),
-      control: Math.min(90, 48 + ((seed * 11) % 37))
-    };
+    targets.forEach(target => {
+      target.style.setProperty('--main', main);
+      target.style.setProperty('--accent', main);
+      target.style.setProperty('--sub', sub);
+      target.style.setProperty('--accent-text', accentText);
+      target.style.setProperty('--intro-image', image);
+    });
   }
 
   function applyIntro(character) {
-    const root = document.documentElement;
+    applyRootVars(character);
+
     const intro = document.querySelector('.ra-intro');
     const board = document.querySelector('.ra-board');
-
-    root.style.setProperty('--main', character.accent);
-    root.style.setProperty('--accent', character.accent);
-    root.style.setProperty('--sub', mixHex(character.accent, 0.58));
-    root.style.setProperty('--accent-text', mixHex(character.accent, 0.72));
-    root.style.setProperty('--intro-image', `url("${character.image}")`);
-
     if (intro) intro.dataset.entry = character.id;
-    if (board) board.dataset.badge = `${character.species} / ${character.role}`;
+    if (board) board.dataset.badge = character.type || `${character.species} / ${character.role}`;
+
+    const nameText = String(character.enName || character.displayName || character.id || '').toUpperCase();
+    const typeText = character.type || `${character.species || 'UNKNOWN'} / ${character.role || 'UNKNOWN'}`;
+    const speciesText = typeText || character.species || 'UNKNOWN';
+    const roleText = character.role || character.affiliation || 'UNKNOWN';
 
     setText('[data-intro-loading]', `LOADING ${character.id.toUpperCase()} ARCHIVE`);
     setText('[data-intro-log-1]', 'VERIFYING IMAGE FILE : 01');
-    setText('[data-intro-log-2]', `SCANNING ${character.species}`);
-    setText('[data-intro-log-3]', `RESTORING DOSSIER : ${character.name}`);
-    setText('[data-intro-log-4]', 'OPENING WORLD ACCESS GATE');
+    setText('[data-intro-log-2]', `SCANNING ${typeText}`);
+    setText('[data-intro-log-3]', `RESTORING DOSSIER : ${nameText}`);
+    setText('[data-intro-log-4]', `OPENING WORLD NODE : ${character.id}`);
 
-    setText('[data-intro-eyebrow]', 'CHARACTER FILE / WORLD ENTRY');
-    setText('[data-intro-name]', character.name);
-    setText('[data-intro-species]', character.species);
-    setText('[data-intro-role]', character.role);
-    setText('[data-intro-status]', character.status);
-    setText('[data-intro-threat]', character.threat);
-    setText('[data-intro-desc]', character.desc);
-    setText('[data-intro-quote]', character.quote);
+    setText('[data-intro-eyebrow]', character.archiveId || 'CHARACTER FILE / WORLD ENTRY');
+    setText('[data-intro-name]', nameText);
+    setText('[data-intro-species]', speciesText);
+    setText('[data-intro-role]', roleText);
+    setText('[data-intro-status]', character.status || character.affirm || 'VERIFIED');
+    setText('[data-intro-threat]', character.danger || 'VERIFIED');
+    setText('[data-intro-desc]', character.summary || 'NO SUMMARY DATA');
+    setText('[data-intro-quote]', character.quote || '');
 
-    const stats = readStats(character);
-    setStat('[data-stat="tactic"]', stats.tactic);
-    setStat('[data-stat="affinity"]', stats.affinity);
-    setStat('[data-stat="control"]', stats.control);
+    setStat('[data-stat="tactic"]', character.metrics.threat);
+    setStat('[data-stat="affinity"]', character.metrics.affinity);
+    setStat('[data-stat="control"]', character.metrics.control);
   }
 
   function saveWorldEntry(character) {
     const payload = {
       id: character.id,
       accent: character.accent,
-      name: character.name,
+      name: character.enName || character.displayName || character.id,
       mode: 'world-relation'
     };
+
     try {
       sessionStorage.setItem('rustark-entry', JSON.stringify(payload));
       sessionStorage.setItem('rustark-world-relation', character.id);
@@ -318,20 +258,29 @@
 
   function goWorld(character) {
     saveWorldEntry(character);
-    window.location.href = character.target;
+    window.location.href = WORLD_TARGET;
   }
 
   function shouldPreviewOnly() {
     const params = new URLSearchParams(window.location.search);
-    return params.get('preview') === '1' || params.get('preview') === 'true';
+    return ['1', 'true', 'yes'].includes(String(params.get('preview')).toLowerCase());
   }
 
   function boot() {
-    const character = selectCharacter();
+    const map = buildCharacterMap();
+    const requested = getEntryId();
+    const character = map.get(requested) || map.get(DEFAULT_ENTRY) || Array.from(map.values())[0];
+
+    if (!map.has(requested)) {
+      console.warn(`[RUST ARK INTRO] entry '${requested}' not found. fallback '${character.id}' used.`);
+    }
+
     applyIntro(character);
 
     const skip = document.querySelector('[data-intro-skip]');
-    if (skip) skip.addEventListener('click', () => goWorld(character), { once: true });
+    if (skip) {
+      skip.addEventListener('click', () => goWorld(character), { once: true });
+    }
 
     if (!shouldPreviewOnly()) {
       window.setTimeout(() => goWorld(character), INTRO_DURATION);
