@@ -47,7 +47,7 @@ const galleryPaths = (id, count = 6, ext = 'png') =>
 
 const WORLD = {
   title: 'RUST ARK',
-  logo: 'assets/images/common/rustark-hero-logo.png',
+  logo: 'assets/images/common/rustark-top-logo_01.png',
   subtitle: '2089 AFTERMATH / RESTRICTED BIO ARCHIVE',
   tagline: '인간은 자연을 지배한 것이 아니라, 전쟁에서 승리했을 뿐이다.',
   summary: '오래전 인간은 동물, 곤충, 식물과의 종족 전쟁에서 승리하고 수백 년간 세계를 통제했다. 그러나 2089년, 버려진 자연의 후손들은 다시 인간의 질서 밖에서 깨어났다. RUST ARK는 그 재전쟁 이후 남겨진 생체 기록 보관소다.',

@@ -78,7 +78,7 @@ function world(){
 
       <div class="hero">
         <p>${esc(WORLD.subtitle)}</p>
-        <h2>${esc(WORLD.tagline)}</h2>
+        <h2>${esc(WORLD.tagline).replace('자연을 지배', '<span class="hero-hl">자연을 지배</span>').replace('전쟁에서 승리', '<span class="hero-hl">전쟁에서 승리</span>')}</h2>
         <span>${esc(WORLD.summary)}</span>
       </div>
 
