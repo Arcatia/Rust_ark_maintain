@@ -78,20 +78,22 @@ function world(){
 
       <div class="hero">
         <p>${esc(WORLD.subtitle)}</p>
-        <h2>${esc(WORLD.tagline).replace('자연을 지배', '<span class="hero-hl">자연을 지배</span>').replace('전쟁에서 승리', '<span class="hero-hl">전쟁에서 승리</span>')}</h2>
-        <span>${esc(WORLD.summary)}</span>
+        <h2>${esc(WORLD.tagline).replace('자연을 지배', '<span class="hero-hl">자연을 지배</span>').replace('전쟁에서 승리', '<span class="hero-hl">전쟁에서 승리</span>').replace('아니라,', '아니라,<br>')}</h2>
+        <span style="display:block; line-height:1.7;">${esc(WORLD.summary).replace('통제했다.', '통제했다.<br>')}</span>
       </div>
 
       <section class="world-section">
         <p class="panel-title">SPECIES INDEX</p>
         <div class="faction-grid">
-          ${WORLD.factions.map(f=>`
-            <a class="faction-card" href="#characters" data-species-jump="${esc(f.name)}">
-              <strong>${esc(f.name)}</strong>
-              <small>${esc(f.label)}</small>
+          ${WORLD.factions.map(f=>{
+            const fColor = { HUMAN: '#5d85ad', PLANT: '#4ea885', BEAST: '#b89759', INSECT: '#8e7cc3' }[f.name] || '#5d85ad';
+            return `
+            <a class="faction-card" href="#characters" data-species-jump="${esc(f.name)}" style="background: color-mix(in srgb, ${fColor} 6%, rgba(5,11,21,.4)); border: none; --card-color: ${fColor}; transition: all 0.3s ease;">
+              <strong style="color: ${fColor};">${esc(f.name)}</strong>
+              <small style="color: color-mix(in srgb, ${fColor} 75%, #8db7ef);">${esc(f.label)}</small>
               <span>${esc(f.text)}</span>
             </a>
-          `).join('')}
+          `;}).join('')}
         </div>
       </section>
 
@@ -290,7 +292,7 @@ function renderCircularDiagram(list, subFilter='ALL'){
 
     return `<g class="rel-sector" data-faction="${f.id}">
       <path d="${pathD}" fill="${f.color}" fill-opacity="0.09" stroke="${f.color}" stroke-width="1.2" stroke-opacity="0.3" style="transition: all 0.35s ease;" />
-      <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${f.color}" font-size="9" font-weight="bold" letter-spacing="1.5" opacity="0.65" style="pointer-events:none">${f.name}</text>
+      <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${f.color}" font-size="14" font-weight="bold" letter-spacing="1.5" opacity="0.75" style="pointer-events:none">${f.name}</text>
     </g>`;
   }).join('');
 
@@ -348,7 +350,7 @@ function renderCircularDiagram(list, subFilter='ALL'){
   }).join('');
 
   const nodesSvg = charNodes.map(n => {
-    const labelRadius = radius + 52;
+    const labelRadius = radius + 48;
     const labelX = centerX + labelRadius * Math.cos(n.angle);
     const labelY = centerY + labelRadius * Math.sin(n.angle);
     const textAnchor = Math.abs(n.x - centerX) < 20 ? 'middle' : (n.x > centerX ? 'start' : 'end');
