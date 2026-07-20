@@ -215,11 +215,47 @@ function lightboxMedia(item){
   document.body.appendChild(b);
 }
 
-function renderCircularDiagram(list){
-  const total = CHARACTERS.length;
+function describeAnnularSector(cx, cy, innerR, outerR, startAngle, endAngle) {
+  let diff = endAngle - startAngle;
+  if (diff < 0) diff += 2 * Math.PI;
+
+  const x1 = cx + outerR * Math.cos(startAngle);
+  const y1 = cy + outerR * Math.sin(startAngle);
+  const x2 = cx + outerR * Math.cos(endAngle);
+  const y2 = cy + outerR * Math.sin(endAngle);
+
+  const x3 = cx + innerR * Math.cos(endAngle);
+  const y3 = cy + innerR * Math.sin(endAngle);
+  const x4 = cx + innerR * Math.cos(startAngle);
+  const y4 = cy + innerR * Math.sin(startAngle);
+
+  const largeArcFlag = diff > Math.PI ? 1 : 0;
+
+  return `M ${x1.toFixed(1)} ${y1.toFixed(1)} ` +
+         `A ${outerR} ${outerR} 0 ${largeArcFlag} 1 ${x2.toFixed(1)} ${y2.toFixed(1)} ` +
+         `L ${x3.toFixed(1)} ${y3.toFixed(1)} ` +
+         `A ${innerR} ${innerR} 0 ${largeArcFlag} 0 ${x4.toFixed(1)} ${y4.toFixed(1)} Z`;
+}
+
+function renderCircularDiagram(list, subFilter='ALL'){
+  const circularOrder = [
+    'seol-gongchan', // 설공찬 (상단 12시)
+    'hwaryeon',      // 화련
+    'hale',          // 헤일
+    'pavel',         // 파벨
+    'kael',          // 카엘
+    'vulcan',        // 발칸
+    'bael',          // 바엘
+    'ordo',          // 오르도
+    'harmel',        // 하르멜
+    'zephyr',        // 제피르
+    'arens'          // 아렌스
+  ];
+  const total = circularOrder.length;
   const centerX = 400, centerY = 400, radius = 260;
   
-  const charNodes = CHARACTERS.map((c, i) => {
+  const charNodes = circularOrder.map((id, i) => {
+    const c = char(id);
     const angle = (i / total) * 2 * Math.PI - Math.PI / 2;
     const x = centerX + radius * Math.cos(angle);
     const y = centerY + radius * Math.sin(angle);
@@ -228,56 +264,139 @@ function renderCircularDiagram(list){
 
   const nodeMap = Object.fromEntries(charNodes.map(n => [n.id, n]));
 
+  // 4 Faction Sectors
+  const factions = [
+    { id: 'HUMAN', name: 'HUMAN (인간)', color: '#5d85ad', indices: [0] },
+    { id: 'PLANT', name: 'PLANT (식목인)', color: '#4ea885', indices: [1, 2, 3] },
+    { id: 'BEAST', name: 'BEAST (수인)', color: '#b89759', indices: [4, 5, 6] },
+    { id: 'INSECT', name: 'INSECT (충인)', color: '#8274b3', indices: [7, 8, 9, 10] }
+  ];
+
+  const step = (2 * Math.PI) / total;
+  const innerR = 195, outerR = 325;
+
+  const sectorsSvg = factions.map(f => {
+    const minIdx = Math.min(...f.indices);
+    const maxIdx = Math.max(...f.indices);
+
+    const startAngle = (minIdx / total) * 2 * Math.PI - Math.PI / 2 - step / 2;
+    const endAngle = (maxIdx / total) * 2 * Math.PI - Math.PI / 2 + step / 2;
+
+    const pathD = describeAnnularSector(centerX, centerY, innerR, outerR, startAngle, endAngle);
+
+    const midAngle = (startAngle + endAngle) / 2;
+    const lx = centerX + 165 * Math.cos(midAngle);
+    const ly = centerY + 165 * Math.sin(midAngle);
+
+    return `<g class="rel-sector" data-faction="${f.id}">
+      <path d="${pathD}" fill="${f.color}" fill-opacity="0.09" stroke="${f.color}" stroke-width="1.2" stroke-opacity="0.3" style="transition: all 0.35s ease;" />
+      <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="central" fill="${f.color}" font-size="9" font-weight="bold" letter-spacing="1.5" opacity="0.65" style="pointer-events:none">${f.name}</text>
+    </g>`;
+  }).join('');
+
   const typeColors = {
-    ALLY: '#9bf2cf',
-    WATCH: '#ffd18a',
-    HOSTILE: '#ff5f99',
-    TRADE: '#b89cff',
-    PROTECT: '#8db7ef',
-    UNKNOWN: '#7f9ab6'
+    HOSTILE: '#b55374',
+    ALLY: '#4ea885',
+    WATCH: '#b89759',
+    PROTECT: '#5d85ad'
   };
 
+  const selectedConnectedIds = new Set();
+  if (subFilter !== 'ALL') {
+    selectedConnectedIds.add(subFilter);
+    RELATIONS.forEach(r => {
+      if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
+      if (r.from === subFilter) selectedConnectedIds.add(r.to);
+      if (r.to === subFilter) selectedConnectedIds.add(r.from);
+    });
+  }
+
   const linesSvg = list.map((r, idx) => {
+    if (r.type === 'TRADE' || r.type === 'UNKNOWN') return '';
     const f = nodeMap[r.from];
     const t = nodeMap[r.to];
     if (!f || !t) return '';
     const color = typeColors[r.type] || '#ff85b4';
+
+    // Stop lines at circle outer boundary (radius 30px)
+    const dx = t.x - f.x;
+    const dy = t.y - f.y;
+    const dist = Math.hypot(dx, dy) || 1;
+    const rOffset = 30;
+
+    const fx = f.x + (dx / dist) * rOffset;
+    const fy = f.y + (dy / dist) * rOffset;
+    const tx = t.x - (dx / dist) * rOffset;
+    const ty = t.y - (dy / dist) * rOffset;
+
+    let angleDiff = Math.abs(f.angle - t.angle);
+    if (angleDiff > Math.PI) angleDiff = 2 * Math.PI - angleDiff;
+
+    const pullRatio = 0.55 * Math.pow(Math.sin(angleDiff / 2), 1.8);
     const mx = (f.x + t.x) / 2;
     const my = (f.y + t.y) / 2;
-    const cx = mx * 0.3 + centerX * 0.7;
-    const cy = my * 0.3 + centerY * 0.7;
+    const cx = mx * (1 - pullRatio) + centerX * pullRatio;
+    const cy = my * (1 - pullRatio) + centerY * pullRatio;
+
+    const isConnectedToSub = (subFilter !== 'ALL') && (r.from === subFilter || r.to === subFilter);
+    const initialOpacity = isConnectedToSub ? '0.85' : '0';
+
     return `<path class="rel-link-path" data-from="${f.id}" data-to="${t.id}" data-rel-index="${idx}"
-      d="M ${f.x.toFixed(1)} ${f.y.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${t.x.toFixed(1)} ${t.y.toFixed(1)}"
-      stroke="${color}" stroke-width="2.5" fill="none" opacity="0.6"
-      style="filter: drop-shadow(0 0 6px ${color}); transition: all 0.3s;" />`;
+      d="M ${fx.toFixed(1)} ${fy.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)}"
+      stroke="${color}" stroke-width="${isConnectedToSub ? '1.8' : '1.2'}" fill="none" opacity="${initialOpacity}"
+      style="transition: opacity 0.35s ease, stroke-width 0.25s ease;" />`;
   }).join('');
 
   const nodesSvg = charNodes.map(n => {
-    const labelRadius = radius + 48;
+    const labelRadius = radius + 52;
     const labelX = centerX + labelRadius * Math.cos(n.angle);
     const labelY = centerY + labelRadius * Math.sin(n.angle);
     const textAnchor = Math.abs(n.x - centerX) < 20 ? 'middle' : (n.x > centerX ? 'start' : 'end');
+    
+    const isSelected = subFilter === n.id;
+    const isConnected = selectedConnectedIds.has(n.id);
+    
+    let opacityVal = '1';
+    if (subFilter !== 'ALL') {
+      if (isSelected) opacityVal = '1';
+      else if (isConnected) opacityVal = '0.85';
+      else opacityVal = '0.2';
+    }
 
-    return `<g class="rel-node" data-node-id="${n.id}" style="cursor:pointer">
-      <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="28" fill="#07101b" stroke="${n.accent}" stroke-width="3" style="filter: drop-shadow(0 0 12px ${n.accent}); transition: all 0.3s" />
+    const scaleVal = isSelected ? '1.32' : '1';
+    const radiusR = isSelected ? '34' : '28';
+    const strokeW = isSelected ? '4.5' : '3';
+
+    return `<g class="rel-node ${isSelected ? 'active-node' : ''}" data-node-id="${n.id}" style="cursor:pointer; opacity: ${opacityVal}; transform-origin: ${n.x.toFixed(1)}px ${n.y.toFixed(1)}px; transform: scale(${scaleVal}); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;">
+      <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${radiusR}" fill="#07101b" stroke="${n.accent}" stroke-width="${strokeW}" style="filter: drop-shadow(0 0 ${isSelected ? '12px' : '5px'} ${n.accent}); transition: all 0.3s" />
       <clipPath id="clip-${n.id}">
-        <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="25" />
+        <circle cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${isSelected ? '31' : '25'}" />
       </clipPath>
-      <image href="${esc(n.mainImage)}" x="${(n.x - 25).toFixed(1)}" y="${(n.y - 25).toFixed(1)}" width="50" height="50" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-${n.id})" />
-      <text x="${labelX.toFixed(1)}" y="${(labelY + 4).toFixed(1)}" text-anchor="${textAnchor}" fill="${n.accent}" font-size="12" font-weight="bold" letter-spacing="1.5">${esc(n.krName || n.displayName)}</text>
+      <image href="${esc(n.mainImage)}" x="${(n.x - (isSelected ? 31 : 25)).toFixed(1)}" y="${(n.y - (isSelected ? 31 : 25)).toFixed(1)}" width="${isSelected ? 62 : 50}" height="${isSelected ? 62 : 50}" preserveAspectRatio="xMidYMid slice" clip-path="url(#clip-${n.id})" />
+      <text x="${labelX.toFixed(1)}" y="${(labelY + 4).toFixed(1)}" text-anchor="${textAnchor}" fill="${n.accent}" font-size="${isSelected ? '14' : '12'}" font-weight="${isSelected ? '900' : 'bold'}" letter-spacing="1.5">${esc(n.krName || n.displayName)}</text>
     </g>`;
   }).join('');
 
-  return `<div class="circular-container" style="position:relative; width:100%; max-width:820px; margin:20px auto 0">
-    <svg viewBox="0 0 800 800" style="width:100%; height:auto; overflow:visible">
-      <circle cx="400" cy="400" r="260" fill="none" stroke="rgba(126,159,196,0.18)" stroke-width="1" stroke-dasharray="6 6" />
-      <circle cx="400" cy="400" r="140" fill="none" stroke="rgba(126,159,196,0.08)" stroke-width="1" />
-      <circle cx="400" cy="400" r="5" fill="var(--accent)" opacity="0.6" />
-      <g class="rel-lines-group">${linesSvg}</g>
-      <g class="rel-nodes-group">${nodesSvg}</g>
-    </svg>
-    <div id="relHoverInfo" class="rel-hover-card" style="margin-top:20px; min-height:86px; border:1px solid var(--soft); background:rgba(5,11,21,0.85); padding:18px; text-align:center; transition:all 0.3s;">
-      <span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 노드를 마우스로 가리키면 원형 경로와 상호작용 정보가 하이라이트됩니다.</span>
+  return `<div class="circular-wrapper" style="position:relative; width:100%; margin-top:20px;">
+    <div class="rel-map-legend" style="position:absolute; top:0; left:0; z-index:10; background:rgba(5,11,21,0.85); border:1px solid var(--soft); backdrop-filter:blur(8px); padding:12px 14px; border-radius:4px; font-size:11px; display:flex; flex-direction:column; gap:7px; pointer-events:none; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
+      <span style="color:var(--blue); font-size:10px; letter-spacing:0.2em; font-weight:bold; margin-bottom:2px;">COLOR LEGEND</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#b55374; display:inline-block; flex-shrink:0;"></i> HOSTILE (적대 / 제거)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#4ea885; display:inline-block; flex-shrink:0;"></i> ALLY (협력 / 신뢰 / 우호)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#b89759; display:inline-block; flex-shrink:0;"></i> WATCH (경계 / 관찰 / 흥미)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#5d85ad; display:inline-block; flex-shrink:0;"></i> PROTECT (보호 / 은인)</span>
+    </div>
+
+    <div class="circular-container" style="position:relative; width:100%; max-width:840px; margin:0 auto">
+      <svg viewBox="0 0 800 800" style="width:100%; height:auto; overflow:visible">
+        <circle cx="400" cy="400" r="260" fill="none" stroke="rgba(126,159,196,0.15)" stroke-width="1" stroke-dasharray="6 6" />
+        <circle cx="400" cy="400" r="140" fill="none" stroke="rgba(126,159,196,0.06)" stroke-width="1" />
+        <g class="rel-sectors-group">${sectorsSvg}</g>
+        <g class="rel-lines-group">${linesSvg}</g>
+        <g class="rel-nodes-group">${nodesSvg}</g>
+      </svg>
+      <div id="relHoverInfo" class="rel-hover-card" style="margin-top:20px; height:240px; border:1px solid var(--soft); background:rgba(5,11,21,0.85); padding:16px; text-align:center; transition:all 0.3s; border-radius:4px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+        <span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 캐릭터 얼굴 노드를 마우스로 가리키거나 클릭하면 연결된 관계 선과 상세 내역이 나타납니다.</span>
+      </div>
     </div>
   </div>`;
 }
@@ -297,10 +416,10 @@ function relationsPage(animateKey='relations'){
     list = list.filter(r => r.type === typeFilter);
   }
 
-  const types = ['ALL', 'ALLY', 'WATCH', 'HOSTILE', 'TRADE', 'PROTECT', 'UNKNOWN'];
+  const types = ['ALL', 'ALLY', 'WATCH', 'HOSTILE', 'PROTECT'];
 
   const contentMarkup = viewMode === 'CIRCULAR'
-    ? renderCircularDiagram(list)
+    ? renderCircularDiagram(RELATIONS, subFilter)
     : `<div class="relation-list" style="margin-top:24px">
         ${list.length ? list.map(r => {
           const f = char(r.from), t = char(r.to);
@@ -366,12 +485,77 @@ function relationsPage(animateKey='relations'){
   });
 
   if (viewMode === 'CIRCULAR') {
-    bindCircularEvents(list);
+    bindCircularEvents(RELATIONS);
   }
 }
 
-function bindCircularEvents(list) {
+function bindCircularEvents(allRelations) {
   const hoverCard = $('#relHoverInfo');
+  
+  const buildHoverHtml = (c, rels, titleSuffix) => {
+    return `<div style="width:100%; height:100%; display:flex; flex-direction:column; text-align:left;">
+      <strong style="color:${c.accent}; font-size:14px; display:block; margin-bottom:8px; flex-shrink:0;">${esc(c.displayName)} (${esc(c.type)}) ${titleSuffix} (${rels.length}건)</strong>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:6px; overflow-y:auto; flex:1; padding-right:4px;">
+        ${rels.map(r => {
+          const partnerId = r.from === c.id ? r.to : r.from;
+          const partner = char(partnerId);
+          const isOutgoing = r.from === c.id;
+          return `<div style="border:1px solid var(--soft); background:rgba(3,8,16,0.65); padding:6px 10px; border-radius:4px; font-size:12px; line-height:1.4;">
+            <span style="color:${c.accent}; font-weight:bold">${esc(c.krName || c.displayName)}</span> 
+            <span style="color:var(--accent); margin:0 4px">${isOutgoing ? '➔' : '⬅'}</span> 
+            <span style="color:${partner.accent}; font-weight:bold">${esc(partner.krName || partner.displayName)}</span> 
+            <b style="color:var(--text); margin-left:6px;">[${esc(r.type)} / ${esc(r.label)}]</b>
+            <p style="margin:2px 0 0; color:var(--muted); font-size:11px; word-break:keep-all;">${esc(r.note)}</p>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  };
+
+  const activeSub = state.relationSubjectFilter || 'ALL';
+  if (activeSub !== 'ALL') {
+    const subConnectedIds = new Set([activeSub]);
+    allRelations.forEach(r => {
+      if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
+      if (r.from === activeSub) subConnectedIds.add(r.to);
+      if (r.to === activeSub) subConnectedIds.add(r.from);
+    });
+
+    $$('.rel-link-path').forEach(path => {
+      const isConnectedToSub = path.dataset.from === activeSub || path.dataset.to === activeSub;
+      path.style.opacity = isConnectedToSub ? '0.85' : '0';
+      path.style.strokeWidth = isConnectedToSub ? '1.8' : '1.2';
+    });
+
+    $$('.rel-node').forEach(n => {
+      const nodeId = n.dataset.nodeId;
+      if (nodeId === activeSub) {
+        n.style.opacity = '1';
+        n.style.transform = 'scale(1.32)';
+      } else if (subConnectedIds.has(nodeId)) {
+        n.style.opacity = '0.85';
+        n.style.transform = 'scale(1)';
+      } else {
+        n.style.opacity = '0.2';
+        n.style.transform = 'scale(1)';
+      }
+    });
+
+    const c = char(activeSub);
+    const rels = allRelations.filter(r => (r.from === activeSub || r.to === activeSub) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
+    if (rels.length) {
+      hoverCard.innerHTML = buildHoverHtml(c, rels, '선택 관계망');
+    }
+  } else {
+    $$('.rel-link-path').forEach(path => {
+      path.style.opacity = '0';
+    });
+    $$('.rel-node').forEach(n => {
+      n.style.opacity = '1';
+      n.style.transform = 'scale(1)';
+    });
+  }
+
   $$('.rel-node').forEach(node => {
     const id = node.dataset.nodeId;
     const c = char(id);
@@ -379,45 +563,92 @@ function bindCircularEvents(list) {
     node.addEventListener('mouseenter', () => {
       $$('.rel-link-path').forEach(path => {
         const isConnected = path.dataset.from === id || path.dataset.to === id;
-        path.style.opacity = isConnected ? '1' : '0.08';
-        path.style.strokeWidth = isConnected ? '4' : '1.5';
+        path.style.opacity = isConnected ? '0.9' : '0';
+        path.style.strokeWidth = isConnected ? '1.8' : '1.2';
       });
-      $$('.rel-node').forEach(n => {
-        n.style.opacity = (n.dataset.nodeId === id) ? '1' : '0.4';
-      });
-      node.style.opacity = '1';
 
-      const rels = list.filter(r => r.from === id || r.to === id);
+      const connectedNodeIds = new Set([id]);
+      allRelations.forEach(r => {
+        if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
+        if (r.from === id) connectedNodeIds.add(r.to);
+        if (r.to === id) connectedNodeIds.add(r.from);
+      });
+
+      $$('.rel-node').forEach(n => {
+        const nodeId = n.dataset.nodeId;
+        if (nodeId === id) {
+          n.style.opacity = '1';
+          n.style.transform = 'scale(1.32)';
+        } else if (connectedNodeIds.has(nodeId)) {
+          n.style.opacity = '0.85';
+          n.style.transform = 'scale(1)';
+        } else {
+          n.style.opacity = '0.2';
+          n.style.transform = 'scale(1)';
+        }
+      });
+
+      const rels = allRelations.filter(r => (r.from === id || r.to === id) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
       if (rels.length) {
-        hoverCard.innerHTML = `<strong style="color:${c.accent}; font-size:15px; display:block; margin-bottom:8px;">${esc(c.displayName)} (${esc(c.type)}) 관계망 (${rels.length}건)</strong>` +
-          rels.map(r => {
-            const partnerId = r.from === id ? r.to : r.from;
-            const partner = char(partnerId);
-            const isOutgoing = r.from === id;
-            return `<div style="margin-top:6px; font-size:12px; line-height:1.5;">
-              <span style="color:${c.accent}">${esc(c.krName || c.displayName)}</span> ${isOutgoing ? '➔' : '⬅'} <span style="color:${partner.accent}">${esc(partner.krName || partner.displayName)}</span> 
-              <b style="color:var(--text); margin:0 6px;">[${esc(r.type)} / ${esc(r.label)}]</b>
-              <span style="color:var(--muted)">- ${esc(r.note)}</span>
-            </div>`;
-          }).join('');
-      } else {
-        hoverCard.innerHTML = `<strong style="color:${c.accent}; font-size:14px; display:block;">${esc(c.displayName)}</strong><span style="color:var(--muted); font-size:12px;">선택한 필터 조건에 연결된 관계가 없습니다.</span>`;
+        hoverCard.innerHTML = buildHoverHtml(c, rels, '관계망');
       }
     });
 
     node.addEventListener('mouseleave', () => {
+      const currentSub = state.relationSubjectFilter || 'ALL';
+      const subConnectedIds = new Set();
+      if (currentSub !== 'ALL') {
+        subConnectedIds.add(currentSub);
+        allRelations.forEach(r => {
+          if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
+          if (r.from === currentSub) subConnectedIds.add(r.to);
+          if (r.to === currentSub) subConnectedIds.add(r.from);
+        });
+      }
+
       $$('.rel-link-path').forEach(path => {
-        path.style.opacity = '0.6';
-        path.style.strokeWidth = '2.5';
+        const isConnectedToSub = (currentSub !== 'ALL') && (path.dataset.from === currentSub || path.dataset.to === currentSub);
+        path.style.opacity = isConnectedToSub ? '0.85' : '0';
+        path.style.strokeWidth = isConnectedToSub ? '1.8' : '1.2';
       });
+
       $$('.rel-node').forEach(n => {
-        n.style.opacity = '1';
+        const nodeId = n.dataset.nodeId;
+        if (currentSub !== 'ALL') {
+          if (nodeId === currentSub) {
+            n.style.opacity = '1';
+            n.style.transform = 'scale(1.32)';
+          } else if (subConnectedIds.has(nodeId)) {
+            n.style.opacity = '0.85';
+            n.style.transform = 'scale(1)';
+          } else {
+            n.style.opacity = '0.2';
+            n.style.transform = 'scale(1)';
+          }
+        } else {
+          n.style.opacity = '1';
+          n.style.transform = 'scale(1)';
+        }
       });
-      hoverCard.innerHTML = `<span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 노드를 마우스로 가리키면 원형 경로와 상호작용 정보가 하이라이트됩니다.</span>`;
+
+      if (currentSub !== 'ALL') {
+        const subChar = char(currentSub);
+        const rels = allRelations.filter(r => (r.from === currentSub || r.to === currentSub) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
+        if (rels.length) {
+          hoverCard.innerHTML = buildHoverHtml(subChar, rels, '선택 관계망');
+        }
+      } else {
+        hoverCard.innerHTML = `<span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 캐릭터 얼굴 노드를 마우스로 가리키거나 클릭하면 연결된 관계 선과 상세 내역이 나타납니다.</span>`;
+      }
     });
 
     node.addEventListener('click', () => {
-      location.hash = `#character/${id}`;
+      if (state.relationSubjectFilter === id) {
+        state.relationSubjectFilter = 'ALL';
+      } else {
+        state.relationSubjectFilter = id;
+      }
+      relationsPage('relations');
     });
   });
 }

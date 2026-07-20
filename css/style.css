@@ -815,6 +815,16 @@ body {
   box-sizing: border-box !important;
 }
 
+/* Circular diagram legend overlay responsive style */
+@media (max-width: 1024px) {
+  .rel-map-legend {
+    position: static !important;
+    margin-bottom: 16px;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+}
+
 .view.route-gallery .gallery-card {
   animation: cardGridRestore .62s cubic-bezier(.2,.8,.2,1) both;
 }
