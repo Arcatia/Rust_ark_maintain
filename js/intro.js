@@ -19,13 +19,6 @@
     'bael': '#0f8f4f'
   };
 
-  const ALIASES = {
-    seol: 'seol-gongchan',
-    gongchan: 'seol-gongchan',
-    hwaryun: 'hwaryeon',
-    hwar: 'hwaryeon'
-  };
-
   const SAMPLE_DATA = [
     {
       id: 'hale',
@@ -66,7 +59,7 @@
     try { if (typeof DATA !== 'undefined') candidates.push(DATA, DATA && DATA.characters, DATA && DATA.CHARACTERS); } catch (error) {}
     try { if (typeof RUSTARK_DATA !== 'undefined') candidates.push(RUSTARK_DATA, RUSTARK_DATA && RUSTARK_DATA.characters); } catch (error) {}
     try { if (typeof APP_DATA !== 'undefined') candidates.push(APP_DATA, APP_DATA && APP_DATA.characters); } catch (error) {}
-
+     console.warn(CHARACTERS);
     return candidates;
   }
 
