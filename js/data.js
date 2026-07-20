@@ -182,8 +182,9 @@ const CHARACTERS = [
     origin: 'HIGH WIND ROUTE', 
     recordDate: '2089.09.19', 
     archiveId: 'RA-I-04-ZEPHYR', 
-    mainImage: 'assets/images/zephyr/zephyr_01.png', 
-    gallery: [imageItem('assets/images/zephyr/zephyr_01.png', 'IMAGE 01'), imageItem('assets/images/zephyr/zephyr_02.jpg', 'IMAGE 02'), imageItem('assets/images/zephyr/zephyr_03.png', 'IMAGE 03')], 
+    mainImage: 'assets/images/zephyr/zephyr_01.jpg', 
+    gallery: galleryPaths('zephyr', 10, 'jpg'), 
+    //gallery: [imageItem('assets/images/zephyr/zephyr_01.png', 'IMAGE 01'), imageItem('assets/images/zephyr/zephyr_02.jpg', 'IMAGE 02'), imageItem('assets/images/zephyr/zephyr_03.png', 'IMAGE 03')], 
     quote: '"하늘은 거짓말을 하지 않아. 기록도 마찬가지고."', 
     metrics: { threat: 8.5, stability: 9.5, affinity: 6.5, control: 9 }, 
     profileBadges: ['AFFIRM : FIELD VERIFIED', 'CLEARANCE : B-6 / RECON NODE', 'SCAN : AERIAL COMPLETE'], 
@@ -214,7 +215,7 @@ const CHARACTERS = [
     archiveId: 'RA-P-05-HALE', 
     mainImage: 'assets/images/hale/hale_01.png', 
     gallery: [
-      ...galleryPaths('hale', 2, 'png'),
+      ...galleryPaths('hale', 11, 'png'),
       videoItem('assets/videos/hale/hale_01.mp4', 'assets/videos/hale/hale_01_poster.png', 'MOTION ARCHIVE 01')
     ], quote: '"좋은데요. 실패할 부분이 너무 잘 보여서."', 
     metrics: { threat: 8, stability: 6, affinity: 4, control: 10 }, 
