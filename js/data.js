@@ -85,8 +85,12 @@ const CHARACTERS = [
     origin: 'HUMAN CONTROL ZONE',
     recordDate: '2089.09.21',
     archiveId: 'RA-H-01-GONGCHAN',
-    mainImage: 'assets/images/seol_gongchan/seol_gongchan_01.jpg',
-    gallery: galleryPaths('seol_gongchan', 3, 'jpg'),
+    mainImage: 'assets/images/seol_gongchan/seolgongchan_01.png',
+    gallery: [
+      imageItem('assets/images/seol_gongchan/seolgongchan_01.png', 'IMAGE 01'),
+      imageItem('assets/images/seol_gongchan/seolgongchan_02.png', 'IMAGE 02'),
+      imageItem('assets/images/seol_gongchan/seolgongchan_03.png', 'IMAGE 03')
+    ],
     quote: '"이건 처벌이 아니라 방역이다."',
     metrics: { threat: 8, stability: 9, affinity: 2, control: 10 },
     profileBadges: ['AFFIRM : COMMAND VERIFIED', 'CLEARANCE : A-7 / HUMAN NODE', 'SCAN : TACTICAL COMPLETE'],
