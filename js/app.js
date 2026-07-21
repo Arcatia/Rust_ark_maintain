@@ -156,7 +156,7 @@ function statValue(c,key){
   if(c.metrics && typeof c.metrics[metricKey] === 'number') return c.metrics[metricKey];
   const threat={S:9,'A+':8,A:7,'B+':5,B:4,C:3}[c.danger]||5;
   if(key==='THREAT')return threat;
-  if(key==='STABILITY'){if(c.species==='HUMAN')return 8;if(c.role.includes('ASSASSIN')||c.role.includes('LOCUST'))return 4;if(c.role.includes('HYDRANGEA'))return 7;if(c.role.includes('QUEEN'))return 6;return 5;}
+  if(key==='STABILITY'){if(c.species==='HUMAN')return 8;if(c.role.includes('BUTTERFLY')||c.role.includes('ASSASSIN')||c.role.includes('LOCUST'))return 4;if(c.role.includes('HYDRANGEA'))return 7;if(c.role.includes('QUEEN'))return 6;return 5;}
   if(key==='AFFINITY'){if(c.id==='hale')return 4;if(c.species==='PLANT')return 6;if(c.species==='BEAST')return 5;if(c.species==='HUMAN')return 2;return 3;}
   if(key==='CONTROL'){if(c.danger==='S')return 3;if(c.danger==='A+'||c.danger==='A')return 5;return 7;}
   return 5;
@@ -313,8 +313,18 @@ function renderCircularDiagram(list, subFilter='ALL'){
     });
   }
 
-  const linesSvg = list.map((r, idx) => {
-    if (r.type === 'TRADE' || r.type === 'UNKNOWN') return '';
+  const pairMap = new Map();
+  list.forEach((r, idx) => {
+    if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
+    const pairKey = [r.from, r.to].sort().join('--');
+    if (!pairMap.has(pairKey)) {
+      pairMap.set(pairKey, { ...r, originalIdx: idx });
+    } else if (subFilter !== 'ALL' && r.from === subFilter) {
+      pairMap.set(pairKey, { ...r, originalIdx: idx });
+    }
+  });
+
+  const linesSvg = Array.from(pairMap.values()).map((r, idx) => {
     const f = nodeMap[r.from];
     const t = nodeMap[r.to];
     if (!f || !t) return '';
@@ -342,10 +352,12 @@ function renderCircularDiagram(list, subFilter='ALL'){
 
     const isConnectedToSub = (subFilter !== 'ALL') && (r.from === subFilter || r.to === subFilter);
     const initialOpacity = isConnectedToSub ? '0.85' : '0';
+    const isDashed = r.type === 'HOSTILE' || r.type === 'WATCH';
+    const dashAttr = isDashed ? ' stroke-dasharray="5 4"' : '';
 
-    return `<path class="rel-link-path" data-from="${f.id}" data-to="${t.id}" data-rel-index="${idx}"
+    return `<path class="rel-link-path" data-from="${f.id}" data-to="${t.id}" data-rel-type="${r.type}" data-rel-index="${idx}"
       d="M ${fx.toFixed(1)} ${fy.toFixed(1)} Q ${cx.toFixed(1)} ${cy.toFixed(1)} ${tx.toFixed(1)} ${ty.toFixed(1)}"
-      stroke="${color}" stroke-width="${isConnectedToSub ? '1.8' : '1.2'}" fill="none" opacity="${initialOpacity}"
+      stroke="${color}" stroke-width="${isConnectedToSub ? '1.8' : '1.2'}"${dashAttr} fill="none" opacity="${initialOpacity}"
       style="transition: opacity 0.35s ease, stroke-width 0.25s ease;" />`;
   }).join('');
 
@@ -382,10 +394,10 @@ function renderCircularDiagram(list, subFilter='ALL'){
   return `<div class="circular-wrapper" style="position:relative; width:100%; margin-top:20px;">
     <div class="rel-map-legend" style="position:absolute; top:0; left:0; z-index:10; background:rgba(5,11,21,0.85); border:1px solid var(--soft); backdrop-filter:blur(8px); padding:12px 14px; border-radius:4px; font-size:11px; display:flex; flex-direction:column; gap:7px; pointer-events:none; box-shadow:0 8px 24px rgba(0,0,0,0.5);">
       <span style="color:var(--blue); font-size:10px; letter-spacing:0.2em; font-weight:bold; margin-bottom:2px;">COLOR LEGEND</span>
-      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#b55374; display:inline-block; flex-shrink:0;"></i> HOSTILE (적대 / 제거)</span>
-      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#4ea885; display:inline-block; flex-shrink:0;"></i> ALLY (협력 / 신뢰 / 우호)</span>
-      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#b89759; display:inline-block; flex-shrink:0;"></i> WATCH (경계 / 관찰 / 흥미)</span>
-      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:8px; height:8px; border-radius:50%; background:#5d85ad; display:inline-block; flex-shrink:0;"></i> PROTECT (보호 / 은인)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:16px; height:0; border-top:2px dashed #b55374; display:inline-block; flex-shrink:0;"></i> HOSTILE (적대 / 제거)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:16px; height:0; border-top:2px solid #4ea885; display:inline-block; flex-shrink:0;"></i> ALLY (협력 / 신뢰 / 우호)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:16px; height:0; border-top:2px dashed #b89759; display:inline-block; flex-shrink:0;"></i> WATCH (경계 / 관찰 / 흥미)</span>
+      <span style="display:flex; align-items:center; gap:8px; color:var(--text);"><i style="width:16px; height:0; border-top:2px solid #5d85ad; display:inline-block; flex-shrink:0;"></i> PROTECT (보호 / 은인)</span>
     </div>
 
     <div class="circular-container" style="position:relative; width:100%; max-width:840px; margin:0 auto">
@@ -544,7 +556,7 @@ function bindCircularEvents(allRelations) {
     });
 
     const c = char(activeSub);
-    const rels = allRelations.filter(r => (r.from === activeSub || r.to === activeSub) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
+    const rels = allRelations.filter(r => r.from === activeSub && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
     if (rels.length) {
       hoverCard.innerHTML = buildHoverHtml(c, rels, '선택 관계망');
     }
@@ -563,37 +575,9 @@ function bindCircularEvents(allRelations) {
     const c = char(id);
 
     node.addEventListener('mouseenter', () => {
-      $$('.rel-link-path').forEach(path => {
-        const isConnected = path.dataset.from === id || path.dataset.to === id;
-        path.style.opacity = isConnected ? '0.9' : '0';
-        path.style.strokeWidth = isConnected ? '1.8' : '1.2';
-      });
-
-      const connectedNodeIds = new Set([id]);
-      allRelations.forEach(r => {
-        if (r.type === 'TRADE' || r.type === 'UNKNOWN') return;
-        if (r.from === id) connectedNodeIds.add(r.to);
-        if (r.to === id) connectedNodeIds.add(r.from);
-      });
-
-      $$('.rel-node').forEach(n => {
-        const nodeId = n.dataset.nodeId;
-        if (nodeId === id) {
-          n.style.opacity = '1';
-          n.style.transform = 'scale(1.32)';
-        } else if (connectedNodeIds.has(nodeId)) {
-          n.style.opacity = '0.85';
-          n.style.transform = 'scale(1)';
-        } else {
-          n.style.opacity = '0.2';
-          n.style.transform = 'scale(1)';
-        }
-      });
-
-      const rels = allRelations.filter(r => (r.from === id || r.to === id) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
-      if (rels.length) {
-        hoverCard.innerHTML = buildHoverHtml(c, rels, '관계망');
-      }
+      // Do NOT modify relation lines on mouse hover (lines are shown ONLY when selected)
+      node.style.transform = 'scale(1.32)';
+      node.style.opacity = '1';
     });
 
     node.addEventListener('mouseleave', () => {
@@ -607,12 +591,6 @@ function bindCircularEvents(allRelations) {
           if (r.to === currentSub) subConnectedIds.add(r.from);
         });
       }
-
-      $$('.rel-link-path').forEach(path => {
-        const isConnectedToSub = (currentSub !== 'ALL') && (path.dataset.from === currentSub || path.dataset.to === currentSub);
-        path.style.opacity = isConnectedToSub ? '0.85' : '0';
-        path.style.strokeWidth = isConnectedToSub ? '1.8' : '1.2';
-      });
 
       $$('.rel-node').forEach(n => {
         const nodeId = n.dataset.nodeId;
@@ -632,16 +610,6 @@ function bindCircularEvents(allRelations) {
           n.style.transform = 'scale(1)';
         }
       });
-
-      if (currentSub !== 'ALL') {
-        const subChar = char(currentSub);
-        const rels = allRelations.filter(r => (r.from === currentSub || r.to === currentSub) && r.type !== 'TRADE' && r.type !== 'UNKNOWN');
-        if (rels.length) {
-          hoverCard.innerHTML = buildHoverHtml(subChar, rels, '선택 관계망');
-        }
-      } else {
-        hoverCard.innerHTML = `<span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 캐릭터 얼굴 노드를 마우스로 가리키거나 클릭하면 연결된 관계 선과 상세 내역이 나타납니다.</span>`;
-      }
     });
 
     node.addEventListener('click', () => {

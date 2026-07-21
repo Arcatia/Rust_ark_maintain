@@ -130,7 +130,7 @@ const galleryData = {
   },
   "arens": {
     "name": "Arens 아렌스",
-    "class": "INSECT / ASSASSIN",
+    "class": "INSECT / BUTTERFLY",
     "creator": "@반엽",
     "images": [
       {

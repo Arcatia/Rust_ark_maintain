@@ -16,7 +16,7 @@
     { id:'ordo', name:'오르도', displayName:'ORDO', species:'INSECT / LOCUST', role:'VANGUARD COMMAND', accent:'#9aa33a', threat:'SWARM COMMAND', desc:'메뚜기계 충인 선봉 지휘관. 절멸보다 점령과 효율을 우선한다.', quote:'“태워 없애면 쓸 자원도 사라진다.”' },
     { id:'zephyr', name:'제피르', displayName:'ZEPHYR', species:'INSECT / DRAGONFLY', role:'SCOUT RECORDER', accent:'#0084a8', threat:'SKY SURVEY', desc:'잠자리계 충인 정찰기록병. 관측과 기록을 정밀 사격으로 연결한다.', quote:'“보이는 것은 이미 늦은 기록이다.”' },
     { id:'hale', name:'헤일', displayName:'HALE', species:'PLANT / HYDRANGEA', role:'STRATEGIST', accent:'#9b8cff', threat:'TACTICAL VARIABLE', desc:'수국계 식목인 전략관. 감정적 복수보다 구조적 해방을 우선하며, 폐허의 보급로와 전선 흐름을 기록한다.', quote:'“허술한 계획은 전쟁보다 먼저 사람을 죽인다.”' },
-    { id:'arens', name:'아렌스', displayName:'ARENS', species:'INSECT / ASSASSIN', role:'ASSASSIN', accent:'#4b1d8f', threat:'NOCTURNAL KILL', desc:'암살형 충인. 전면전보다 그림자 속 균열과 침투를 선호한다.', quote:'“등 뒤가 비면 전선도 비는 거야.”' },
+    { id:'arens', name:'아렌스', displayName:'ARENS', species:'INSECT / BUTTERFLY', role:'BUTTERFLY', accent:'#4b1d8f', threat:'NOCTURNAL KILL', desc:'암살형 충인. 전면전보다 그림자 속 균열과 침투를 선호한다.', quote:'“등 뒤가 비면 전선도 비는 거야.”' },
     { id:'kael', name:'카엘', displayName:'KAEL', species:'BEAST / WOLF', role:'TRIBE LEADER', accent:'#7e99b8', threat:'MOON INSTINCT', desc:'늑대 수인 부족장. 경계심이 깊지만 동족을 위해 협약도 선택한다.', quote:'“신뢰는 맹세가 아니라 생존으로 증명해.”' },
     { id:'vulcan', name:'발칸', displayName:'VULCAN', species:'BEAST / BULLFIGHT', role:'ARENA IMPACT', accent:'#c9361f', threat:'RED ARENA', desc:'투우장 같은 전장을 몰고 다니는 수인. 충돌 자체를 선언문으로 만든다.', quote:'“비켜. 길은 내가 만든다.”' },
     { id:'harmel', name:'하르멜', displayName:'HARMEL', species:'INSECT / QUEEN BEE', role:'HIVE AUTHORITY', accent:'#e6a51a', threat:'HIVE TOXIN', desc:'장수말벌과 꿀벌의 변이 충인. 나긋한 말투 아래 독침 같은 권위를 숨긴다.', quote:'“달콤한 건 대개 먼저 굳어.”' },
