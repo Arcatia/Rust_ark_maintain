@@ -308,7 +308,7 @@ const CHARACTERS = [
     recordDate: '2089.09.22', 
     archiveId: 'RA-B-08-VULCAN', 
     mainImage: 'assets/images/vulcan/vulcan_01.png', 
-    gallery: galleryPaths('vulcan', 4, 'png'), 
+    gallery: galleryPaths('vulcan', 11, 'png'), 
     quote: '"네놈들의 피로, 이 땅의 모든 것을 다시 붉게 물들여주마."', 
     metrics: { threat: 9, stability: 2, affinity: 3, control: 1 }, 
     profileBadges: ['AFFIRM : IMPACT VERIFIED', 'CLEARANCE : A-9 / BREACH NODE', 'SCAN : KINETIC COMPLETE'], 

@@ -60,7 +60,7 @@ const galleryData = {
     "creator": "@수백사",
     "images": [
       {
-        "src": "assets/images/zephyr/zephyr_01.png",
+        "src": "assets/images/zephyr/zephyr_01.jpg",
         "title": "MAIN FILE",
         "caption": "Zephyr 제피르 main file 그래픽 슬롯"
       },
@@ -70,7 +70,7 @@ const galleryData = {
         "caption": "Zephyr 제피르 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/zephyr/zephyr_03.png",
+        "src": "assets/images/zephyr/zephyr_03.jpg",
         "title": "FULL BODY",
         "caption": "Zephyr 제피르 full body 그래픽 슬롯"
       },
@@ -78,6 +78,36 @@ const galleryData = {
         "src": "assets/images/zephyr/zephyr_04.jpg",
         "title": "MOOD FILE",
         "caption": "Zephyr 제피르 mood file 그래픽 슬롯"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_05.jpg",
+        "title": "IMAGE 05",
+        "caption": "Zephyr 제피르 이미지 기록 05"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_06.jpg",
+        "title": "IMAGE 06",
+        "caption": "Zephyr 제피르 이미지 기록 06"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_07.jpg",
+        "title": "IMAGE 07",
+        "caption": "Zephyr 제피르 이미지 기록 07"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_08.jpg",
+        "title": "IMAGE 08",
+        "caption": "Zephyr 제피르 이미지 기록 08"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_09.jpg",
+        "title": "IMAGE 09",
+        "caption": "Zephyr 제피르 이미지 기록 09"
+      },
+      {
+        "src": "assets/images/zephyr/zephyr_10.jpg",
+        "title": "IMAGE 10",
+        "caption": "Zephyr 제피르 이미지 기록 10"
       }
     ]
   },
@@ -188,24 +218,59 @@ const galleryData = {
     "creator": "@밍묭",
     "images": [
       {
-        "src": "assets/images/vulcan/vulcan_01.jpg",
+        "src": "assets/images/vulcan/vulcan_01.png",
         "title": "MAIN FILE",
         "caption": "Vulcan 발칸 main file 그래픽 슬롯"
       },
       {
-        "src": "assets/images/vulcan/vulcan_02.jpg",
+        "src": "assets/images/vulcan/vulcan_02.png",
         "title": "FACE DETAIL",
         "caption": "Vulcan 발칸 face detail 그래픽 슬롯"
       },
       {
-        "src": "assets/images/vulcan/vulcan_03.jpg",
+        "src": "assets/images/vulcan/vulcan_03.png",
         "title": "FULL BODY",
         "caption": "Vulcan 발칸 full body 그래픽 슬롯"
       },
       {
-        "src": "assets/images/vulcan/vulcan_04.jpg",
+        "src": "assets/images/vulcan/vulcan_04.png",
         "title": "MOOD FILE",
         "caption": "Vulcan 발칸 mood file 그래픽 슬롯"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_05.png",
+        "title": "IMAGE 05",
+        "caption": "Vulcan 발칸 이미지 기록 05"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_06.png",
+        "title": "IMAGE 06",
+        "caption": "Vulcan 발칸 이미지 기록 06"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_07.png",
+        "title": "IMAGE 07",
+        "caption": "Vulcan 발칸 이미지 기록 07"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_08.png",
+        "title": "IMAGE 08",
+        "caption": "Vulcan 발칸 이미지 기록 08"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_09.png",
+        "title": "IMAGE 09",
+        "caption": "Vulcan 발칸 이미지 기록 09"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_10.png",
+        "title": "IMAGE 10",
+        "caption": "Vulcan 발칸 이미지 기록 10"
+      },
+      {
+        "src": "assets/images/vulcan/vulcan_11.png",
+        "title": "IMAGE 11",
+        "caption": "Vulcan 발칸 이미지 기록 11"
       }
     ]
   },
