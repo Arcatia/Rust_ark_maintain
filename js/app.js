@@ -434,7 +434,7 @@ function renderCircularDiagram(list, subFilter='ALL'){
         <g class="rel-nodes-group">${nodesSvg}</g>
       </svg>
       <div id="relHoverInfo" class="rel-hover-card" style="margin-top:20px; height:240px; border:1px solid var(--soft); background:rgba(5,11,21,0.85); padding:16px; text-align:center; transition:all 0.3s; border-radius:4px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 캐릭터 얼굴 노드를 마우스로 가리키거나 클릭하면 연결된 관계 선과 상세 내역이 나타납니다.</span>
+        <span style="color:var(--muted); font-size:12px; letter-spacing:0.18em">💡 캐릭터 얼굴 노드를 클릭하면 연결된 관계 선과 상세 내역이 나타납니다.</span>
       </div>
     </div>
   </div>`;
