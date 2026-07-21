@@ -509,7 +509,7 @@ function bindCircularEvents(allRelations) {
   const buildHoverHtml = (c, rels, titleSuffix) => {
     return `<div style="width:100%; height:100%; display:flex; flex-direction:column; text-align:left;">
       <strong style="color:${c.accent}; font-size:14px; display:block; margin-bottom:8px; flex-shrink:0;">${esc(c.displayName)} (${esc(c.type)}) ${titleSuffix} (${rels.length}건)</strong>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:6px; overflow-y:auto; flex:1; padding-right:4px;">
+      <div class="rel-hover-scroll" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:6px; overflow-y:auto; flex:1; padding-right:6px;">
         ${rels.map(r => {
           const partnerId = r.from === c.id ? r.to : r.from;
           const partner = char(partnerId);

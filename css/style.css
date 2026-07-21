@@ -1772,3 +1772,29 @@ body {
   }
 }
 
+/* Custom Sci-Fi Scrollbar for Relation Description Box */
+.rel-hover-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent, #9fc9ff) 50%, #36506b) rgba(3, 8, 16, 0.5);
+}
+.rel-hover-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.rel-hover-scroll::-webkit-scrollbar-track {
+  background: rgba(3, 8, 16, 0.5);
+  border-radius: 3px;
+  border: 1px solid rgba(145, 180, 220, 0.1);
+}
+.rel-hover-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent, #9fc9ff) 50%, #36506b);
+  border-radius: 3px;
+  box-shadow: 0 0 6px color-mix(in srgb, var(--accent, #9fc9ff) 30%, transparent);
+  transition: background 0.2s ease;
+}
+.rel-hover-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent, #9fc9ff);
+  box-shadow: 0 0 10px var(--accent, #9fc9ff);
+}
+
+
