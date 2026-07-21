@@ -453,6 +453,22 @@ function relationsPage(animateKey='relations'){
         }).join('') : `<article class="relation-card"><strong class="rel-label">NO MATCHING RELATION RECORD</strong><p>선택한 조건에 해당하는 관계 기록이 없습니다.</p></article>`}
       </div>`;
 
+  const filtersMarkup = viewMode === 'CARD' ? `
+    <section class="gallery-filter" style="margin-top:12px">
+      <p class="panel-title">SUBJECT FILTER</p>
+      <div>
+        <button data-rel-sub="ALL" class="${subFilter==='ALL'?'active':''}">ALL</button>
+        ${CHARACTERS.map(c=>`<button data-rel-sub="${c.id}" style="--chip:${c.accent}" class="${subFilter===c.id?'active':''}">${esc(c.displayName)}</button>`).join('')}
+      </div>
+    </section>
+
+    <section class="gallery-filter" style="margin-top:12px">
+      <p class="panel-title">RELATION TYPE</p>
+      <div>
+        ${types.map(t=>`<button data-rel-type="${t}" class="${typeFilter===t?'active':''}">${t} ${t!=='ALL'?`(${relationTypeLabel(t)})`:''}</button>`).join('')}
+      </div>
+    </section>` : '';
+
   view.innerHTML = `<section class="panel">
     <div class="head">
       <div>${markTitle('RELATION NETWORK', 'SPECIES INTERACTION MATRIX')}</div>
@@ -467,20 +483,7 @@ function relationsPage(animateKey='relations'){
       </div>
     </section>
     
-    <section class="gallery-filter" style="margin-top:12px">
-      <p class="panel-title">SUBJECT FILTER</p>
-      <div>
-        <button data-rel-sub="ALL" class="${subFilter==='ALL'?'active':''}">ALL</button>
-        ${CHARACTERS.map(c=>`<button data-rel-sub="${c.id}" style="--chip:${c.accent}" class="${subFilter===c.id?'active':''}">${esc(c.displayName)}</button>`).join('')}
-      </div>
-    </section>
-
-    <section class="gallery-filter" style="margin-top:12px">
-      <p class="panel-title">RELATION TYPE</p>
-      <div>
-        ${types.map(t=>`<button data-rel-type="${t}" class="${typeFilter===t?'active':''}">${t} ${t!=='ALL'?`(${relationTypeLabel(t)})`:''}</button>`).join('')}
-      </div>
-    </section>
+    ${filtersMarkup}
 
     ${contentMarkup}
   </section>`;
