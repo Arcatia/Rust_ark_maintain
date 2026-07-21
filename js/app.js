@@ -129,7 +129,32 @@ function world(){
     state.filter=a.dataset.speciesJump;
   }));
 }
-function characters(animateKey='characters'){setRouteMotion(animateKey); setAccent({accent:'#ff85b4'}); const visible=state.filter==='ALL'?CHARACTERS:CHARACTERS.filter(c=>c.species===state.filter); view.innerHTML=`<section class="panel"><div class="head"><div>${markTitle('BIO RECORDS','CHARACTER DATABASE')}</div><div class="filters">${['ALL','HUMAN','PLANT','INSECT','BEAST'].map(x=>`<button data-filter="${x}" class="${state.filter===x?'active':''}">${x}</button>`).join('')}</div></div><div class="card-grid">${visible.map(c=>`<a class="char-card" href="#character/${c.id}" style="--card:${c.accent}">${renderMainImage(c.mainImage,c.displayName)}<b>${esc(c.displayName)}</b><small>${esc(c.type)}</small><span>${esc(c.creator)}</span></a>`).join('')}</div></section>`; $$('[data-filter]').forEach(b=>b.onclick=()=>{state.filter=b.dataset.filter;characters('characters')})}
+function characters(animateKey='characters'){
+  setRouteMotion(animateKey);
+  setAccent({accent:'#ff85b4'});
+  const visible = state.filter === 'ALL' ? CHARACTERS : CHARACTERS.filter(c => c.species === state.filter);
+  const countLabel = `${visible.length} / ${CHARACTERS.length} SUBJECTS`;
+  view.innerHTML = `
+    <section class="panel">
+      <div class="head">
+        <div>${markTitle('BIO RECORDS', 'CHARACTER DATABASE')}</div>
+        <div class="file-class">${state.filter === 'ALL' ? 'ALL SPECIES' : state.filter} // ${countLabel}</div>
+      </div>
+      <section class="gallery-filter" style="margin-bottom: 24px;">
+        <p class="panel-title">SPECIES FILTER</p>
+        <div>
+          ${['ALL', 'HUMAN', 'PLANT', 'INSECT', 'BEAST'].map(x => `<button data-filter="${x}" class="${state.filter === x ? 'active' : ''}">${x}</button>`).join('')}
+        </div>
+      </section>
+      <div class="card-grid">
+        ${visible.map(c => `<a class="char-card" href="#character/${c.id}" style="--card:${c.accent}">${renderMainImage(c.mainImage, c.displayName)}<b>${esc(c.displayName)}</b><small>${esc(c.type)}</small><span>${esc(c.creator)}</span></a>`).join('')}
+      </div>
+    </section>`;
+  $$('[data-filter]').forEach(b => b.onclick = () => {
+    state.filter = b.dataset.filter;
+    characters('characters');
+  });
+}
 function gallery(){
   const active=state.galleryFilter==='ALL'?null:char(state.galleryFilter);
   setAccent(active||{accent:'#ff85b4'});
@@ -477,7 +502,7 @@ function relationsPage(animateKey='relations'){
 
     <section class="gallery-filter">
       <p class="panel-title">VIEW LAYOUT MODE</p>
-      <div>
+      <div class="view-mode-buttons">
         <button data-rel-view="CIRCULAR" class="${viewMode==='CIRCULAR'?'active':''}">CIRCULAR MAP (원형 배치 관계도)</button>
         <button data-rel-view="CARD" class="${viewMode==='CARD'?'active':''}">CARD LIST (카드 목록)</button>
       </div>

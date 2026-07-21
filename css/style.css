@@ -1747,14 +1747,14 @@ body {
 /* Relation Selector, Mini Nav, & Gallery Filter responsive 2-row grid */
 .relation-selector > div,
 .mini-nav,
-.gallery-filter > div {
+.gallery-filter > div:not(.view-mode-buttons) {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)) !important;
   gap: 8px;
 }
 .relation-selector button,
 .mini-nav a,
-.gallery-filter button {
+.gallery-filter:not(.rel-layout-filter) button {
   width: 100% !important;
   text-align: center !important;
   white-space: nowrap;
@@ -1767,10 +1767,41 @@ body {
 @media (min-width: 1051px) {
   .relation-selector > div,
   .mini-nav,
-  .gallery-filter > div {
+  .gallery-filter > div:not(.view-mode-buttons) {
     grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
   }
 }
+
+/* Dedicated, isolated equal-width styling ONLY for VIEW LAYOUT MODE buttons */
+.gallery-filter > div.view-mode-buttons,
+.view-mode-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  grid-template-columns: none !important;
+  gap: 12px !important;
+  width: 100% !important;
+  max-width: 720px !important;
+}
+
+.gallery-filter > div.view-mode-buttons button,
+.view-mode-buttons button {
+  flex: 1 1 280px !important;
+  width: auto !important;
+  min-width: 280px !important;
+  max-width: 100% !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  padding: 12px 20px !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+}
+
+
+
+
 
 /* Custom Sci-Fi Scrollbar for Relation Description Box */
 .rel-hover-scroll {
