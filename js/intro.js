@@ -236,9 +236,9 @@
     setText('[data-intro-desc]', character.summary || character.affiliation || 'NO SUMMARY DATA.');
     setText('[data-intro-quote]', character.quote || '“WORLD ARCHIVE READY.”');
 
-    setStat('[data-stat="tactic"]', character.metrics.control);
+    setStat('[data-stat="tactic"]', character.metrics.threat);
     setStat('[data-stat="affinity"]', character.metrics.affinity);
-    setStat('[data-stat="control"]', character.metrics.stability);
+    setStat('[data-stat="control"]', character.metrics.control);
   }
 
   function saveWorldEntry(character) {
